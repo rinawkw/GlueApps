@@ -60,7 +60,7 @@ html,body {
 
 body {
 	font-family: 'Open Sans', sans-serif;
-	background: #F2F2F2;
+	background: #d7e3e4;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -364,11 +364,20 @@ nav.top-menu ul li {
 	position: relative;
 }
 
+/*nav separator*/
+nav.top-menu li:not(:last-child):after {
+	content: '|';
+	position: relative;
+	top: -2px;
+	padding-right: 8px;
+	color: #51AEE0;
+}
+
 /*Style for menu links*/
 nav.top-menu ul.menu li a {
-display: block;
+	display: inline-block;
 	padding: 7px 10px;
-	color: #595959 !important;
+	color: #1D1D1D !important;
 	font-size: 12px;
 	text-transform: uppercase;
 	font-weight: 600;
@@ -414,7 +423,7 @@ nav.top-menu .show-menu {
 
 /*Hide checkbox*/
 #show-top-menu{
-		display: none;
+	display: none;
 }
 
 /*Show menu when invisible checkbox is checked*/
@@ -439,6 +448,11 @@ nav.top-menu ul {
 /*Create vertical spacing*/
 nav.top-menu li {
 	position: relative;
+	float: left;
+}
+
+nav.top-menu li:not(:last-child):after {
+	content: '';
 }
 /*Make all menu links full width*/
 nav.top-menu ul li, li a {
@@ -487,7 +501,7 @@ nav.top-menu .caret {
 
 nav.top-menu {
 	/* background: #353537; */
-	float: left;
+	float: right;
 	/* border-bottom: 1px solid #efefef; */
 }
 
@@ -498,7 +512,7 @@ nav.top-menu ul.menu ul.sub-menu {
 	position: absolute;
 	z-index: 10;
 	min-width: 180px;
-	border-bottom: 2px solid #FFC000;
+	border-bottom: 2px solid #51AEE0;
 	background-color: #353537;
 	-webkit-transition: -webkit-transform 250ms;
 	-moz-transition: 250ms;
@@ -520,9 +534,9 @@ nav.top-menu ul.menu li:hover > ul.sub-menu {
 
 /*Hover state for top level links*/
 nav.top-menu ul.menu li:hover a {
-color: #F2F2F2 !important;
+color: #51AEE0 !important;
 	text-decoration: none;
-	background-color: #1D1D1D;
+	/*background-color: #1D1D1D;*/
 }
 
 /* Drop down links */
@@ -553,7 +567,7 @@ nav.top-menu ul.menu ul.sub-menu ul.sub-menu li:hover a {
 --------------------*/
 
 .top-bar-socials {
-	float: right;
+	float: left;
 	padding: 5px 5px;
 }
 
@@ -830,7 +844,7 @@ nav.main-menu li.search-menu ul.sub-menu {
 
 /*Hover state for top level links*/
 nav.main-menu ul.menu li:hover > a {
-	color: #f2f2f2 !important;
+	color: #51AEE0 !important;
 	text-decoration: none;
 	background-color: #1D1D1D;
 }
@@ -882,7 +896,7 @@ nav.main-menu .search .btn-submit {
 
 nav.main-menu .search .btn-submit:hover {
 	border-left-color: #fff;
-	background: #B43F42;
+	background: #51AEE0;
 }
 
 /*--------------------
@@ -3232,7 +3246,7 @@ footer ul.menu li a {
 }
 
 footer ul.menu li:hover a {
-	color: #BB0000;
+	color: #51aee0;
 }
 
 .footer-categories {
@@ -3253,7 +3267,7 @@ footer ul.menu li:hover a {
 }
 
 .footer-categories li a:hover {
-	color: #cc0000;
+	color: #51aee0;
 }
 
 .footer-categories li {
@@ -3282,7 +3296,7 @@ footer ul.menu li:hover a {
 }
 
 .footer-bottom a {
-	color: #A5A5A5;
+	color: #51aee0;
 }
 
 .footer-title {
@@ -3298,7 +3312,7 @@ footer ul.menu li:hover a {
 
 .footer-title span {
 	padding-bottom: 2px;
-	border-bottom: 2px solid #801C1C;
+	border-bottom: 2px solid #51aee0;
 }
 
 .ot-footer-widget {
