@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('home.index');
 });
+
+Route::get('/dologin', function () {
+    return view('auth.login');
+});
+
+Route::post('/login','AuthController@login')->middleware('login');

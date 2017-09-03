@@ -218,9 +218,9 @@ p.vignette img {
 	backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
 	-webkit-backface-visibility: hidden;
-	transform: translateX ( 0 );
-	-moz-transform: translateX ( 0 );
-	-webkit-transform: translateX ( 0 );
+	transform: translateX( 0 );
+	-moz-transform: translateX( 0 );
+	-webkit-transform: translateX( 0 );
 }
 
 p.vignette:after {
