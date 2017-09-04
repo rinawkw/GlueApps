@@ -13,7 +13,7 @@
                     <a href="#"></i> Notification </a>
                 </li>
                 <li><a href="team.html"></i> Rina Wijaya Kusuma Wardhani </a></li>
-                <li><a href="about.html"></i> Logout </a></li>
+                <li><a href="{{'logout'}}"></i> Logout </a></li>
             </ul>
         </nav>
         <!-- end main menu -->
