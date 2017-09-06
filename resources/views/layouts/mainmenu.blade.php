@@ -5,14 +5,14 @@
         <input type="checkbox" id="show-menu">
         <ul class="menu" id="main-mobile-menu">
             <li>
-                <a href="index.html"><i class="fa fa-home"></i> Home </a>
+                <a href="{{'home'}}"><i class="fa fa-home"></i> Home </a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-newspaper-o"></i> News <b class="caret"></b></a><span
                         class="sub_menu_toggle"></span>
                 <ul class="sub-menu">
-                    <li><a href="post.html">My News</a></li>
-                    <li><a href="post-large-image.html">All News</a></li>
+                    <li><a href="{{'news'}}">My News</a></li>
+                    <li><a href="{{'news'}}">All News</a></li>
                 </ul>
             </li>
             <li class="menu-item-has-children">

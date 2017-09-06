@@ -19,6 +19,9 @@ Route::get('/dologin', function () {
     return view('auth.login');
 });
 Route::get('/home','HomeController@index')->name('home')->middleware('home');
+Route::get('/news','NewsController@index')->name('news');
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/do_login','AuthController@do_login')->middleware('login');
 Route::get('/logout', 'AuthController@logout')->name('logout');
+Route::get('/register', 'AuthController@register')->name('register');
+Route::post('/do_register','AuthController@do_register')->middleware('register');

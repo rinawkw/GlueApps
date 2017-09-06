@@ -47,7 +47,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <p class="wp-caption-text">Belum punya Akun? <a href="#"><b>Register</b></a> </p>
+                                <p class="wp-caption-text">Belum punya Akun? <a href="{{'register'}}"><b>Register</b></a> </p>
                             </div>
                         </div>
                     </div>

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
+
 
 class AuthController extends Controller
 {
@@ -35,6 +37,41 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 
+    public function register()
+    {
+        return view('auth.register');
+    }
+
+    public function do_register()
+    {
+        $namalengkap = Input::get('namalengkap');
+        $email = Input::get('email');
+        $password = Input::get('password');
+        $nomortelepon = Input::get('nomortelepon');
+        $nimnrp = Input::get('nimnrp');
+        $data['data'] = array(
+            'namlengkap' => $namalengkap,
+            'email' => $email,
+            'password' => $password,
+            'nomortelepon' => $nomortelepon,
+            'nimnrp' => $nimnrp
+        );
+        $id = DB::table('pengguna')
+            ->insertGetId(
+                array(
+                    'username' => $email,
+                    'password' => $password,
+                    'nama_pengguna' => $namalengkap,
+                    'nrp' => $nimnrp,
+                    'hak_akses' => 2
+                ));
+        DB::table('master_nrp')
+            ->where('nrp', $nimnrp)
+            ->update(array('id_pengguna' => $id));
+//        DB::select('call sp_createuser(?,?,?)', [$email, $password, $namalengkap]);
+        return redirect()->route('login');
+    }
+
     public function index()
     {
         //
@@ -53,7 +90,7 @@ class AuthController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -64,7 +101,7 @@ class AuthController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -75,7 +112,7 @@ class AuthController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -86,8 +123,8 @@ class AuthController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -98,7 +135,7 @@ class AuthController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -58,5 +58,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'login' => \App\Http\Middleware\CheckAuth::class,
         'home' => \App\Http\Middleware\CheckSession::class,
+        'register' => \App\Http\Middleware\CheckAnggotaGenbi::class,
     ];
 }
