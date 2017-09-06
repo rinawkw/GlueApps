@@ -2735,18 +2735,92 @@ and (max-width : 480px) {
 .comment-form input[type="text"],
 .comment-form input[type="password"],
 .comment-form input[type="email"],
-.comment-form textarea {
+.comment-form textarea{
 	text-transform: none;
 	border: 1px solid #ADADAD;
 	width: 100%;
 	max-width: 100%;
-	margin-bottom: 20px;
-
+	margin-bottom: 10px;
+	display:inline;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	border-radius: 2px;
+	float: left;
+}
+
+.comment-form input[type='radio'] {
+	text-transform: none;
+	border: 1px solid #ADADAD;
+	max-width: 100%;
+	margin-bottom: 15px;
+	display:inline;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	position: inherit;
+}
+
+.comment-form input[type="date"],
+.comment-form select{
+	text-transform: none;
+	border: 1px solid #ADADAD;
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 10px;
+	padding-left: 1rem;
+	/*display:inline;*/
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	/*float: left;*/
+	height: 5rem;
+}
+
+
+.control
+{
+	display: block;
+	position: relative;
+	padding-left: 30px;
+	margin-bottom: 15px;
+	cursor: pointer;
+	font-size: 18px;
 
 }
+
+.control:hover input,
+.control input:focus{
+	background: grey;
+}
+
+
+.control__indicator
+{
+	position: absolute;
+	top: 2px;
+	left: 0;
+	height: 20px;
+	width: 20px;
+	background: lightgrey;
+}
+
+
+.control--radio
+{
+	left: 7px;
+	top: 7px;
+	height: 6px;
+	width: 6px;
+	border: 1rem;
+	background:  white;
+}
+
+.control--radio input:disabled
+{
+	background: grey;
+}
+
+
 
 .comment-form textarea {
 	width: 100%;

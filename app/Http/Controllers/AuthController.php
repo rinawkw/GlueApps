@@ -42,6 +42,12 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
+    public function filldata()
+    {
+        return view('auth.filldata');
+    }
+
+
     public function do_register()
     {
         $namalengkap = Input::get('namalengkap');

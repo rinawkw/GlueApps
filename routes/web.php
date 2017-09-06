@@ -25,3 +25,4 @@ Route::post('/do_login','AuthController@do_login')->middleware('login');
 Route::get('/logout', 'AuthController@logout')->name('logout');
 Route::get('/register', 'AuthController@register')->name('register');
 Route::post('/do_register','AuthController@do_register')->middleware('register');
+Route::get('/filldata', 'AuthController@filldata')->name('filldata');
