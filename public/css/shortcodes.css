@@ -469,7 +469,7 @@ dd {
 }
 
 .short-tabs > div.active {
-	display: block;
+	display: inline-block;
 }
 
 .short-tabs > ul {

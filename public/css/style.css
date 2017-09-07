@@ -2729,7 +2729,9 @@ and (max-width : 480px) {
 }
 
 .comment-form label {
-	display: none;
+	display: block;
+	float: left;
+	margin-top: 1rem;
 }
 
 .comment-form input[type="text"],
@@ -2760,7 +2762,6 @@ and (max-width : 480px) {
 	position: inherit;
 }
 
-.comment-form input[type="date"],
 .comment-form select{
 	text-transform: none;
 	border: 1px solid #ADADAD;
@@ -2772,10 +2773,24 @@ and (max-width : 480px) {
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	border-radius: 2px;
-	/*float: left;*/
+	float: left;
 	height: 5rem;
 }
 
+.comment-form input[type="date"]{
+	/*text-transform: none;*/
+	border: 1px solid #ADADAD;
+	width: 100%;
+	/*max-width: 100%;*/
+	margin-bottom: 10px;
+	padding-left: 1rem;
+	/*display:inline;*/
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	float: left;
+	height: 5rem;
+}
 
 .control
 {

@@ -26,3 +26,8 @@ Route::get('/logout', 'AuthController@logout')->name('logout');
 Route::get('/register', 'AuthController@register')->name('register');
 Route::post('/do_register','AuthController@do_register')->middleware('register');
 Route::get('/filldata', 'AuthController@filldata')->name('filldata');
+Route::post('/do_filldata', 'AuthController@do_filldata');
+Route::post('/do_filldata1', 'AuthController@do_filldata1');
+Route::post('/do_filldata2', 'AuthController@do_filldata2');
+Route::post('/do_filldata3', 'AuthController@do_filldata3');
+Route::post('/do_filldata4', 'AuthController@do_filldata4');
