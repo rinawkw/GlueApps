@@ -11,23 +11,30 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home.index');
-});
+// Route::get('/', function () {
+//     return view('home.index');
+// });
 
-Route::get('/dologin', function () {
-    return view('auth.login');
-});
+// Route::get('/dologin', function () {
+//     return view('auth.login');
+// });
+
+Route::get('/','HomeController@index')->name('home')->middleware('home');
 Route::get('/home','HomeController@index')->name('home')->middleware('home');
-Route::get('/news','NewsController@index')->name('news');
+Route::get('/news','NewsController@index')->name('news')->middleware('home');
+
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/do_login','AuthController@do_login')->middleware('login');
 Route::get('/logout', 'AuthController@logout')->name('logout');
+
 Route::get('/register', 'AuthController@register')->name('register');
 Route::post('/do_register','AuthController@do_register')->middleware('register');
-Route::get('/filldata', 'AuthController@filldata')->name('filldata');
+
+Route::get('/filldata', 'AuthController@filldata')->name('filldata')->middleware('home');
 Route::post('/do_filldata', 'AuthController@do_filldata');
 Route::post('/do_filldata1', 'AuthController@do_filldata1');
 Route::post('/do_filldata2', 'AuthController@do_filldata2');
 Route::post('/do_filldata3', 'AuthController@do_filldata3');
 Route::post('/do_filldata4', 'AuthController@do_filldata4');
+
+Route::get('/profile','NewsController@index')->name('news')->middleware('home');

@@ -63,6 +63,10 @@ class AuthController extends Controller
             'nomortelepon' => $nomortelepon,
             'nimnrp' => $nimnrp
         );
+        $usr_id = DB::table('members')
+            ->insertGetId(
+                array('usr_fullname' => $namalengkap)
+            );
         $id = DB::table('pengguna')
             ->insertGetId(
                 array(
@@ -70,15 +74,13 @@ class AuthController extends Controller
                     'password' => $password,
                     'nama_pengguna' => $namalengkap,
                     'nrp' => $nimnrp,
-                    'hak_akses' => 2
+                    'hak_akses' => 2,
+                    'fk_usr_id' => $usr_id
                 ));
         DB::table('master_nrp')
             ->where('nrp', $nimnrp)
             ->update(array('id_pengguna' => $id));
-        $usr_id = DB::table('members')
-            ->insertGetId(
-                array('usr_fullname' => $namalengkap)
-            );
+        
         Session::put('usr_id',$usr_id);
 //        DB::select('call sp_createuser(?,?,?)', [$email, $password, $namalengkap]);
         return redirect()->route('login');
@@ -168,7 +170,7 @@ class AuthController extends Controller
         $biodata = Input::get('biodata');
         $idline = Input::get('idline');
         $idfb = Input::get('idfb');
-        $idig = Input::get('idfb');
+        $idig = Input::get('idig');
         $idtwitter = Input::get('idtwitter');
         $data['data'] = array(
             'usr_no_kta' => $noktp,
@@ -263,6 +265,11 @@ class AuthController extends Controller
         DB::table('work')
             ->insert($data);
         dd($data);
+    }
+    public function show_profile()
+    {
+        $user = DB::table('pengguna')->where('username', session('username'))->first();
+        return view('auth.register');
     }
     public function index()
     {

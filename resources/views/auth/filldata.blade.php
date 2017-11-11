@@ -15,7 +15,7 @@
                 </ul>
             </nav>
             <span class="top-bar-socials">
-                <a href="#"><img style="width: 90px;" src="images/gluetela.png"></a>
+                <a href="{{'home'}}"><img style="width: 90px;" src="images/gluetela.png"></a>
             </span>
         </div>
         <!-- end container -->
