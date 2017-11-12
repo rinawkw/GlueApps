@@ -23,7 +23,7 @@
     <!-- end topbar -->
 
     <div class="boxed">
-        <section class="">
+        <section class="ot-section-b">
             <!-- container -->
             <div class="container">
                 <div class="row">
@@ -40,20 +40,20 @@
                                 <h4>Mohon lengkapi data berikut terlebih dahulu.</h4>
                                 <div class="short-tabs">
                                     <ul>
-                                        <li class="active"><a href="javascript:void(0);">Personal</a></li>
-                                        <li><a href="javascript:void(0);">Keanggotaan</a></li>
+                                        <li class="active"><a href="javascript:void(0);">Identitas</a></li>
+                                        <li><a href="javascript:void(0);">Tahun Keanggotaan</a></li>
                                         <li><a href="javascript:void(0);">Pendidikan</a></li>
                                         <li><a href="javascript:void(0);">Pengalaman Pekerjaan</a></li>
                                     </ul>
                                     <div class="active">
-                                        {{--<h4 class="main-heading"><span>Data Identitas</span></h4>--}}
+                                        <h4 class="main-heading"><span>Data Identitas Diri</span></h4>
                                         <div class="comment-form-body">
                                             <div class="row" id="continer">
                                                 <form id="form" class="comment-form" role="form" method="POST"
                                                       action='do_filldata1'>
                                                     {!! csrf_field() !!}
                                                     <div class="col-md-12">
-                                                        <label for="noktp">Nomor KTP</label>
+                                                        <label for="noktp">Nomor KTP*</label>
                                                         @if(session('data1.usr_no_kta'))
                                                             <input id="noktp" type="text" placeholder="nomor ktp"
                                                                    name="noktp"
@@ -68,7 +68,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <label for="tmplhr">Tempat Lahir</label>
+                                                        <label for="tmplhr">Tempat Lahir*</label>
                                                         @if(session('data1.usr_tmpt_lahir'))
                                                             <input id="tmplhr" type="text" placeholder="tempat lahir"
                                                                    name="tmplhr" required
@@ -81,7 +81,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <label for="tgllhr">Tanggal Lahir</label>
+                                                        <label for="tgllhr">Tanggal Lahir*</label>
                                                         @if(session('data1.usr_tgl_lahir'))
                                                             <input id="tgllhr" type="date" placeholder="tanggal lahir"
                                                                    name="tgllhr"
@@ -94,7 +94,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="jk">Jenis Kelamin</label>
+                                                        <label for="jk">Jenis Kelamin*</label>
                                                         <select name="jk">
                                                             @if(session('data1.usr_jk')== 'L')
                                                                 <option>jenis kelamin</option>
@@ -105,14 +105,14 @@
                                                                 <option value="L">laki - laki</option>
                                                                 <option value="P" selected>perempuan</option>
                                                             @else
-                                                                <option>jenis kelamin</option>
-                                                                <option value="L">laki - laki</option>
-                                                                <option value="P">perempuan</option>
+                                                                <option>jenis kelamin*</option>
+                                                                <option value="Laki-laki">laki - laki</option>
+                                                                <option value="Perempuan">perempuan</option>
                                                             @endif
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="goldar">Golongan Darah</label>
+                                                        <label for="goldar">Golongan Darah*</label>
                                                         <select name="goldar">
                                                             @if(session('data1.usr_goldar')=='A')
                                                                 <option>golongan darah</option>
@@ -142,7 +142,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="agama">Agama</label>
+                                                        <label for="agama">Agama*</label>
                                                         @if(session('data1.usr_agama'))
                                                             <input id="agama" type="text" placeholder="agama"
                                                                    name="agama"
@@ -158,7 +158,7 @@
                                                     </div>
 
                                                     <div class="col-md-6">
-                                                        <label for="suku">Suku</label>
+                                                        <label for="suku">Suku*</label>
                                                         @if(session('data1.usr_suku'))
                                                             <input id="suku" type="text" placeholder="suku" name="suku"
                                                                    required
@@ -171,7 +171,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <label for="status">Status</label>
+                                                        <label for="status">Status*</label>
                                                         @if(session('data1.usr_status'))
                                                             <input id="status" type="text" placeholder="status"
                                                                    name="status"
@@ -186,7 +186,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <label for="biodata">Biodata</label>
+                                                        <label for="biodata">Biodata*</label>
                                                         @if(session('data1.usr_bio'))
                                                             <textarea name="biodata" id="biodata" placeholder="biodata"
                                                                       cols="35"
@@ -198,7 +198,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="idline">Id LINE</label>
+                                                        <label for="idline">Id LINE*</label>
                                                         @if(session('data1.usr_line'))
                                                             <input id="idline" type="text" placeholder="id line"
                                                                    name="idline"
@@ -213,7 +213,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="idfb">Id Facebok</label>
+                                                        <label for="idfb">Id Facebok*</label>
                                                         @if(session('data1.usr_fb'))
                                                             <input id="idfb" type="text" placeholder="id facebook"
                                                                    name="idfb"
@@ -228,7 +228,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="idig">Id Instagram</label>
+                                                        <label for="idig">Id Instagram*</label>
                                                         @if(session('data1.usr_insta'))
                                                             <input id="idig" type="text" placeholder="id instagram"
                                                                    name="idig"
@@ -243,7 +243,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="idtwitter">Id Twitter</label>
+                                                        <label for="idtwitter">Id Twitter*</label>
                                                         @if(session('data1.usr_twit'))
                                                             <input id="idtwitter" type="text" placeholder="id twitter"
                                                                    name="idtwitter"
@@ -274,37 +274,55 @@
                                                                    id='comment_parent'
                                                                    value='0'/>
                                                         </p>
+                                                        <p style="float: left">* Harus Diisi</p>
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                                     <div>
+                                        <h4 class="main-heading"><span>Data Tahun Penerimaan Beasiswa</span></h4>
                                         <div class="comment-form-body">
                                             <div class="row" id="continer">
                                                 <form id="form" class="comment-form" role="form" method="POST"
                                                       action='do_filldata2'>
                                                     {!! csrf_field() !!}
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-4">
                                                         <label for="tahun1">Tahun Pertama</label>
-                                                        <input id="tahun1" type="text" placeholder="tahun pertama"
-                                                               name="tahun1"
-                                                               required
-                                                               autofocus>
+                                                        @if(session('data2.usr_tahun1'))
+                                                            <input id="tahun1" type="text" placeholder="tahun pertama"
+                                                                   name="tahun1"
+                                                                   required
+                                                                   autofocus
+                                                                   value="{{session('data2.usr_tahun1')}}">
+                                                        @else
+                                                            <input id="tahun1" type="text" placeholder="tahun pertama"
+                                                                   name="tahun1"
+                                                                   required
+                                                                   autofocus>
+                                                        @endif
                                                     </div>
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-4">
                                                         <label for="tahun2">Tahun Kedua</label>
-                                                        <input id="tahun2" type="text" placeholder="tahun kedua"
-                                                               name="tahun2"
-                                                               required
-                                                               autofocus>
+                                                        @if(session('data2.usr_tahun2'))
+                                                            <input id="tahun2" type="text" placeholder="tahun kedua"
+                                                                   name="tahun2"
+                                                                   value="{{session('data2.usr_tahun2')}}">
+                                                        @else
+                                                            <input id="tahun2" type="text" placeholder="tahun kedua"
+                                                                   name="tahun2">
+                                                        @endif
                                                     </div>
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-4">
                                                         <label for="tahun3">Tahun Ketiga</label>
-                                                        <input id="tahun3" type="text" placeholder="tahun ketiga"
-                                                               name="tahun3"
-                                                               required
-                                                               autofocus>
+                                                        @if(session('data2.usr_tahun3'))
+                                                            <input id="tahun3" type="text" placeholder="tahun ketiga"
+                                                                   name="tahun3"
+                                                                   value="{{session('data2.usr_tahun3')}}">
+                                                        @else
+                                                            <input id="tahun3" type="text" placeholder="tahun ketiga"
+                                                                   name="tahun3">
+                                                        @endif
                                                     </div>
                                                     <div class="col-md-12">
                                                         @if (session('error_message'))
@@ -331,79 +349,117 @@
                                         </div>
                                     </div>
                                     <div>
+                                        <h4 class="main-heading"><span>Data Pendidikan</span></h4>
                                         <div class="comment-form-body">
                                             <div class="row" id="continer">
                                                 <form id="form" class="comment-form" role="form" method="POST"
                                                       action='do_filldata3'>
                                                     {!! csrf_field() !!}
                                                     <div class="col-md-12">
-                                                        <label for="universitas">Universitas</label>
-                                                        <input id="universitas" type="text" placeholder="universitas"
-                                                               name="universitas"
-                                                               required
-                                                               autofocus>
+                                                        <label for="universitas">Universitas (S1)*</label>
+                                                        @if(session('data3.usr_univ1'))
+                                                            <input id="universitas" type="text"
+                                                                   placeholder="universitas"
+                                                                   name="universitas"
+                                                                   required
+                                                                   autofocus
+                                                                   value="{{session('data3.usr_univ1')}}">
+                                                        @else
+                                                            <input id="universitas" type="text"
+                                                                   placeholder="universitas"
+                                                                   name="universitas"
+                                                                   required
+                                                                   autofocus>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="fakultas">Fakultas (S1)*</label>
+                                                        @if(session('data3.usr_fakultas1'))
+                                                            <input id="fakultas" type="text" placeholder="fakultas"
+                                                                   name="fakultas" required
+                                                                   autofocus
+                                                                   value="{{session('data3.usr_fakultas1')}}">
+                                                        @else
+                                                            <input id="fakultas" type="text" placeholder="fakultas"
+                                                                   name="fakultas" required
+                                                                   autofocus>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="departemen">Departemen/Jurusan (S1)*</label>
+                                                        @if(session('data3.usr_jurusan1'))
+                                                            <input id="departemen" type="text" placeholder="departemen"
+                                                                   name="departemen"
+                                                                   required
+                                                                   autofocus
+                                                                   value="{{session('data3.usr_jurusan1')}}">
+                                                        @else
+                                                            <input id="departemen" type="text" placeholder="departemen"
+                                                                   name="departemen"
+                                                                   required
+                                                                   autofocus>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="periode">Periode (S1)*</label>
+                                                        @if(session('data3.usr_period1'))
+                                                            <input id="periode" type="text" placeholder="periode"
+                                                                   name="periode"
+                                                                   required
+                                                                   autofocus
+                                                                   value="{{session('data3.usr_period1')}}">
+                                                        @else
+                                                            <input id="periode" type="text" placeholder="periode"
+                                                                   name="periode"
+                                                                   required
+                                                                   autofocus>
+                                                        @endif
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <label for="fakultas">fakultas</label>
-                                                        <input id="fakultas" type="text" placeholder="fakultas"
-                                                               name="fakultas" required
-                                                               autofocus>
+                                                        <label for="universitas2">Universitas (S2)</label>
+                                                        @if(session('data3.usr_univ2'))
+                                                            <input id="universitas2" type="text"
+                                                                   placeholder="universitas"
+                                                                   name="universitas2"
+                                                                   value="{{session('data3.usr_univ2')}}">
+                                                        @else
+                                                            <input id="universitas2" type="text"
+                                                                   placeholder="universitas"
+                                                                   name="universitas2">
+                                                        @endif
                                                     </div>
-                                                    <div class="col-md-12">
-                                                        <label for="departemen">departemen</label>
-                                                        <input id="departemen" type="text" placeholder="departemen"
-                                                               name="departemen"
-                                                               required
-                                                               autofocus>
+                                                    <div class="col-md-4">
+                                                        <label for="fakultas2">Fakultas (S2)</label>
+                                                        @if(session('data3.usr_fakultas2'))
+                                                            <input id="fakultas2" type="text" placeholder="fakultas"
+                                                                   name="fakultas2"
+                                                                   value="{{session('data3.usr_fakultas2')}}">
+                                                        @else
+                                                            <input id="fakultas2" type="text" placeholder="fakultas"
+                                                                   name="fakultas2">
+                                                        @endif
                                                     </div>
-                                                    <div class="col-md-12">
-                                                        <label for="periode">Periode</label>
-                                                        <select name="periode">
-                                                            <option>periode</option>
-                                                            <option>2011</option>
-                                                            <option>2012</option>
-                                                            <option>2013</option>
-                                                            <option>2014</option>
-                                                            <option>2015</option>
-                                                            <option>2016</option>
-                                                            <option>2017</option>
-                                                            <option>2018</option>
-                                                        </select>
+                                                    <div class="col-md-4">
+                                                        <label for="departemen2">Departemen/Jurusan (S2)</label>
+                                                        @if(session('data3.usr_jurusan2'))
+                                                            <input id="departemen2" type="text" placeholder="departemen"
+                                                                   name="departemen2"
+                                                                   value="{{session('data3.usr_jurusan2')}}">
+                                                        @else
+                                                            <input id="departemen2" type="text" placeholder="departemen"
+                                                                   name="departemen2">
+                                                        @endif
                                                     </div>
-                                                    <div class="col-md-12">
-                                                        <label for="universitas2">Universitas S2</label>
-                                                        <input id="universitas2" type="text"
-                                                               placeholder="universitas sarjana master"
-                                                               name="universitas2"
-                                                               required
-                                                               autofocus>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <label for="fakultas2">Fakultas</label>
-                                                        <input id="fakultas2" type="text" placeholder="fakultas"
-                                                               name="fakultas2" required
-                                                               autofocus>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <label for="departemen2">Departemen</label>
-                                                        <input id="departemen2" type="text" placeholder="departemen"
-                                                               name="departemen2"
-                                                               required
-                                                               autofocus>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <label for="periode2">Periode</label>
-                                                        <select name="periode2">
-                                                            <option>periode</option>
-                                                            <option>2011</option>
-                                                            <option>2012</option>
-                                                            <option>2013</option>
-                                                            <option>2014</option>
-                                                            <option>2015</option>
-                                                            <option>2016</option>
-                                                            <option>2017</option>
-                                                            <option>2018</option>
-                                                        </select>
+                                                    <div class="col-md-4">
+                                                        <label for="periode2">Periode (S2)</label>
+                                                        @if(session('data3.usr_period2'))
+                                                            <input id="periode2" type="text" placeholder="periode"
+                                                                   name="periode2"
+                                                                   value="{{session('data3.usr_period2')}}">
+                                                        @else
+                                                            <input id="periode" type="text" placeholder="periode"
+                                                                   name="periode2">
+                                                        @endif
                                                     </div>
                                                     <div class="col-md-12">
                                                         @if (session('error_message'))
@@ -434,26 +490,23 @@
                                                       action='do_filldata4'>
                                                     {!! csrf_field() !!}
                                                     <div class="col-md-12">
-                                                        <label for="jabatan">Jabatan</label>
-                                                        <input id="jabatan" type="text" placeholder="jabatan"
-                                                               name="jabatan"
-                                                               required
-                                                               autofocus>
-                                                    </div>
-                                                    <div class="col-md-12">
                                                         <label for="perusahaan">Nama Perusahaan</label>
                                                         <input id="perusahaan" type="text" placeholder="perusahaan"
-                                                               name="perusahaan" required
-                                                               autofocus>
+                                                               name="perusahaan">
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <label for="lokasiperusahaan">Lokasi perusahaan</label>
+                                                        <label for="jabatan">Jabatan</label>
+                                                        <input id="jabatan" type="text" placeholder="jabatan"
+                                                               name="jabatan">
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <label for="lokasiperusahaan">Lokasi Perusahaan</label>
                                                         <input id="lokasiperusahaan" type="text"
                                                                placeholder="lokasi perusahaan"
-                                                               name="lokasiperusahaan"
-                                                               required autofocus>
+                                                               name="lokasiperusahaan">
                                                     </div>
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-6">
                                                         <label for="bulanmulai">Bulan Mulai Bekerja</label>
                                                         <select name="bulanmulai">
                                                             <option>bulan mulai bekerja</option>
@@ -471,15 +524,13 @@
                                                             <option>desember</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-6">
                                                         <label for="tahunmulai">Tahun Mulai Bekerja</label>
                                                         <input id="tahunmulai" type="text"
                                                                placeholder="tahun mulai bekerja"
-                                                               name="tahunmulai"
-                                                               required
-                                                               autofocus>
+                                                               name="tahunmulai">
                                                     </div>
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-6">
                                                         <label for="bulanakhir">Bulan Akhir Bekerja</label>
                                                         <select name="bulanakhir">
                                                             <option>bulan akhir bekerja</option>
@@ -497,13 +548,11 @@
                                                             <option>desember</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-6">
                                                         <label for="tahunakhir">Tahun Akhir Bekerja</label>
                                                         <input id="tahunakhir" type="text"
                                                                placeholder="tahun akhir bekerja"
-                                                               name="tahunakhir"
-                                                               required
-                                                               autofocus>
+                                                               name="tahunakhir">
                                                     </div>
                                                     <div class="col-md-12">
                                                         @if (session('error_message'))

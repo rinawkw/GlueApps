@@ -503,7 +503,7 @@ nav.top-menu .caret {
 nav.top-menu {
 	/* background: #353537; */
 	float: right;
-	/* border-bottom: 1px solid #efefef; */
+	 border-bottom: 1px solid #51aee0;
 }
 
 /* Dropdown on hover */
@@ -2736,7 +2736,20 @@ and (max-width : 480px) {
 
 .comment-form input[type="text"],
 .comment-form input[type="password"],
-.comment-form input[type="email"],
+.comment-form input[type="email"]{
+	text-transform: none;
+	border: 1px solid #ADADAD;
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 10px;
+	display:inline;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	float: left;
+	height: 4rem;
+}
+
 .comment-form textarea{
 	text-transform: none;
 	border: 1px solid #ADADAD;
@@ -2750,6 +2763,7 @@ and (max-width : 480px) {
 	float: left;
 }
 
+
 .comment-form input[type='radio'] {
 	text-transform: none;
 	border: 1px solid #ADADAD;
@@ -2760,6 +2774,7 @@ and (max-width : 480px) {
 	-moz-border-radius: 2px;
 	border-radius: 2px;
 	position: inherit;
+	height: 4rem;
 }
 
 .comment-form select{
@@ -2774,7 +2789,7 @@ and (max-width : 480px) {
 	-moz-border-radius: 2px;
 	border-radius: 2px;
 	float: left;
-	height: 5rem;
+	height: 4rem;
 }
 
 .comment-form input[type="date"]{
@@ -2789,7 +2804,7 @@ and (max-width : 480px) {
 	-moz-border-radius: 2px;
 	border-radius: 2px;
 	float: left;
-	height: 5rem;
+	height: 4rem;
 }
 
 .control
@@ -2857,6 +2872,7 @@ padding: 12px 34px;
 	-webkit-transition:.3s;
 	margin: 0 auto;
 	display: block;
+	margin-top: 3rem;
 }
 .comment-form .submit-button:hover{
 	color: #fff;

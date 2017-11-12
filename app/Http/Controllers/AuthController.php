@@ -209,8 +209,10 @@ class AuthController extends Controller
         );
         DB::table('members')
             ->where('usr_id', $usr_id)
-            ->update($data);
-        dd($data);
+            ->update($data['data']);
+//        dd($data);
+        Session::put('data2', $data['data']);
+        return redirect()->route('filldata');
     }
     public function do_filldata3()
     {
@@ -236,8 +238,10 @@ class AuthController extends Controller
         );
         DB::table('members')
             ->where('usr_id', $usr_id)
-            ->update($data);
-        dd($data);
+            ->update($data['data']);
+//        dd($data);
+        Session::put('data3', $data['data']);
+        return redirect()->route('filldata');
     }
     public function do_filldata4()
     {
