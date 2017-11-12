@@ -68,6 +68,51 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-12">
+                                                        <label for="email">Email</label>
+                                                        @if(session('data1.usr_email'))
+                                                            <input id="email" type="text" placeholder="Email"
+                                                                   name="email"
+                                                                   required
+                                                                   autofocus
+                                                                   value={{session('data1.usr_email')}}>
+                                                        @else
+                                                            <input id="email" type="text" placeholder="Email"
+                                                                   name="email"
+                                                                   required
+                                                                   autofocus>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label for="nohp">Nomor handphone</label>
+                                                        @if(session('data1.usr_no_hp'))
+                                                            <input id="nohp" type="text" placeholder="Nomor handphone"
+                                                                   name="nohp"
+                                                                   required
+                                                                   autofocus
+                                                                   value={{session('data1.usr_no_hp')}}>
+                                                        @else
+                                                            <input id="nohp" type="text" placeholder="Nomor handphone"
+                                                                   name="nohp"
+                                                                   required
+                                                                   autofocus>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label for="alamat">Alamat</label>
+                                                        @if(session('data1.usr_alamat'))
+                                                            <input id="alamat" type="text" placeholder="Alamat"
+                                                                   name="alamat"
+                                                                   required
+                                                                   autofocus
+                                                                   value={{session('data1.usr_alamat')}}>
+                                                        @else
+                                                            <input id="alamat" type="text" placeholder="Alamat"
+                                                                   name="alamat"
+                                                                   required
+                                                                   autofocus>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-md-12">
                                                         <label for="tmplhr">Tempat Lahir</label>
                                                         @if(session('data1.usr_tmpt_lahir'))
                                                             <input id="tmplhr" type="text" placeholder="tempat lahir"

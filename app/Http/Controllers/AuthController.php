@@ -158,8 +158,11 @@ class AuthController extends Controller
 
     public function do_filldata1()
     {
-        $usr_id = Input::get('usr_id');
+        //$usr_id = Input::get('usr_id');
         $noktp = Input::get('noktp');
+        $usr_email = Input::get('email');
+        $usr_no_hp = Input::get('nohp');
+        $usr_alamat = Input::get('alamat');
         $tmplhr = Input::get('tmplhr');
         $tgllhr = Input::get('tgllhr');
         $jk = Input::get('jk');
@@ -174,6 +177,9 @@ class AuthController extends Controller
         $idtwitter = Input::get('idtwitter');
         $data['data'] = array(
             'usr_no_kta' => $noktp,
+            'usr_email' => $usr_email,
+            'usr_no_hp' => $usr_no_hp,
+            'usr_alamat' => $usr_alamat,
             'usr_tmpt_lahir' => $tmplhr,
             'usr_tgl_lahir' => $tgllhr,
             'usr_jk' => $jk,
@@ -188,7 +194,7 @@ class AuthController extends Controller
             'usr_twit' => $idtwitter,
         );
         DB::table('members')
-            ->where('usr_id', $usr_id)
+            ->where('usr_id', session('usr_id'))
             ->update($data['data']);
 //        dd($data);
         Session::put('data1', $data['data']);
@@ -199,7 +205,7 @@ class AuthController extends Controller
 
     public function do_filldata2()
     {
-        $usr_id = Input::get('usr_id');
+        //$usr_id = Input::get('usr_id');
         $tahun1 = Input::get('tahun1');
         $tahun2 = Input::get('tahun2');
         $tahun3 = Input::get('tahun3');
@@ -210,9 +216,10 @@ class AuthController extends Controller
             'usr_tahun3' => $tahun3,
         );
         DB::table('members')
-            ->where('usr_id', $usr_id)
-            ->update($data);
-        dd($data);
+            ->where('usr_id', session('usr_id'))
+            ->update($data['data']);
+        //dd($data);
+        return redirect()->route('filldata');
     }
     public function do_filldata3()
     {
@@ -237,13 +244,14 @@ class AuthController extends Controller
             'usr_period2' => $periode2,
         );
         DB::table('members')
-            ->where('usr_id', $usr_id)
-            ->update($data);
-        dd($data);
+            ->where('usr_id', session('usr_id'))
+            ->update($data['data']);
+        //dd($data);
+        return redirect()->route('filldata');
     }
     public function do_filldata4()
     {
-        $usr_id = Input::get('usr_id');
+        //$usr_id = Input::get('usr_id');
         $jabatan = Input::get('jabatan');
         $perusahaan = Input::get('perusahaan');
         $lokasiperusahaan = Input::get('lokasiperusahaan');
@@ -253,7 +261,7 @@ class AuthController extends Controller
         $tahunakhir = Input::get('tahunakhir');
 
         $data['data'] = array(
-            'work_usr_id' => $usr_id,
+            'work_usr_id' => session('usr_id'),
             'work_jabatan' => $jabatan,
             'work_company' => $perusahaan,
             'work_location' => $lokasiperusahaan,
@@ -263,13 +271,15 @@ class AuthController extends Controller
             'work_tahun2' => $tahunakhir
         );
         DB::table('work')
-            ->insert($data);
-        dd($data);
+            ->insert($data['data']);
+        //dd($data);
+        return redirect()->route('filldata');
     }
     public function show_profile()
     {
-        $user = DB::table('pengguna')->where('username', session('username'))->first();
-        return view('auth.register');
+        $fk_user = DB::table('pengguna')->where('username', session('username'))->value('fk_usr_id');
+        $user = DB::table('members')->where('usr_id', $fk_user)->get();
+        return view('profile.profile', ['user' => $user]);
     }
     public function index()
     {

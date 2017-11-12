@@ -4,1204 +4,513 @@
     <section class="ot-section-b">
         <!-- container -->
         <div class="container">
-            <!-- slaider -->
-            <div class="slider">
-                <div class="row row-slider-gutter">
-                    <div class="col-md-4 slider-item-small">
-                        <figure>
-                            <a href="post.html"><img src="images/demo/1200x800-6.jpg" alt=""></a>
-                            <figcaption>
-                                <h2><a href="post.html">Selfie Fables - Disney Alternative Art Illustrations by Simona
-                                        Bonafini</a></h2>
-                                <div class="post-meta">
-                                    <span>1. april 2015</span> <span><i class="fa fa-comment-o"></i> 5</span> <span><i
-                                                class="fa fa-eye"></i> 54</span>
+            <div class="container">
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <div class="content ot-article">
+                                    <div class="wp-caption aligncenter">
+                                        <a href="images/demo/1200x800-9.jpg" class="hover-img lightbox-photo"
+                                           title="Ludus zril eu est, pro an elit ornatus facilisi, vis ex aeque accumsan recteque. Duis repudiare reprehendunt vim ex, nonumes intellegebat quo an.">
+                                        </a>
+                                    {{--<div class="diff-spacer spacer-1" style="background-color:#E3EFF3;color:#E3EFF3;"><i class="fa fa-sign-in"></i></div>--}}
+                                    <!--== Post Reply ==-->
+                                        <h3 style="color: #1a1a1a;">Hai, <b>{{session('name')}}</b>!</h3>
+                                        <h4>Mohon lengkapi data berikut terlebih dahulu.{{session('usr_id')}}</h4>
+                                        <div class="short-tabs">
+                                            <ul>
+                                                <li class="active"><a href="javascript:void(0);">Personal</a></li>
+                                                <li><a href="javascript:void(0);">Keanggotaan</a></li>
+                                                <li><a href="javascript:void(0);">Pendidikan</a></li>
+                                                <li><a href="javascript:void(0);">Pengalaman Pekerjaan</a></li>
+                                            </ul>
+                                            <div class="active">
+                                                {{--<h4 class="main-heading"><span>Data Identitas</span></h4>--}}
+                                                <div class="comment-form-body">
+                                                    <div class="row" id="continer">
+                                                        <form id="form" class="comment-form" role="form" method="POST"
+                                                              action='do_filldata1'>
+                                                            {!! csrf_field() !!}
+                                                            <div class="col-md-12">
+                                                                <label for="noktp">Nomor KTP</label>
+                                                                {{$user[0]->usr_no_kta}}
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="tmplhr">Tempat Lahir</label>
+                                                                @if(session('data1.usr_tmpt_lahir'))
+                                                                    <input id="tmplhr" type="text" placeholder="tempat lahir"
+                                                                           name="tmplhr" required
+                                                                           autofocus
+                                                                           value={{session('data1.usr_tmpt_lahir')}}>
+                                                                @else
+                                                                    <input id="tmplhr" type="text" placeholder="tempat lahir"
+                                                                           name="tmplhr" required
+                                                                           autofocus>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="tgllhr">Tanggal Lahir</label>
+                                                                @if(session('data1.usr_tgl_lahir'))
+                                                                    <input id="tgllhr" type="date" placeholder="tanggal lahir"
+                                                                           name="tgllhr"
+                                                                           required autofocus
+                                                                           value={{session('data1.usr_tgl_lahir')}}>
+                                                                @else
+                                                                    <input id="tgllhr" type="date" placeholder="tanggal lahir"
+                                                                           name="tgllhr"
+                                                                           required autofocus>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="jk">Jenis Kelamin</label>
+                                                                <select name="jk">
+                                                                    @if(session('data1.usr_jk')== 'L')
+                                                                        <option>jenis kelamin</option>
+                                                                        <option value="L" selected>laki - laki</option>
+                                                                        <option value="P">perempuan</option>
+                                                                    @elseif(session('data1.usr_jk')== 'P')
+                                                                        <option>jenis kelamin</option>
+                                                                        <option value="L">laki - laki</option>
+                                                                        <option value="P" selected>perempuan</option>
+                                                                    @else
+                                                                        <option>jenis kelamin</option>
+                                                                        <option value="L">laki - laki</option>
+                                                                        <option value="P">perempuan</option>
+                                                                    @endif
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="goldar">Golongan Darah</label>
+                                                                <select name="goldar">
+                                                                    @if(session('data1.usr_goldar')=='A')
+                                                                        <option>golongan darah</option>
+                                                                        <option value="A" selected>A</option>
+                                                                        <option value="B">B</option>
+                                                                        <option value="AB">AB</option>
+                                                                        <option value="O">O</option>
+                                                                    @elseif(session('data1.usr_goldar')=='B')
+                                                                        <option>golongan darah</option>
+                                                                        <option value="A">A</option>
+                                                                        <option value="B" selected>B</option>
+                                                                        <option value="AB">AB</option>
+                                                                        <option value="O">O</option>
+                                                                    @elseif(session('data1.usr_goldar')=='AB')
+                                                                        <option>golongan darah</option>
+                                                                        <option value="A">A</option>
+                                                                        <option value="B">B</option>
+                                                                        <option value="AB" selected>AB</option>
+                                                                        <option value="O">O</option>
+                                                                    @else
+                                                                        <option>golongan darah</option>
+                                                                        <option value="A">A</option>
+                                                                        <option value="B">B</option>
+                                                                        <option value="AB">AB</option>
+                                                                        <option value="O">O</option>
+                                                                    @endif
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="agama">Agama</label>
+                                                                @if(session('data1.usr_agama'))
+                                                                    <input id="agama" type="text" placeholder="agama"
+                                                                           name="agama"
+                                                                           required
+                                                                           autofocus
+                                                                           value={{session('data1.usr_agama')}}>
+                                                                @else
+                                                                    <input id="agama" type="text" placeholder="agama"
+                                                                           name="agama"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
+                                                            </div>
+
+                                                            <div class="col-md-6">
+                                                                <label for="suku">Suku</label>
+                                                                @if(session('data1.usr_suku'))
+                                                                    <input id="suku" type="text" placeholder="suku" name="suku"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data1.usr_suku')}}">
+                                                                @else
+                                                                    <input id="suku" type="text" placeholder="suku" name="suku"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="status">Status</label>
+                                                                @if(session('data1.usr_status'))
+                                                                    <input id="status" type="text" placeholder="status"
+                                                                           name="status"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data1.usr_status')}}">
+                                                                @else
+                                                                    <input id="status" type="text" placeholder="status"
+                                                                           name="status"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="biodata">Biodata</label>
+                                                                @if(session('data1.usr_bio'))
+                                                                    <textarea name="biodata" id="biodata" placeholder="biodata"
+                                                                              cols="35"
+                                                                              rows="3">{{session('data1.usr_bio')}}</textarea>
+                                                                @else
+                                                                    <textarea name="biodata" id="biodata" placeholder="biodata"
+                                                                              cols="35"
+                                                                              rows="3"></textarea>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="idline">Id LINE</label>
+                                                                @if(session('data1.usr_line'))
+                                                                    <input id="idline" type="text" placeholder="id line"
+                                                                           name="idline"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data1.usr_line')}}">
+                                                                @else
+                                                                    <input id="idline" type="text" placeholder="id line"
+                                                                           name="idline"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="idfb">Id Facebok</label>
+                                                                @if(session('data1.usr_fb'))
+                                                                    <input id="idfb" type="text" placeholder="id facebook"
+                                                                           name="idfb"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data1.usr_fb')}}">
+                                                                @else
+                                                                    <input id="idfb" type="text" placeholder="id facebook"
+                                                                           name="idfb"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="idig">Id Instagram</label>
+                                                                @if(session('data1.usr_insta'))
+                                                                    <input id="idig" type="text" placeholder="id instagram"
+                                                                           name="idig"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data1.usr_insta')}}">
+                                                                @else
+                                                                    <input id="idig" type="text" placeholder="id instagram"
+                                                                           name="idig"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="idtwitter">Id Twitter</label>
+                                                                @if(session('data1.usr_twit'))
+                                                                    <input id="idtwitter" type="text" placeholder="id twitter"
+                                                                           name="idtwitter"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data1.usr_twit')}}">
+                                                                @else
+                                                                    <input id="idtwitter" type="text" placeholder="id twitter"
+                                                                           name="idtwitter"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                @if (session('error_message'))
+                                                                    <span class="error-msg comment-error"
+                                                                          id="contact-mail-error"
+                                                                          style="display:block; background-color: #B80000">
+                                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
+                                                                @endif
+                                                                <p class="form-submit">
+                                                                    <input name="submit" type="submit" id="button-1"
+                                                                           class="submit submit-button" value="Save"/>
+                                                                    <input type='hidden' name='usr_id'
+                                                                           value={{session('usr_id')}}
+                                                                                   id='usr_id'/>
+                                                                    <input type='hidden' name='comment_parent'
+                                                                           id='comment_parent'
+                                                                           value='0'/>
+                                                                </p>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="comment-form-body">
+                                                    <div class="row" id="continer">
+                                                        <form id="form" class="comment-form" role="form" method="POST"
+                                                              action='do_filldata2'>
+                                                            {!! csrf_field() !!}
+                                                            <div class="col-md-12">
+                                                                <label for="tahun1">Tahun Pertama</label>
+                                                                <input id="tahun1" type="text" placeholder="tahun pertama"
+                                                                       name="tahun1"
+                                                                       required
+                                                                       autofocus>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="tahun2">Tahun Kedua</label>
+                                                                <input id="tahun2" type="text" placeholder="tahun kedua"
+                                                                       name="tahun2"
+                                                                       required
+                                                                       autofocus>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="tahun3">Tahun Ketiga</label>
+                                                                <input id="tahun3" type="text" placeholder="tahun ketiga"
+                                                                       name="tahun3"
+                                                                       required
+                                                                       autofocus>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                @if (session('error_message'))
+                                                                    <span class="error-msg comment-error"
+                                                                          id="contact-mail-error"
+                                                                          style="display:block; background-color: #B80000">
+                                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
+                                                                @endif
+                                                                <p class="form-submit">
+                                                                    <input name="submit" type="submit" id="button-2"
+                                                                           class="submit submit-button" value="Save"/>
+                                                                    <input type='hidden' name='usr_id'
+                                                                           value={{session('usr_id')}}
+                                                                                   id='usr_id'/>
+                                                                    <input type='hidden' name='comment_parent'
+                                                                           id='comment_parent'
+                                                                           value='0'/>
+                                                                </p>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    {{--<p class="wp-caption-text">Sudah punya Akun? <a href="{{'login'}}"><b>Login</b></a>--}}
+                                                    {{--</p>--}}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="comment-form-body">
+                                                    <div class="row" id="continer">
+                                                        <form id="form" class="comment-form" role="form" method="POST"
+                                                              action='do_filldata3'>
+                                                            {!! csrf_field() !!}
+                                                            <div class="col-md-12">
+                                                                <label for="universitas">Universitas</label>
+                                                                <input id="universitas" type="text" placeholder="universitas"
+                                                                       name="universitas"
+                                                                       required
+                                                                       autofocus>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="fakultas">fakultas</label>
+                                                                <input id="fakultas" type="text" placeholder="fakultas"
+                                                                       name="fakultas" required
+                                                                       autofocus>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="departemen">departemen</label>
+                                                                <input id="departemen" type="text" placeholder="departemen"
+                                                                       name="departemen"
+                                                                       required
+                                                                       autofocus>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="periode">Periode</label>
+                                                                <select name="periode">
+                                                                    <option>periode</option>
+                                                                    <option>2011</option>
+                                                                    <option>2012</option>
+                                                                    <option>2013</option>
+                                                                    <option>2014</option>
+                                                                    <option>2015</option>
+                                                                    <option>2016</option>
+                                                                    <option>2017</option>
+                                                                    <option>2018</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="universitas2">Universitas S2</label>
+                                                                <input id="universitas2" type="text"
+                                                                       placeholder="universitas sarjana master"
+                                                                       name="universitas2"
+                                                                       required
+                                                                       autofocus>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="fakultas2">Fakultas</label>
+                                                                <input id="fakultas2" type="text" placeholder="fakultas"
+                                                                       name="fakultas2" required
+                                                                       autofocus>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="departemen2">Departemen</label>
+                                                                <input id="departemen2" type="text" placeholder="departemen"
+                                                                       name="departemen2"
+                                                                       required
+                                                                       autofocus>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="periode2">Periode</label>
+                                                                <select name="periode2">
+                                                                    <option>periode</option>
+                                                                    <option>2011</option>
+                                                                    <option>2012</option>
+                                                                    <option>2013</option>
+                                                                    <option>2014</option>
+                                                                    <option>2015</option>
+                                                                    <option>2016</option>
+                                                                    <option>2017</option>
+                                                                    <option>2018</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                @if (session('error_message'))
+                                                                    <span class="error-msg comment-error"
+                                                                          id="contact-mail-error"
+                                                                          style="display:block; background-color: #B80000">
+                                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
+                                                                @endif
+                                                                <p class="form-submit">
+                                                                    <input name="submit" type="submit" id="button-3"
+                                                                           class="submit submit-button" value="Save"/>
+                                                                    <input type='hidden' name='usr_id'
+                                                                           value={{session('usr_id')}}
+                                                                                   id='usr_id'/>
+                                                                    <input type='hidden' name='comment_parent'
+                                                                           id='comment_parent'
+                                                                           value='0'/>
+                                                                </p>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="comment-form-body">
+                                                    <div class="row" id="continer">
+                                                        <form id="form" class="comment-form" role="form" method="POST"
+                                                              action='do_filldata4'>
+                                                            {!! csrf_field() !!}
+                                                            <div class="col-md-12">
+                                                                <label for="jabatan">Jabatan</label>
+                                                                <input id="jabatan" type="text" placeholder="jabatan"
+                                                                       name="jabatan"
+                                                                       required
+                                                                       autofocus>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="perusahaan">Nama Perusahaan</label>
+                                                                <input id="perusahaan" type="text" placeholder="perusahaan"
+                                                                       name="perusahaan" required
+                                                                       autofocus>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="lokasiperusahaan">Lokasi perusahaan</label>
+                                                                <input id="lokasiperusahaan" type="text"
+                                                                       placeholder="lokasi perusahaan"
+                                                                       name="lokasiperusahaan"
+                                                                       required autofocus>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="bulanmulai">Bulan Mulai Bekerja</label>
+                                                                <select name="bulanmulai">
+                                                                    <option>bulan mulai bekerja</option>
+                                                                    <option>januari</option>
+                                                                    <option>februari</option>
+                                                                    <option>maret</option>
+                                                                    <option>april</option>
+                                                                    <option>mei</option>
+                                                                    <option>juni</option>
+                                                                    <option>juli</option>
+                                                                    <option>agustus</option>
+                                                                    <option>september</option>
+                                                                    <option>oktober</option>
+                                                                    <option>november</option>
+                                                                    <option>desember</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="tahunmulai">Tahun Mulai Bekerja</label>
+                                                                <input id="tahunmulai" type="text"
+                                                                       placeholder="tahun mulai bekerja"
+                                                                       name="tahunmulai"
+                                                                       required
+                                                                       autofocus>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="bulanakhir">Bulan Akhir Bekerja</label>
+                                                                <select name="bulanakhir">
+                                                                    <option>bulan akhir bekerja</option>
+                                                                    <option>januari</option>
+                                                                    <option>februari</option>
+                                                                    <option>maret</option>
+                                                                    <option>april</option>
+                                                                    <option>mei</option>
+                                                                    <option>juni</option>
+                                                                    <option>juli</option>
+                                                                    <option>agustus</option>
+                                                                    <option>september</option>
+                                                                    <option>oktober</option>
+                                                                    <option>november</option>
+                                                                    <option>desember</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="tahunakhir">Tahun Akhir Bekerja</label>
+                                                                <input id="tahunakhir" type="text"
+                                                                       placeholder="tahun akhir bekerja"
+                                                                       name="tahunakhir"
+                                                                       required
+                                                                       autofocus>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                @if (session('error_message'))
+                                                                    <span class="error-msg comment-error"
+                                                                          id="contact-mail-error"
+                                                                          style="display:block; background-color: #B80000">
+                                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
+                                                                @endif
+                                                                <p class="form-submit">
+                                                                    <input name="submit" type="submit" id="button-4"
+                                                                           class="submit submit-button" value="Save"/>
+                                                                    <input type='hidden' name='usr_id'
+                                                                           value={{session('usr_id')}}
+                                                                                   id='usr_id'/>
+                                                                    <input type='hidden' name='comment_parent'
+                                                                           id='comment_parent'
+                                                                           value='0'/>
+                                                                </p>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+
+                                            </div>
+                                            <!--== Post Reply ==-->
+                                            <div class="col-md-4">
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </figcaption>
-                        </figure>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-4 slider-item-small">
-                        <figure>
-                            <a href="post.html"><img src="images/demo/1200x800-3.jpg" alt=""></a>
-                            <figcaption>
-                                <h2><a href="post.html">Make Stories Come Alive with Jodi Harvey-Brown Book Sculpture</a>
-                                </h2>
-                                <div class="post-meta">
-                                    <span>16. april 2015</span> <span><i class="fa fa-comment-o"></i> 3</span> <span><i
-                                                class="fa fa-eye"></i> 453</span>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="col-md-4 slider-item-small">
-                        <figure>
-                            <a href="post.html"><img src="images/demo/1200x800-5.jpg" alt=""></a>
-                            <figcaption>
-                                <h2><a href="post.html">Illustrator Turns Your Deepest Fears Into Cute Comics</a></h2>
-                                <div class="post-meta">
-                                    <span>27. april 2015</span> <span><i class="fa fa-comment-o"></i> 23</span> <span><i
-                                                class="fa fa-eye"></i> 123</span>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-                <div class="row row-slider-gutter">
-                    <div class="col-md-12 slider-item-large">
-                        <figure>
-                            <a href="post.html"><img src="images/demo/1200x800-1.jpg" alt=""></a>
-                            <figcaption>
-                                <h2><a href="post.html">Amazing Game Of Thrones Illustrations By Ivan Belikov</a></h2>
-                                <div class="post-meta">
-                                    <span>27. april 2015</span> <span><i class="fa fa-comment-o"></i> 23</span> <span><i
-                                                class="fa fa-eye"></i> 123</span>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-            <!-- end slaider -->
         </div>
         <!-- end container -->
     </section>
-    <section class="ot-section-b">
-        <div class="container">
-            <!-- latest posts section -->
-            <h4 class="section-title"><span>The large grid posts</span>Featured Posts</h4>
-            <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <div class="grid-large">
-                        <div class="post-image">
-                            <div class="review"><span class="score">70</span><span class="percent">%</span></div>
-                            <div class="post-title">
-                                <div class="gl-text-hover">
-                                    <p>To set numerous transitions at once, set each individual group of transition values,
-                                        then use a comma to separate each additional group of transition values.</p>
-                                    <div class="read-more"><a href="post.html">read more</a></div>
-                                </div>
-                                <div class="gl-title-hover">
-                                    <div class="post-cat2"><span>Cinema</span></div>
-                                    <h2><a href="post.html">Make Stories Come Alive with Jodi Harvey-Brown Book</a></h2>
-                                </div>
-                            </div>
-                            <a href="post.html"><img src="images/demo/720x1080-3.jpg" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="grid-large">
-                        <div class="post-image">
-                            <div class="post-title">
-                                <div class="gl-text-hover">
-                                    <p>To set numerous transitions at once, set each individual group of transition values,
-                                        then use a comma to separate each additional group of transition values.</p>
-                                    <div class="read-more"><a href="post.html">read more</a></div>
-                                </div>
-                                <div class="gl-title-hover">
-                                    <div class="post-cat2"><span>Cinema</span></div>
-                                    <h2><a href="post.html">Amazing Game Of Thrones Illustrations By Ivan Belikov</a></h2>
-                                </div>
-                            </div>
-                            <a href="post.html"><img src="images/demo/720x1080-4.jpg" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="grid-large">
-                        <div class="post-image">
-                            <div class="review"><span class="score">70</span><span class="percent">%</span></div>
-                            <div class="post-title">
-                                <div class="gl-text-hover">
-                                    <p>To set numerous transitions at once, set each individual group of transition
-                                        values.</p>
-                                    <div class="read-more"><a href="post.html">read more</a></div>
-                                </div>
-                                <div class="gl-title-hover">
-                                    <div class="post-cat2"><span style="background-color: #DE6069">Graphics</span></div>
-                                    <h2><a href="post.html">Illustrator Turns Your Deepest Fears Into Cute Comics</a></h2>
-                                </div>
-                            </div>
-                            <a href="post.html"><img src="images/demo/720x1080-2.jpg" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- container -->
-    </section>
-    <!-- main content -->
-    <section class="ot-section-a">
-        <!-- container -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="theiaStickySidebar">
-                        <div class="ot-module">
-                            <!-- category posts section -->
-                            <h4 class="section-title"><span>Page Builder With Drag & Drop Action</span>Latest Posts</h4>
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="grid-post">
-                                        <div class="post-image">
-                                            <div class="post-title">
-                                                <div class="post-cat2"><span>Fashion</span></div>
-                                                <h2><a href="post.html">Make Stories Come Alive with Jodi Harvey-Brown
-                                                        Book</a></h2>
-                                            </div>
-                                            <a href="post.html"><img src="images/demo/1200x800-18.jpg" alt=""></a>
-                                        </div>
-                                        <div class="post-body">
-                                            <div class="post-meta">
-                                                <span>27. april 2015</span> <span><a href="post.html">23 comments</a></span>
-                                                <span>123 views</span>
-                                            </div>
-                                            <p>Aliquam venenatis aliquet tortor, non blandit sapien aliquam eget. Sed in
-                                                nulla et arcu commodo vehicula vitae et ante. Suspendisse ut...</p>
-                                        </div>
-                                    </div>
-                                    <!-- article post -->
-                                    <article class="small-post">
-                                        <div class="article-image">
-                                            <a href="post.html"><img src="images/demo/1200x800-10.jpg" alt=""></a>
-                                        </div>
-                                        <div class="article-body">
-                                            <div class="post-meta">
-                                                <span>27. april 2015</span>
-                                            </div>
-                                            <h2><a href="post.html">Make Stories Come Alive with Jodi Harvey-Brown</a></h2>
-                                        </div>
-                                    </article>
-                                    <!-- end article item -->
-                                    <!-- article post -->
-                                    <article class="small-post">
-                                        <div class="article-image">
-                                            <a href="post.html"><img src="images/demo/1200x800-9.jpg" alt=""></a>
-                                        </div>
-                                        <div class="article-body">
-                                            <div class="post-meta">
-                                                <span>27. april 2015</span><span>23 comments</span>
-                                            </div>
-                                            <h2><a href="post.html">The View From a Peaceful Villa I Visited</a></h2>
-                                        </div>
-                                    </article>
-                                    <!-- end article item -->
-                                    <!-- article post -->
-                                    <article class="small-post">
-                                        <div class="article-image">
-                                            <a href="post.html"><img src="images/demo/1200x800-11.jpg" alt=""></a>
-                                        </div>
-                                        <div class="article-body">
-                                            <div class="post-meta">
-                                                <span>27. april 2015</span>
-                                            </div>
-                                            <h2><span class="hot">Hot <i class="fa fa-bolt"></i></span><a href="post.html">Fusce
-                                                    Pellentesque Augue Ac Lacus Luctus</a></h2>
-                                        </div>
-                                    </article>
-                                    <!-- end article item -->
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="grid-post">
-                                        <div class="post-image">
-                                            <div class="review"><span class="score">70</span><span class="percent">%</span>
-                                            </div>
-                                            <div class="post-title">
-                                                <div class="post-cat2"><span>Fashion</span></div>
-                                                <h2><a href="post.html">The View From a Peaceful Villa I Visited</a></h2>
-                                            </div>
-                                            <a href="post.html"><img src="images/demo/1200x800-21.jpg" alt=""></a>
-                                        </div>
-                                        <div class="post-body">
-                                            <div class="post-meta">
-                                                <span>27. april 2015</span> <span><a href="post.html">23 comments</a></span>
-                                                <span>123 views</span>
-                                            </div>
-                                            <p>Aliquam venenatis aliquet tortor, non blandit sapien aliquam eget. Sed in
-                                                nulla et arcu commodo vehicula vitae et ante. Suspendisse ut...</p>
-                                        </div>
-                                    </div>
-                                    <!-- article post -->
-                                    <article class="small-post">
-                                        <div class="article-image">
-                                            <a href="post.html"><img src="images/demo/1200x800-19.jpg" alt=""></a>
-                                        </div>
-                                        <div class="article-body">
-                                            <div class="post-meta">
-                                                <span>27. april 2015</span>
-                                            </div>
-                                            <h2><a href="post.html">Polar Bear Beatport Label Is Over</a></h2>
-                                        </div>
-                                    </article>
-                                    <!-- end article item -->
-                                    <!-- article post -->
-                                    <article class="small-post">
-                                        <div class="article-image">
-                                            <a href="post.html"><img src="images/demo/1200x800-12.jpg" alt=""></a>
-                                        </div>
-                                        <div class="article-body">
-                                            <div class="post-meta">
-                                                <span>27. april 2015</span>
-                                            </div>
-                                            <h2><a href="post.html">The View From a Villa</a></h2>
-                                        </div>
-                                    </article>
-                                    <!-- end article item -->
-                                    <!-- article post -->
-                                    <article class="small-post">
-                                        <div class="article-image">
-                                            <a href="post.html"><img src="images/demo/1200x800-1.jpg" alt=""></a>
-                                        </div>
-                                        <div class="article-body">
-                                            <div class="post-meta">
-                                                <span>27. april 2015</span>
-                                            </div>
-                                            <h2><a href="post.html">Petite White & Black Swimsuits for Women</a></h2>
-                                        </div>
-                                    </article>
-                                    <!-- end article item -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ot-module">
-                            <div class="ot-advert">
-                                <div class="ot-advert-title">advertisement <a href="contact.html">click here for rates</a>
-                                </div>
-                                <div class="ot-ad-728x90">
-                                    <a href="index.html"><img src="images/ad728x90.png" alt="ad728x90"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ot-module">
-                            <!-- classic grid posts section -->
-                            <h4 class="section-title"><span>The grid style module</span>Traveling</h4>
-                            <!-- Grid posts 1. row -->
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="grid-post grid-gutter">
-                                        <div class="post-image">
-                                            <div class="review"><span class="score">80</span><span class="percent">%</span>
-                                            </div>
-                                            <div class="post-title">
-                                                <div class="post-cat2"><span>Traveling</span></div>
-                                                <h2><a href="post.html">VIRGINIA SMITH'S GUIDE TO THE HUDSON VALLEY</a></h2>
-                                            </div>
-                                            <a href="post.html"><img src="images/demo/1200x800-20.jpg" alt=""></a>
-                                        </div>
-                                        <div class="post-body">
-                                            <div class="post-meta">
-                                                <span>27. april 2015</span> <span><a href="post.html">23 comments</a></span>
-                                                <span>123 views</span>
-                                            </div>
-                                            <p>More from Bermuda! This small island is packed with so many different places
-                                                to see and visit. I knew I was going to have a lot of cool...</p>
-                                        </div>
-                                        <div class="read-more"><a href="post.html">read more</a></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="grid-post grid-gutter">
-                                        <div class="post-image">
-                                            <div class="post-title">
-                                                <div class="post-cat2"><span>Peoples</span></div>
-                                                <h2><a href="post.html">IN NYC WITH EDDIE BORGO X TARGET</a></h2>
-                                            </div>
-                                            <a href="post.html"><img src="images/demo/1200x800-14.jpg" alt=""></a>
-                                        </div>
-                                        <div class="post-body">
-                                            <div class="post-meta">
-                                                <span>31. april 2015</span> <span><a href="post.html">6 comments</a></span>
-                                                <span>654 views</span>
-                                            </div>
-                                            <p>Proin eu sapien non tortor mattis auctor ac sit amet justo. Aliquam
-                                                pellentesque odio quis eleifend aliquet. In id sodales dui...</p>
-                                        </div>
-                                        <div class="read-more"><a href="post.html">read more</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end 1. row -->
-                            <!-- Grid posts 2. row -->
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="grid-post grid-gutter">
-                                        <div class="post-image">
-                                            <div class="post-title">
-                                                <div class="post-cat2"><span>Adventures</span></div>
-                                                <h2><a href="post.html">Postcard from Cannes: Have We Found the Winner
-                                                        Yet?</a></h2>
-                                            </div>
-                                            <a href="post.html"><img src="images/demo/1200x800-11.jpg" alt=""></a>
-                                        </div>
-                                        <div class="post-body">
-                                            <div class="post-meta">
-                                                <span>3. may 2015</span> <span><a href="post.html">45 comments</a></span>
-                                                <span>1331 views</span>
-                                            </div>
-                                            <p>Aliquam venenatis aliquet tortor, non blandit sapien aliquam eget. Sed in
-                                                nulla et arcu commodo vehicula vitae et ante. Suspendisse ut...</p>
-                                        </div>
-                                        <div class="read-more"><a href="post.html">read more</a></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="grid-post grid-gutter">
-                                        <div class="post-image">
-                                            <div class="post-title">
-                                                <div class="post-cat2"><span>Peoples</span></div>
-                                                <h2><a href="post.html">The View From a Peaceful Villa I Visited</a></h2>
-                                            </div>
-                                            <a href="post.html"><img src="images/demo/1200x800-12.jpg" alt=""></a>
-                                        </div>
-                                        <div class="post-body">
-                                            <div class="post-meta">
-                                                <span>8. may 2015</span> <span><a href="post.html">6 comments</a></span>
-                                                <span>654 views</span>
-                                            </div>
-                                            <p>Proin eu sapien non tortor mattis auctor ac sit amet justo. Aliquam
-                                                pellentesque odio quis eleifend aliquet. In id sodales dui...</p>
-                                        </div>
-                                        <div class="read-more"><a href="post.html">read more</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end 2. row -->
-                            <!-- Grid posts 2. row -->
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="grid-post grid-gutter">
-                                        <div class="post-image">
-                                            <div class="post-title">
-                                                <div class="post-cat2"><span>Artwork</span></div>
-                                                <h2><a href="post.html">WONDERFUL PENCIL DRAWINGS BY STEFAN ZSAITSITS</a>
-                                                </h2>
-                                            </div>
-                                            <a href="post.html"><img src="images/demo/1200x800-18.jpg" alt=""></a>
-                                        </div>
-                                        <div class="post-body">
-                                            <div class="post-meta">
-                                                <span>23. may 2015</span> <span><a href="post.html">6 comments</a></span>
-                                                <span>43 views</span>
-                                            </div>
-                                            <p>Aliquam venenatis aliquet tortor, non blandit sapien aliquam eget. Sed in
-                                                nulla et arcu commodo vehicula vitae et ante. Suspendisse ut...</p>
-                                        </div>
-                                        <div class="read-more"><a href="post.html">read more</a></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="grid-post grid-gutter">
-                                        <div class="post-image">
-                                            <div class="post-title">
-                                                <div class="post-cat2"><span>Weekend</span></div>
-                                                <h2><a href="post.html">A WEEKEND AWAY IN THE COUNTRYSIDE</a></h2>
-                                            </div>
-                                            <a href="post.html"><img src="images/demo/1200x800-19.jpg" alt=""></a>
-                                        </div>
-                                        <div class="post-body">
-                                            <div class="post-meta">
-                                                <span>11. jule 2015</span> <span><a href="post.html">7 comments</a></span>
-                                                <span>543 views</span>
-                                            </div>
-                                            <p>Proin eu sapien non tortor mattis auctor ac sit amet justo. Aliquam
-                                                pellentesque odio quis eleifend aliquet. In id sodales dui...</p>
-                                        </div>
-                                        <div class="read-more"><a href="post.html">read more</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end 2. row -->
-                        </div>
-                        <!-- end ot-module -->
-                    </div>
-                    <!-- stickysidebar -->
-                </div>
-                <!-- end main content .col-md-8 -->
-                <div class="col-md-4">
-                    <div class="theiaStickySidebar">
-                        <aside class="sidebar">
-                            <!-- widget socials -->
-                            <div class="widget-container">
-                                <h4 class="section-title"><span>Infra Magazine on</span>Socials</h4>
-                                <div class="ot-social-button">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <div class="ot-social-details">
-                                        <div class="ot-social-count">6k</div>
-                                        <div class="ot-social-type">Likes</div>
-                                    </div>
-                                </div>
-                                <div class="ot-social-button">
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <div class="ot-social-details">
-                                        <div class="ot-social-count">13k</div>
-                                        <div class="ot-social-type">Followers</div>
-                                    </div>
-                                </div>
-                                <div class="ot-social-button">
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <div class="ot-social-details">
-                                        <div class="ot-social-count">234</div>
-                                        <div class="ot-social-type">Followers</div>
-                                    </div>
-                                </div>
-                                <div class="ot-social-button">
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    <div class="ot-social-details">
-                                        <div class="ot-social-count">987</div>
-                                        <div class="ot-social-type">Pople</div>
-                                    </div>
-                                </div>
-                                <div class="ot-social-button">
-                                    <a href="#"><i class="fa fa-youtube"></i></a>
-                                    <div class="ot-social-details">
-                                        <div class="ot-social-count">34k</div>
-                                        <div class="ot-social-type">Subscibers</div>
-                                    </div>
-                                </div>
-                                <div class="ot-social-button">
-                                    <a href="#"><i class="fa fa-soundcloud"></i></a>
-                                    <div class="ot-social-details">
-                                        <div class="ot-social-count">4k</div>
-                                        <div class="ot-social-type">Subscibers</div>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <!-- end widget socials -->
-                            <!-- widget advertisement -->
-                            <div class="widget-container">
-                                <h4 class="section-title">Advertisement</h4>
-                                <a href="post.html"><img src="images/ad300x250.png" alt=""/></a>
-                            </div>
-                            <!-- end widget advertisement -->
-                            <!-- widget reviews style #2 -->
-                            <div class="widget-container">
-                                <h4 class="section-title"><span>Review Widget #2</span>Mobile Reviews</h4>
-                                <!-- article post -->
-                                <article class="widget-post widget-review">
-                                    <div class="post-image">
-                                        <a href="post.html"><img src="images/demo/1200x800-15.jpg" alt=""></a>
-                                    </div>
-                                    <div class="post-body">
-                                        <h2><a href="post.html">Mobile Apple iPhone 3s</a></h2>
-                                        <div class="review-bar-bg">
-                                            <div class="review-bar" style="width: 90%;"><span>90%</span></div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <!-- end article item -->
-                                <!-- article post -->
-                                <article class="widget-post widget-review">
-                                    <div class="post-image">
-                                        <a href="post.html"><img src="images/demo/1200x800-14.jpg" alt=""></a>
-                                    </div>
-                                    <div class="post-body">
-                                        <h2><a href="post.html">Car Audio Pioneer DEH6540</a></h2>
-                                        <div class="review-bar-bg">
-                                            <div class="review-bar" style="width: 90%;"><span>90%</span></div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <!-- end article item -->
-                                <!-- article post -->
-                                <article class="widget-post widget-review">
-                                    <div class="post-image">
-                                        <a href="post.html"><img src="images/demo/1200x800-13.jpg" alt=""></a>
-                                    </div>
-                                    <div class="post-body">
-                                        <h2><a href="post.html">Mobile Samsung Galaxy S5</a></h2>
-                                        <div class="review-bar-bg">
-                                            <div class="review-bar" style="width: 60%;"><span>60%</span></div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <!-- end article item -->
-                                <!-- article post -->
-                                <article class="widget-post widget-review">
-                                    <div class="post-image">
-                                        <a href="post.html"><img src="images/demo/1200x800-12.jpg" alt=""></a>
-                                    </div>
-                                    <div class="post-body">
-                                        <h2><a href="post.html">Apple iPhone 3s</a></h2>
-                                        <div class="review-bar-bg">
-                                            <div class="review-bar" style="width: 90%;"><span>90%</span></div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <!-- end article item -->
-                            </div>
-                            <!-- end widget reviews style #2 -->
-                            <!-- widget articles section -->
-                            <div class="widget-container">
-                                <h4 class="section-title"><span>Latest From All Categories</span>Latest News</h4>
-                                <!-- article post -->
-                                <article class="widget-post">
-                                    <div class="post-image">
-                                        <a href="post.html"><img src="images/demo/1200x800-8.jpg" alt=""></a>
-                                    </div>
-                                    <div class="post-body">
-                                        <h2><a href="post.html">Dark Romance</a></h2>
-                                        <div class="post-meta">
-                                            <span><i class="fa fa-clock-o"></i> 2. august 2015</span> <span><a
-                                                        href="post.html"><i class="fa fa-comments"></i> 23</a></span>
-                                        </div>
-                                    </div>
-                                </article>
-                                <!-- end article item -->
-                                <!-- article post -->
-                                <article class="widget-post">
-                                    <div class="post-image">
-                                        <a href="post.html"><img src="images/demo/1200x800-11.jpg" alt=""></a>
-                                    </div>
-                                    <div class="post-body">
-                                        <h2><span class="hot">Hot <i class="fa fa-bolt"></i></span><a href="post.html">The
-                                                View From a Peaceful Villa I Visited</a></h2>
-                                        <div class="post-meta">
-                                            <span><i class="fa fa-clock-o"></i> 27. april 2015</span> <span><a
-                                                        href="post.html"><i class="fa fa-comments"></i> 23</a></span>
-                                        </div>
-                                    </div>
-                                </article>
-                                <!-- end article item -->
-                                <!-- article post -->
-                                <article class="widget-post">
-                                    <div class="post-image">
-                                        <a href="post.html"><img src="images/demo/1200x800-9.jpg" alt=""></a>
-                                    </div>
-                                    <div class="post-body">
-                                        <h2><a href="post.html">FAVORITE MOMENTS FROM BERMUDA</a></h2>
-                                        <div class="post-meta">
-                                            <span><i class="fa fa-clock-o"></i> 27. april 2015</span> <span><a
-                                                        href="post.html"><i class="fa fa-comments"></i> 23</a></span>
-                                        </div>
-                                    </div>
-                                </article>
-                                <!-- end article item -->
-                                <!-- article post -->
-                                <article class="widget-post">
-                                    <div class="post-image">
-                                        <a href="post.html"><img src="images/demo/1200x800-12.jpg" alt=""></a>
-                                    </div>
-                                    <div class="post-body">
-                                        <h2><a href="post.html">The View From a Peaceful Villa I Visited</a></h2>
-                                        <div class="post-meta">
-                                            <span><i class="fa fa-clock-o"></i> 27. april 2015</span> <span><a
-                                                        href="post.html"><i class="fa fa-comments"></i> 23</a></span>
-                                        </div>
-                                    </div>
-                                </article>
-                                <!-- end article item -->
-                            </div>
-                            <!-- end widget articles section -->
-                            <!-- widget advertisement -->
-                            <div class="widget-container">
-                                <h4 class="section-title">Advertisement</h4>
-                                <a href="post.html"><img src="images/ad340x550.jpg" alt=""/></a>
-                            </div>
-                            <!-- end widget advertisement -->
-                        </aside>
-                    </div>
-                    <!-- theiaStickysidebar -->
-                </div>
-                <!-- col-md-4 -->
-            </div>
-            <!-- row -->
-            <!-- end main content -->
-        </div>
-        <!-- container -->
-    </section>
-    <!-- end ot-section-a -->
-    <section class="ot-section-b">
-        <!-- container -->
-        <div class="container">
-            <!-- latest posts section -->
-            <h4 class="section-title"><span>Wide content</span>Featured Posts</h4>
-            <div class="ot-slider-b">
-                <div class="row row-slider-gutter">
-                    <div class="col-md-4 slider-item-small">
-                        <figure>
-                            <a href="post.html"><img src="images/demo/1200x800-4.jpg" alt=""></a>
-                            <figcaption>
-                                <div class="post-cat2">
-                                    <span>Movies</span>
-                                </div>
-                                <h2><a href="post.html">Selfie Fables - Disney Alternative Art Illustrations by Simona
-                                        Bonafini</a></h2>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="col-md-4 slider-item-small">
-                        <figure>
-                            <a href="post.html"><img src="images/demo/1200x800-8.jpg" alt=""></a>
-                            <figcaption>
-                                <div class="post-cat2">
-                                    <span>Computers</span>
-                                </div>
-                                <h2><a href="post.html">Make Stories Come Alive with Jodi Harvey-Brown Book Sculpture</a>
-                                </h2>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="col-md-4 slider-item-small">
-                        <figure>
-                            <a href="post.html"><img src="images/demo/1200x800-3.jpg" alt=""></a>
-                            <figcaption>
-                                <div class="post-cat2">
-                                    <span>Gadgets</span>
-                                </div>
-                                <h2><a href="post.html">Illustrator Turns Your Deepest Fears Into Cute Comics</a></h2>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-                <div class="row row-slider-gutter">
-                    <div class="col-md-6 slider-item-small">
-                        <figure>
-                            <a href="post.html"><img src="images/demo/1400x600-1.jpg" alt=""></a>
-                            <figcaption>
-                                <div class="post-cat2">
-                                    <span>Music</span>
-                                </div>
-                                <h2><a href="post.html">Polar Bear Beatport Label Is Over</a></h2>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="col-md-6 slider-item-small">
-                        <figure>
-                            <a href="post.html"><img src="images/demo/1400x600-2.jpg" alt=""></a>
-                            <figcaption>
-                                <div class="post-cat2">
-                                    <span>Computers</span>
-                                </div>
-                                <h2><a href="post.html">Twitch: when watching beats playing</a></h2>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.container -->
-    </section>
-    <section class="ot-section-a">
-        <div class="container">
-            <!-- main content -->
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="theiaStickySidebar">
-                        <div class="ot-module">
-                            <div class="ot-category-list">
-                                <!-- category posts section -->
-                                <h4 class="section-title"><span>Latest Posts from Category</span>Traveling</h4>
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <article class="large-post">
-                                            <div class="article-image">
-                                                <a href="post.html"><img class="img-responsive"
-                                                                         src="images/demo/720x1080-1.jpg" alt=""></a>
-                                            </div>
-                                            <div class="article-body">
-                                                <h2><a href="post.html">How Will I Go On Without David Letterman?</a></h2>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <!-- article post -->
-                                        <article class="small-post">
-                                            <div class="article-image">
-                                                <a href="post.html"><img src="images/demo/1200x800-10.jpg" alt=""></a>
-                                            </div>
-                                            <div class="article-body">
-                                                <div class="post-meta">
-                                                    <span>27. april 2015</span>
-                                                </div>
-                                                <h2><a href="post.html">Instagramming New Zealand's South Island</a></h2>
-                                            </div>
-                                        </article>
-                                        <!-- end article item -->
-                                        <!-- article post -->
-                                        <article class="small-post">
-                                            <div class="article-image">
-                                                <a href="post.html"><img src="images/demo/1200x800-9.jpg" alt=""></a>
-                                            </div>
-                                            <div class="article-body">
-                                                <div class="post-meta">
-                                                    <span>27. april 2015</span>
-                                                </div>
-                                                <h2><a href="post.html">So you want to be a travel blogger, do you?</a></h2>
-                                            </div>
-                                        </article>
-                                        <!-- end article item -->
-                                        <!-- article post -->
-                                        <article class="small-post">
-                                            <div class="article-image">
-                                                <a href="post.html"><img src="images/demo/1200x800-19.jpg" alt=""></a>
-                                            </div>
-                                            <div class="article-body">
-                                                <div class="post-meta">
-                                                    <span>27. april 2015</span>
-                                                </div>
-                                                <h2><a href="post.html">My 10 Favorite Underrated Cities in Spain</a></h2>
-                                            </div>
-                                        </article>
-                                        <!-- end article item -->
-                                        <!-- article post -->
-                                        <article class="small-post">
-                                            <div class="article-image">
-                                                <a href="post.html"><img src="images/demo/1200x800-11.jpg" alt=""></a>
-                                            </div>
-                                            <div class="article-body">
-                                                <div class="post-meta">
-                                                    <span>27. april 2015</span>
-                                                </div>
-                                                <h2><a href="post.html">Photo Friday: Salamanca, Spain</a></h2>
-                                            </div>
-                                        </article>
-                                        <!-- end article item -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end: category posts section -->
-                        </div>
-                        <!-- end: ot-module -->
-                        <div class="ot-module">
-                            <!-- classic grid posts section -->
-                            <h4 class="section-title"><span>Infra mini slider</span>Saving Planet</h4>
-                            <div class="widget-slider">
-                                <div id="mini-owl" class="owl-carousel owl-theme">
-                                    <div class="item"><a href="#"><img src="images/demo/1200x800-10.jpg" alt=""></a></div>
-                                    <div class="item"><a href="#"><img src="images/demo/1200x800-21.jpg" alt=""></a></div>
-                                    <div class="item"><a href="#"><img src="images/demo/1200x800-20.jpg" alt=""></a></div>
-                                    <div class="item"><a href="#"><img src="images/demo/1200x800-11.jpg" alt=""></a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ot-module">
-                            <!-- classic grid posts section -->
-                            <h4 class="section-title"><span>The grid style box</span>Latest Posts</h4>
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <!-- grid post -->
-                                    <div class="grid-post grid-gutter">
-                                        <div class="post-image">
-                                            <div class="review"><span class="score">80</span><span class="percent">%</span>
-                                            </div>
-                                            <div class="post-title">
-                                                <div class="post-cat2"><span>Fashion</span></div>
-                                                <h2><a href="post.html">Make Stories Come Alive with Jodi Harvey-Brown
-                                                        Book</a></h2>
-                                            </div>
-                                            <a href="post.html"><img src="images/demo/1200x800-20.jpg" alt=""></a>
-                                        </div>
-                                        <div class="post-body">
-                                            <div class="post-meta">
-                                                <span>27. april 2015</span> <span><a href="post.html">23 comments</a></span>
-                                                <span>123 views</span>
-                                            </div>
-                                            <p>Aliquam venenatis aliquet tortor, non blandit sapien aliquam eget. Sed in
-                                                nulla et arcu commodo vehicula vitae et ante. Suspendisse ut...</p>
-                                        </div>
-                                        <div class="read-more"><a href="post.html">read more</a></div>
-                                    </div>
-                                    <!-- end grid post -->
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <!-- grid post -->
-                                    <div class="grid-post grid-gutter">
-                                        <div class="post-image">
-                                            <div class="post-title">
-                                                <div class="post-cat2"><span>Automotive</span></div>
-                                                <h2><a href="post.html">Pernille Teisbaek Hits the Road in Style with Cash &
-                                                        Rocket</a></h2>
-                                            </div>
-                                            <a href="post.html"><img src="images/demo/1200x800-17.jpg" alt=""></a>
-                                        </div>
-                                        <div class="post-body">
-                                            <div class="post-meta">
-                                                <span>27. april 2015</span> <span><a href="post.html">23 comments</a></span>
-                                                <span>123 views</span>
-                                            </div>
-                                            <p>Proin eu sapien non tortor mattis auctor ac sit amet justo. Aliquam
-                                                pellentesque odio quis eleifend aliquet. In id sodales dui...</p>
-                                        </div>
-                                        <div class="read-more"><a href="post.html">read more</a></div>
-                                    </div>
-                                    <!-- end grid post -->
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <!-- grid post -->
-                                    <div class="grid-post grid-gutter">
-                                        <div class="post-image">
-                                            <div class="post-title">
-                                                <div class="post-cat2"><span>Fashion</span></div>
-                                                <h2><a href="post.html">Postcard from Cannes: Have We Found the Winner
-                                                        Yet?</a></h2>
-                                            </div>
-                                            <a href="post.html"><img src="images/demo/1200x800-18.jpg" alt=""></a>
-                                        </div>
-                                        <div class="post-body">
-                                            <div class="post-meta">
-                                                <span>27. april 2015</span> <span><a href="post.html">23 comments</a></span>
-                                                <span>123 views</span>
-                                            </div>
-                                            <p>Aliquam venenatis aliquet tortor, non blandit sapien aliquam eget. Sed in
-                                                nulla et arcu commodo vehicula vitae et ante. Suspendisse ut...</p>
-                                        </div>
-                                        <div class="read-more"><a href="post.html">read more</a></div>
-                                    </div>
-                                    <!-- end grid post -->
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <!-- grid post -->
-                                    <div class="grid-post grid-gutter">
-                                        <div class="post-image">
-                                            <div class="post-title">
-                                                <div class="post-cat2"><span>Fashion</span></div>
-                                                <h2><a href="post.html">The View From a Peaceful Villa I Visited</a></h2>
-                                            </div>
-                                            <a href="post.html"><img src="images/demo/1200x800-19.jpg" alt=""></a>
-                                        </div>
-                                        <div class="post-body">
-                                            <div class="post-meta">
-                                                <span>27. april 2015</span> <span><a href="post.html">23 comments</a></span>
-                                                <span>123 views</span>
-                                            </div>
-                                            <p>Aliquam venenatis aliquet tortor, non blandit sapien aliquam eget. Sed in
-                                                nulla et arcu commodo vehicula vitae et ante. Suspendisse ut...</p>
-                                        </div>
-                                        <div class="read-more"><a href="post.html">read more</a></div>
-                                    </div>
-                                    <!-- end grid post -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end ot-module -->
-                    </div>
-                    <!-- end theiaStickySidebar -->
-                </div>
-                <!-- end col-md-8 -->
-                <div class="col-md-4">
-                    <div class="theiaStickySidebar">
-                        <aside class="sidebar">
-                            <!-- widget reviews style 1 -->
-                            <div class="widget-container">
-                                <h4 class="section-title"><span>Review Widget #1</span>Latest Reviews</h4>
-                                <!-- article post -->
-                                <article class="widget-post">
-                                    <div class="review-bar-score">
-                                        <span class="score">80</span><span class="percent">%</span>
-                                    </div>
-                                    <div class="post-body">
-                                        <h2><a href="post.html">Apple iPhone 4s</a></h2>
-                                        <div class="review-bar-bg">
-                                            <div class="review-bar" style="width: 80%;"><span>80%</span></div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <!-- end article item -->
-                                <!-- article post -->
-                                <article class="widget-post">
-                                    <div class="review-bar-score">
-                                        <span class="score">70</span><span class="percent">%</span>
-                                    </div>
-                                    <div class="post-body">
-                                        <h2><a href="post.html">Apple iPhone 6s</a></h2>
-                                        <div class="review-bar-bg">
-                                            <div class="review-bar" style="width: 70%;"><span>70%</span></div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <!-- end article item -->
-                                <!-- article post -->
-                                <article class="widget-post">
-                                    <div class="review-bar-score">
-                                        <span class="score">83</span><span class="percent">%</span>
-                                    </div>
-                                    <div class="post-body">
-                                        <h2><a href="post.html">Samsung Galaxy S6</a></h2>
-                                        <div class="review-bar-bg">
-                                            <div class="review-bar" style="width: 83%;"><span>83%</span></div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <!-- end article item -->
-                                <!-- article post -->
-                                <article class="widget-post">
-                                    <div class="review-bar-score">
-                                        <span class="score">70</span><span class="percent">%</span>
-                                    </div>
-                                    <div class="post-body">
-                                        <h2><a href="post.html">Apple iPhone 6s</a></h2>
-                                        <div class="review-bar-bg">
-                                            <div class="review-bar" style="width: 70%;"><span>70%</span></div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <!-- end article item -->
-                            </div>
-                            <!-- end widget reviews style 1 -->
-                            <!-- widget 125x125 advert -->
-                            <div class="widget-container">
-                                <h4 class="section-title">Advertisement</h4>
-                                <div class="ot-advert">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <div class="ot-ad-125"><a href="post.html"><img src="images/ad125x125.png"
-                                                                                            alt=""/></a></div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <div class="ot-ad-125"><a href="post.html"><img src="images/ad125x125.png"
-                                                                                            alt=""/></a></div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <div class="ot-ad-125"><a href="post.html"><img src="images/ad125x125.png"
-                                                                                            alt=""/></a></div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <div class="ot-ad-125"><a href="post.html"><img src="images/ad125x125.png"
-                                                                                            alt=""/></a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- widget 125x125 advert -->
-                            <!-- widget tag cloud -->
-                            <div class="widget-container widget_tag_cloud">
-                                <h4 class="section-title">TAGS</h4>
-                                <div class="tag_item"><a href='category.html' title='Fashion'>Fashion</a><span>34</span>
-                                </div>
-                                <div class="tag_item"><a href='category.html' title='Fashion'>Outfit</a><span>54</span>
-                                </div>
-                                <div class="tag_item"><a href='category.html' title='Fashion'>Creative</a><span>2</span>
-                                </div>
-                                <div class="tag_item"><a href='category.html' title='Fashion'>Adventures</a><span>76</span>
-                                </div>
-                                <div class="tag_item"><a href='category.html' title='Fashion'>Computers</a><span>134</span>
-                                </div>
-                                <div class="tag_item"><a href='category.html' title='Fashion'>Fashion</a><span>34</span>
-                                </div>
-                                <div class="tag_item"><a href='category.html' title='Fashion'>Outfit</a><span>4</span></div>
-                                <div class="tag_item"><a href='category.html' title='Fashion'>Creative</a><span>2</span>
-                                </div>
-                                <div class="tag_item"><a href='category.html' title='Fashion'>Adventures</a><span>67</span>
-                                </div>
-                                <div class="tag_item"><a href='category.html' title='Fashion'>Computers</a><span>5</span>
-                                </div>
-                            </div>
-                            <!-- end widget tag cloud -->
-                            <!-- widget calendar -->
-                            <div class="widget-container">
-                                <h4 class="section-title">Calendar</h4>
-                                <div id="calendar_wrap">
-                                    <table id="wp-calendar">
-                                        <caption>April 2015</caption>
-                                        <thead>
-                                        <tr>
-                                            <th scope="col" title="Monday">M</th>
-                                            <th scope="col" title="Tuesday">T</th>
-                                            <th scope="col" title="Wednesday">W</th>
-                                            <th scope="col" title="Thursday">T</th>
-                                            <th scope="col" title="Friday">F</th>
-                                            <th scope="col" title="Saturday">S</th>
-                                            <th scope="col" title="Sunday">S</th>
-                                        </tr>
-                                        </thead>
-                                        <tfoot>
-                                        <tr>
-                                            <td colspan="3" id="prev"><a href="http://orange-themes.com/testiem/2014/01/">&laquo;
-                                                    Jan</a></td>
-                                            <td class="pad">&nbsp;</td>
-                                            <td colspan="3" id="next" class="pad">&nbsp;</td>
-                                        </tr>
-                                        </tfoot>
-                                        <tbody>
-                                        <tr>
-                                            <td colspan="2" class="pad">&nbsp;</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>7</td>
-                                            <td>8</td>
-                                            <td>9</td>
-                                            <td>10</td>
-                                            <td>11</td>
-                                            <td>12</td>
-                                        </tr>
-                                        <tr>
-                                            <td>13</td>
-                                            <td>14</td>
-                                            <td>15</td>
-                                            <td>16</td>
-                                            <td>17</td>
-                                            <td>18</td>
-                                            <td>19</td>
-                                        </tr>
-                                        <tr>
-                                            <td id="today">20</td>
-                                            <td>21</td>
-                                            <td>22</td>
-                                            <td>23</td>
-                                            <td>24</td>
-                                            <td>25</td>
-                                            <td>26</td>
-                                        </tr>
-                                        <tr>
-                                            <td>27</td>
-                                            <td>28</td>
-                                            <td>29</td>
-                                            <td>30</td>
-                                            <td class="pad" colspan="3">&nbsp;</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <!-- end widget calendar -->
-                        </aside>
-                    </div>
-                    <!-- end theiaStickySidebar -->
-                </div>
-            </div>
-            <!-- end main content -->
-        </div>
-        <!-- end content -->
-    </section>
-    <!-- featured articles -->
-    <section class="ot-section-b">
-        <div class="container">
-            <div class="ot-module">
-                <h4 class="section-title"><span>Four columns</span>categories</h4>
-                <div class="row">
-                    <div class="col-md-3	col-sm-3">
-                        <!-- featured article item -->
-                        <div class="ot-featured-articles">
-                            <div class="ot-featured-image">
-                                <div class="ot-featured-title">
-                                    <div class="post-cat2"><span>Fashion</span></div>
-                                    <a href="post.html">
-                                        <h2>Twitch: when watching beats playing</h2>
-                                    </a>
-                                </div>
-                                <a href="post.html">
-                                    <p class="vignette"><img src="images/demo/1200x800-5.jpg" alt=""/></p>
-                                </a>
-                            </div>
-                            <h2><span class="ot-time">today 15:40</span><a href="post.html">Is This Outfit a Relationship
-                                    Deal-Breaker?</a></h2>
-                            <h2><span class="ot-time">yesterday</span><a href="post.html">A Weekend Away in the
-                                    Countryside</a></h2>
-                            <h2><span class="ot-time">3 weeks ago</span><a href="post.html">The View From a Peaceful Villa I
-                                    Visited</a></h2>
-                        </div>
-                        <!-- featured article item -->
-                    </div>
-                    <div class="col-md-3 col-sm-3">
-                        <!-- featured article item -->
-                        <div class="ot-featured-articles">
-                            <div class="ot-featured-image">
-                                <div class="ot-featured-title">
-                                    <div class="post-cat2"><span style="background-color: #5B73D0">Tours</span></div>
-                                    <a href="post.html">
-                                        <h2>9 great American factory tours</h2>
-                                    </a>
-                                </div>
-                                <a href="post.html">
-                                    <p class="vignette"><img src="images/demo/1200x800-16.jpg" alt=""/></p>
-                                </a>
-                            </div>
-                            <h2><span class="ot-time">today 15:22</span><a href="post.html">Whimsical Sculptures Created Out
-                                    of Every-day Objects</a></h2>
-                            <h2><span class="ot-time">today 17:43</span><span class="hot">Hot <i
-                                            class="fa fa-bolt"></i></span><a href="post.html">Excellent Designs of Paper
-                                    Bags and Boxes</a></h2>
-                            <h2><span class="ot-time">today 18:60</span><a href="post.html">Wonderful Pencil Drawings by
-                                    Stefan Zsaitsits</a></h2>
-                        </div>
-                        <!-- featured article item -->
-                    </div>
-                    <div class="col-md-3 col-sm-3">
-                        <!-- featured article item -->
-                        <div class="ot-featured-articles">
-                            <div class="ot-featured-image">
-                                <div class="ot-featured-title">
-                                    <div class="post-cat2"><span style="background-color: #D35C97">Future</span></div>
-                                    <a href="post.html">
-                                        <h2>Is this the future of flight?</h2>
-                                    </a>
-                                </div>
-                                <a href="post.html">
-                                    <p class="vignette"><img src="images/demo/1200x800-17.jpg" alt=""/></p>
-                                </a>
-                            </div>
-                            <h2><span class="ot-time">today 15:41</span><a href="post.html">Is This Outfit a Relationship
-                                    Deal-Breaker?</a></h2>
-                            <h2><span class="ot-time">today 17:34</span><a href="post.html">A Weekend Away in the
-                                    Countryside</a></h2>
-                            <h2><span class="ot-time">today 21:00</span><a href="post.html">The View From a Peaceful Villa I
-                                    Visited</a></h2>
-                        </div>
-                        <!-- featured article item -->
-                    </div>
-                    <div class="col-md-3 col-sm-3">
-                        <!-- featured article item -->
-                        <div class="ot-featured-articles">
-                            <div class="ot-featured-image">
-                                <div class="ot-featured-title">
-                                    <div class="post-cat2"><span>Travel</span></div>
-                                    <a href="post.html">
-                                        <h2>Cuba's dilapidated World of Fantasy</h2>
-                                    </a>
-                                </div>
-                                <a href="post.html">
-                                    <p class="vignette"><img src="images/demo/1200x800-18.jpg" alt=""/></p>
-                                </a>
-                            </div>
-                            <h2><span class="ot-time">today 15:40</span><a href="post.html">Is This Outfit a Relationship
-                                    Deal-Breaker?</a></h2>
-                            <h2><span class="ot-time">today 18:37</span><a href="post.html">A Weekend Away in the
-                                    Countryside</a></h2>
-                            <h2><span class="ot-time">today 19:10</span><a href="post.html">The View From a Peaceful Villa I
-                                    Visited</a></h2>
-                        </div>
-                        <!-- featured article item -->
-                    </div>
-                </div>
-                <!-- end row -->
-            </div>
-            <!-- end ot-module -->
-        </div>
-    </section>
-    <!-- end featured articles -->
-    <section class="ot-section-b ot-wide">
-        <div class="container">
-            <!-- Instagram Widget Section -->
-            <h4 class="section-title"><span>Latest photos from</span>Instagram</h4>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="widget-slider">
-                        <div id="insta-owl" class="owl-carousel owl-theme">
-                            <div class="item"><a href="http://www.orange-themes.com/"><img src="images/demo/720x720-1.jpg"
-                                                                                           alt=""></a></div>
-                            <div class="item"><a href="http://www.orange-themes.com/"><img src="images/demo/720x720-3.jpg"
-                                                                                           alt=""></a></div>
-                            <div class="item"><a href="http://www.orange-themes.com/"><img src="images/demo/720x720-4.jpg"
-                                                                                           alt=""></a></div>
-                            <div class="item"><a href="http://www.orange-themes.com/"><img src="images/demo/720x720-2.jpg"
-                                                                                           alt=""></a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.container -->
-    </section>
-    <!-- end Instagram Widget Section -->
 @stop

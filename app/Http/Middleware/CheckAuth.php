@@ -21,6 +21,7 @@ class CheckAuth
         if ($flagLogin[0]->flag) {
             Session::put('username', $request->username);
             Session::put('name', $flagLogin[0]->message);
+            Session::put('usr_id', $flagLogin[0]->fk_usr_id);
         } else {
             Session::flash('error_message',$flagLogin[0]->message);
             return redirect()->route('login');
