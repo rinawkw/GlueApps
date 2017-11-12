@@ -18,7 +18,7 @@
         </nav>
         <!-- end main menu -->
         <span class="top-bar-socials">
-            <a href="#"><img style="width: 90px;" src="images/gluetela.png"></a>
+            <a href="{{'home'}}"><img style="width: 90px;" src="images/gluetela.png"></a>
 					{{--<a href="#" target="_blank"><i class="fa fa-facebook"></i></a>--}}
 					{{--<a href="#" target="_blank"><i class="fa fa-twitter"></i></a>--}}
 					{{--<a href="#" target="_blank"><i class="fa fa-instagram"></i></a>--}}

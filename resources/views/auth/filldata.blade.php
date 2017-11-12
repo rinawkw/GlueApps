@@ -1,31 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-@include('layouts.head')
-<body>
-<div class="boxed active">
-    <div class="top-bar">
-        <div class="container">
-            <!-- main menu -->
-            <nav class="top-menu">
-                <label for="show-top-menu" class="show-menu"><i class="fa fa-bars"></i></label>
-                <input type="checkbox" id="show-top-menu">
-                <ul class="menu" id="mobile-menu">
-                    {{--<li><a href="team.html"></i> {{session('name')}} </a></li>--}}
-                    <li><a href="{{'logout'}}"></i> Logout </a></li>
-                </ul>
-            </nav>
-            <span class="top-bar-socials">
-                <a href="{{'home'}}"><img style="width: 90px;" src="images/gluetela.png"></a>
-            </span>
-        </div>
-        <!-- end container -->
-    </div>
-    <!-- end topbar -->
-
-    <div class="boxed">
-        <section class="ot-section-b">
-            <!-- container -->
-            <div class="container">
+@extends('layouts.index')
+@section('content')
+    <!-- slaider -->
+    <section class="ot-section-b">
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
@@ -635,11 +611,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
     <!-- boxed -->
-</div>
+  </section>
+@stop
 <!-- Bootstrap core and theme JavaScript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
