@@ -1523,7 +1523,7 @@ margin-top: 0px;
 }
 
 .grid-post .post-meta span a:hover {
-	color: #CC0000;
+	color: #525252;
 }
 
 .grid-post .read-more {
@@ -1542,6 +1542,7 @@ margin-top: 0px;
 	-moz-transition: all 0.2s ease-out;
 	-o-transition: all 0.2s ease-out;
 	transition: all 0.2s ease-out;
+	text-align: right;
 }
 
 .ot-dark .grid-post .read-more a {
@@ -1784,7 +1785,7 @@ text-align: left;
 }
 
 .list-post-body a:hover {
-	color: #CC0000;
+	color: #005191;
 	border-bottom: 1px solid #000;
 }
 

@@ -8,12 +8,12 @@
                 <a href="{{'home'}}"><i class="fa fa-home"></i> Home </a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-newspaper-o"></i> News <b class="caret"></b></a><span
+                <a href="{{'news'}}"><i class="fa fa-newspaper-o"></i> News</a><span
                         class="sub_menu_toggle"></span>
-                <ul class="sub-menu">
-                    <li><a href="{{'news'}}">My News</a></li>
-                    <li><a href="{{'news'}}">All News</a></li>
-                </ul>
+                {{--<ul class="sub-menu">--}}
+                    {{--<li><a href="{{'news'}}">My News</a></li>--}}
+                    {{--<li><a href="{{'news'}}">All News</a></li>--}}
+                {{--</ul>--}}
             </li>
             <li class="menu-item-has-children">
                 <a href="#"><i class="fa fa-location-arrow"></i> Near Me </a>

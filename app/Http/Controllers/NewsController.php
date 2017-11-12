@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
@@ -13,7 +14,15 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view('news.index');
+        $news = DB::table('event')->get();
+//        dd($news);
+        return view('news.index',compact('news'));
+
+    }
+    public function detail($event_id)
+    {
+        $post = DB::table('event')->where('id',$event_id)->first();
+        return view('news.detail',compact('post'));
     }
 
     /**
@@ -45,7 +54,8 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = DB::table('event')->where('id',$id)->first();
+        return view('news.detail',compact('post'));
     }
 
     /**

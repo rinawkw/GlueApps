@@ -21,7 +21,9 @@
 
 Route::get('/','HomeController@index')->name('home')->middleware('home');
 Route::get('/home','HomeController@index')->name('home')->middleware('home');
-Route::get('/news','NewsController@index')->name('news')->middleware('home');
+
+Route::get('/news','NewsController@index')->middleware('home');
+Route::get('/news/{id}', 'NewsController@detail')->middleware('home');
 
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/do_login','AuthController@do_login')->middleware('login');
