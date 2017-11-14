@@ -5,10 +5,10 @@
         <input type="checkbox" id="show-menu">
         <ul class="menu" id="main-mobile-menu">
             <li>
-                <a href="{{'home'}}"><i class="fa fa-home"></i> Home </a>
+                <a href="/{{'home'}}"><i class="fa fa-home"></i> Home </a>
             </li>
             <li>
-                <a href="{{'news'}}"><i class="fa fa-newspaper-o"></i> News</a><span
+                <a href="/{{'news'}}"><i class="fa fa-newspaper-o"></i> News</a><span
                         class="sub_menu_toggle"></span>
                 {{--<ul class="sub-menu">--}}
                     {{--<li><a href="{{'news'}}">My News</a></li>--}}

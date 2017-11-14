@@ -39,4 +39,5 @@ Route::post('/do_filldata2', 'AuthController@do_filldata2');
 Route::post('/do_filldata3', 'AuthController@do_filldata3');
 Route::post('/do_filldata4', 'AuthController@do_filldata4');
 
-Route::get('/profile','AuthController@show_profile')->name('profile')->middleware('home');
+Route::get('/profile','AuthController@show_myprofile')->name('profile')->middleware('home');
+Route::get('/profile/{username}','AuthController@show_profile')->middleware('home');

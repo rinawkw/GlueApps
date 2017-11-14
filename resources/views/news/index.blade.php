@@ -21,7 +21,7 @@
                                             {{--</div>--}}
                                         </div>
                                         <div class="list-post-body">
-                                            <h2><a href="news{{$value->id}}">{{ $value->judul }}</a>
+                                            <h2><a href="news/{{$value->id}}">{{ $value->judul }}</a>
                                             </h2>
                                             <div class="post-meta">
                                                 <span>{{$value->tanggal}}</span>

@@ -275,11 +275,19 @@ class AuthController extends Controller
         //dd($data);
         return redirect()->route('filldata');
     }
-    public function show_profile()
+    public function show_myprofile()
     {
         $fk_user = DB::table('pengguna')->where('username', session('username'))->value('fk_usr_id');
         $user = DB::table('members')->where('usr_id', $fk_user)->get();
-        return view('profile.profile', ['user' => $user]);
+        $userwork = DB::table('work')->where('work_usr_id', $fk_user)->get();
+        return view('profile.profile', compact('user','userwork'));
+    }
+    public function show_profile($username)
+    {
+        $fk_user = DB::table('pengguna')->where('username', $username)->value('fk_usr_id');
+        $user = DB::table('members')->where('usr_id', $fk_user)->get();
+        $userwork = DB::table('work')->where('work_usr_id', $fk_user)->get();
+        return view('profile.profile', compact('user','userwork'));
     }
     public function index()
     {
