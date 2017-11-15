@@ -5,17 +5,18 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="images/favicon-glue.png">
+    <link rel="icon" href="/images/favicon-glue.png">
     <title>GLUE - GenBI Line Up And Experience</title>
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/shortcodes.css" rel="stylesheet">
-    <link href="css/style-wp.css" rel="stylesheet">
-    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    {{-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></script> --}}
+    <link href="/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/shortcodes.css" rel="stylesheet">
+    <link href="/css/style-wp.css" rel="stylesheet">
+    <link href="/css/owl.carousel.css" rel="stylesheet">
     <!-- only for demo -->
-<link href="css/demo-settings.css" rel="stylesheet">
+<link href="/css/demo-settings.css" rel="stylesheet">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
