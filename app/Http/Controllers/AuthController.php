@@ -218,6 +218,7 @@ class AuthController extends Controller
         DB::table('members')
             ->where('usr_id', session('usr_id'))
             ->update($data['data']);
+        Session::put('data2', $data['data']);
         //dd($data);
         return redirect()->route('filldata');
     }
@@ -246,6 +247,7 @@ class AuthController extends Controller
         DB::table('members')
             ->where('usr_id', session('usr_id'))
             ->update($data['data']);
+        Session::put('data3', $data['data']);
         //dd($data);
         return redirect()->route('filldata');
     }
@@ -272,22 +274,23 @@ class AuthController extends Controller
         );
         DB::table('work')
             ->insert($data['data']);
+        Session::put('data4', $data['data']);
         //dd($data);
         return redirect()->route('filldata');
     }
     public function show_myprofile()
     {
-        $fk_user = DB::table('pengguna')->where('username', session('username'))->value('fk_usr_id');
-        $user = DB::table('members')->where('usr_id', $fk_user)->get();
-        $userwork = DB::table('work')->where('work_usr_id', $fk_user)->get();
-        return view('profile.profile', compact('user','userwork'));
+        $nama = session('name');
+        $user = DB::table('members')->where('usr_id', session('usr_id'))->get();
+        $userwork = DB::table('work')->where('work_usr_id', session('usr_id'))->get();
+        return view('profile.profile', compact('nama','user','userwork'));
     }
-    public function show_profile($username)
+    public function show_profile($usr_id)
     {
-        $fk_user = DB::table('pengguna')->where('username', $username)->value('fk_usr_id');
-        $user = DB::table('members')->where('usr_id', $fk_user)->get();
-        $userwork = DB::table('work')->where('work_usr_id', $fk_user)->get();
-        return view('profile.profile', compact('user','userwork'));
+        $nama = DB::table('pengguna')->where('fk_usr_id', $usr_id)->value('nama_pengguna');
+        $user = DB::table('members')->where('usr_id', $usr_id)->get();
+        $userwork = DB::table('work')->where('work_usr_id', session('usr_id'))->get();
+        return view('profile.profile', compact('nama','user','userwork'));
     }
     public function index()
     {

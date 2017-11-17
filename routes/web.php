@@ -19,11 +19,17 @@
 //     return view('auth.login');
 // });
 
-Route::get('/','HomeController@index')->name('home')->middleware('home');
-Route::get('/home','HomeController@index')->name('home')->middleware('home');
+Route::group(['middleware' => ['grouphome']], function () {
+	Route::get('/','HomeController@index')->name('home');
+	Route::get('/home','HomeController@index')->name('home');
 
-Route::get('/news','NewsController@index')->middleware('home');
-Route::get('/news/{id}', 'NewsController@detail')->middleware('home');
+	Route::get('/news','NewsController@index');
+	Route::get('/news/{id}', 'NewsController@detail');    
+
+	Route::get('/profile','AuthController@show_myprofile')->name('profile');
+	Route::get('/profile/{username}','AuthController@show_profile');
+});
+
 
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/do_login','AuthController@do_login')->middleware('login');
@@ -38,6 +44,3 @@ Route::post('/do_filldata1', 'AuthController@do_filldata1');
 Route::post('/do_filldata2', 'AuthController@do_filldata2');
 Route::post('/do_filldata3', 'AuthController@do_filldata3');
 Route::post('/do_filldata4', 'AuthController@do_filldata4');
-
-Route::get('/profile','AuthController@show_myprofile')->name('profile')->middleware('home');
-Route::get('/profile/{username}','AuthController@show_profile')->middleware('home');

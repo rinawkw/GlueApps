@@ -35,7 +35,10 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
-
+        'grouphome' => [
+            \App\Http\Middleware\CheckSession::class,
+            \App\Http\Middleware\CheckFillData::class,
+        ],
         'api' => [
             'throttle:60,1',
             'bindings',
@@ -59,5 +62,6 @@ class Kernel extends HttpKernel
         'login' => \App\Http\Middleware\CheckAuth::class,
         'home' => \App\Http\Middleware\CheckSession::class,
         'register' => \App\Http\Middleware\CheckAnggotaGenbi::class,
+        'filldata' => \App\Http\Middleware\CheckFillData::class,
     ];
 }

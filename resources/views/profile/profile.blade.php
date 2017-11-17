@@ -15,7 +15,7 @@
                                         </a>
                                     {{--<div class="diff-spacer spacer-1" style="background-color:#E3EFF3;color:#E3EFF3;"><i class="fa fa-sign-in"></i></div>--}}
                                     <!--== Post Reply ==-->
-                                        <h3 style="color: #1a1a1a;">Hai, <b>{{session('name')}}</b>!</h3>
+                                        <h3 style="color: #1a1a1a;"><b>{{$nama}}</b></h3>
                                         <div class="short-tabs">
                                             <ul>
                                                 <li class="active"><a href="javascript:void(0);">Personal</a></li>
@@ -139,9 +139,8 @@
                                                                           style="display:block; background-color: #B80000">
                                                         <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
                                                                 @endif
-                                                                <p class="form-submit">
-                                                                    <input name="submit" type="submit" id="button-1"
-                                                                           class="submit submit-button" value="Save"/>
+                                                                <p class="form-submit"><br>
+                                                                    <button type="button" class="btn btn-secondary">Edit</button>
                                                                     <input type='hidden' name='usr_id'
                                                                            value={{session('usr_id')}}
                                                                                    id='usr_id'/>
@@ -185,9 +184,8 @@
                                                                           style="display:block; background-color: #B80000">
                                                         <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
                                                                 @endif
-                                                                <p class="form-submit">
-                                                                    <input name="submit" type="submit" id="button-2"
-                                                                           class="submit submit-button" value="Save"/>
+                                                                <p class="form-submit"><br>
+                                                                    <button type="button" class="btn btn-secondary">Edit</button>
                                                                     <input type='hidden' name='usr_id'
                                                                            value={{session('usr_id')}}
                                                                                    id='usr_id'/>
@@ -264,9 +262,8 @@
                                                                           style="display:block; background-color: #B80000">
                                                         <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
                                                                 @endif
-                                                                <p class="form-submit">
-                                                                    <input name="submit" type="submit" id="button-3"
-                                                                           class="submit submit-button" value="Save"/>
+                                                                <p class="form-submit"><br>
+                                                                    <button type="button" class="btn btn-secondary">Edit</button>
                                                                     <input type='hidden' name='usr_id'
                                                                            value={{session('usr_id')}}
                                                                                    id='usr_id'/>
@@ -339,9 +336,8 @@
                                                                           style="display:block; background-color: #B80000">
                                                         <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
                                                                 @endif
-                                                                <p class="form-submit">
-                                                                    <input name="submit" type="submit" id="button-4"
-                                                                           class="submit submit-button" value="Save"/>
+                                                                <p class="form-submit"><br>
+                                                                    <button type="button" class="btn btn-secondary">Edit</button>
                                                                     <input type='hidden' name='usr_id'
                                                                            value={{session('usr_id')}}
                                                                                    id='usr_id'/>

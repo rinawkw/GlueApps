@@ -512,20 +512,36 @@
                                                     {!! csrf_field() !!}
                                                     <div class="col-md-12">
                                                         <label for="perusahaan">Nama Perusahaan</label>
+                                                        @if(session('data4.work_company'))
+                                                        <input id="perusahaan" type="text" placeholder="perusahaan"
+                                                               name="perusahaan" value="{{session('data4.work_company')}}">
+                                                        @else
                                                         <input id="perusahaan" type="text" placeholder="perusahaan"
                                                                name="perusahaan">
+                                                        @endif
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label for="jabatan">Jabatan</label>
+                                                        @if(session('data4.work_jabatan'))
+                                                        <input id="jabatan" type="text" placeholder="jabatan"
+                                                               name="jabatan" value="{{session('data4.work_jabatan')}}">
+                                                        @else
                                                         <input id="jabatan" type="text" placeholder="jabatan"
                                                                name="jabatan">
+                                                        @endif
                                                     </div>
 
                                                     <div class="col-md-12">
                                                         <label for="lokasiperusahaan">Lokasi Perusahaan</label>
+                                                        @if(session('data4.work_location'))
+                                                        <input id="lokasiperusahaan" type="text"
+                                                               placeholder="lokasi perusahaan"
+                                                               name="lokasiperusahaan" value="{{session('data4.work_location')}}">
+                                                        @else
                                                         <input id="lokasiperusahaan" type="text"
                                                                placeholder="lokasi perusahaan"
                                                                name="lokasiperusahaan">
+                                                        @endif
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="bulanmulai">Bulan Mulai Bekerja</label>
@@ -547,9 +563,15 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="tahunmulai">Tahun Mulai Bekerja</label>
+                                                        @if(session('data4.work_tahun1'))
+                                                        <input id="tahunmulai" type="text"
+                                                               placeholder="tahun mulai bekerja"
+                                                               name="tahunmulai" value="{{session('data4.work_tahun1')}}">
+                                                        @else
                                                         <input id="tahunmulai" type="text"
                                                                placeholder="tahun mulai bekerja"
                                                                name="tahunmulai">
+                                                        @endif
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="bulanakhir">Bulan Akhir Bekerja</label>
@@ -571,16 +593,23 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="tahunakhir">Tahun Akhir Bekerja</label>
+                                                        @if(session('data4.work_tahun2'))
+                                                        <input id="tahunakhir" type="text"
+                                                               placeholder="tahun akhir bekerja"
+                                                               name="tahunakhir" value="{{session('data4.work_tahun2')}}">
+                                                        @else
                                                         <input id="tahunakhir" type="text"
                                                                placeholder="tahun akhir bekerja"
                                                                name="tahunakhir">
+                                                        @endif
                                                     </div>
+
                                                     <div class="col-md-12">
                                                         @if (session('error_message'))
                                                             <span class="error-msg comment-error"
                                                                   id="contact-mail-error"
                                                                   style="display:block; background-color: #B80000">
-                                                <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
+                                                            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
                                                         @endif
                                                         <p class="form-submit">
                                                             <input name="submit" type="submit" id="button-4"
