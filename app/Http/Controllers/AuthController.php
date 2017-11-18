@@ -283,6 +283,12 @@ class AuthController extends Controller
         $nama = session('name');
         $user = DB::table('members')->where('usr_id', session('usr_id'))->get();
         $userwork = DB::table('work')->where('work_usr_id', session('usr_id'))->get();
+        $user1 = (array) $user[0];
+        $userwork1 = (array) $userwork[0];
+        Session::put('data1', $user1);
+        Session::put('data2', $user1);
+        Session::put('data3', $user1);
+        Session::put('data4', $userwork1);
         return view('profile.profile', compact('nama','user','userwork'));
     }
     public function show_profile($usr_id)

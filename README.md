@@ -2,7 +2,7 @@ TO DO LIST:
 
 @hendrywiranto :
 - [DONE] lihat profile sendiri
-- [PROGRESS] edit profile sendiri dari page profile sendiri
+- [DONE] edit profile sendiri dari page profile sendiri
 - [DONE] lihat profile orang lain
 - [PROGRESS] lihat list anggota genbi
 - [PROGRESS] abis isi pekerjaan langsung ke home (ide solusi: pas save di pekerjaan, lgsg redirect ke route home)
