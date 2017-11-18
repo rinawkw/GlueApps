@@ -28,6 +28,8 @@ Route::group(['middleware' => ['grouphome']], function () {
 
 	Route::get('/profile','AuthController@show_myprofile')->name('profile');
 	Route::get('/profile/{username}','AuthController@show_profile');
+
+	Route::get('/members','MemberController@index')->name('members');
 });
 
 
