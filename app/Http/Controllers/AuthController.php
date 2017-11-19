@@ -280,6 +280,7 @@ class AuthController extends Controller
     }
     public function show_myprofile()
     {
+        $edit = 1;
         $nama = session('name');
         $user = DB::table('members')->where('usr_id', session('usr_id'))->get();
         $userwork = DB::table('work')->where('work_usr_id', session('usr_id'))->get();
@@ -289,14 +290,15 @@ class AuthController extends Controller
         Session::put('data2', $user1);
         Session::put('data3', $user1);
         Session::put('data4', $userwork1);
-        return view('profile.profile', compact('nama','user','userwork'));
+        return view('profile.profile', compact('nama','user','userwork','edit'));
     }
     public function show_profile($usr_id)
     {
+        $edit = 0;
         $nama = DB::table('pengguna')->where('fk_usr_id', $usr_id)->value('nama_pengguna');
         $user = DB::table('members')->where('usr_id', $usr_id)->get();
         $userwork = DB::table('work')->where('work_usr_id', session('usr_id'))->get();
-        return view('profile.profile', compact('nama','user','userwork'));
+        return view('profile.profile', compact('nama','user','userwork','edit'));
     }
     public function index()
     {

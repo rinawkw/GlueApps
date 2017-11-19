@@ -140,7 +140,11 @@
                                                         <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
                                                                 @endif
                                                                 <p class="form-submit"><br>
-                                                                    <a href="/filldata"><button type="button" class="btn btn-secondary">Edit</button></a>
+                                                                    @if ($edit==1)
+                                                                        <a href="/filldata">
+                                                                            <button type="button" class="btn btn-secondary">Edit</button>
+                                                                        </a>
+                                                                    @endif
                                                                     <input type='hidden' name='usr_id'
                                                                            value={{session('usr_id')}}
                                                                                    id='usr_id'/>
@@ -185,7 +189,11 @@
                                                         <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
                                                                 @endif
                                                                 <p class="form-submit"><br>
-                                                                    <a href="/filldata"><button type="button" class="btn btn-secondary">Edit</button></a>
+                                                                    @if ($edit==1)
+                                                                        <a href="/filldata">
+                                                                            <button type="button" class="btn btn-secondary">Edit</button>
+                                                                        </a>
+                                                                    @endif
                                                                     <input type='hidden' name='usr_id'
                                                                            value={{session('usr_id')}}
                                                                                    id='usr_id'/>
@@ -263,7 +271,11 @@
                                                         <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
                                                                 @endif
                                                                 <p class="form-submit"><br>
-                                                                    <a href="/filldata"><button type="button" class="btn btn-secondary">Edit</button></a>
+                                                                    @if ($edit==1)
+                                                                        <a href="/filldata">
+                                                                            <button type="button" class="btn btn-secondary">Edit</button>
+                                                                        </a>
+                                                                    @endif
                                                                     <input type='hidden' name='usr_id'
                                                                            value={{session('usr_id')}}
                                                                                    id='usr_id'/>
@@ -337,7 +349,11 @@
                                                         <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
                                                                 @endif
                                                                 <p class="form-submit"><br>
-                                                                    <a href="/filldata"><button type="button" class="btn btn-secondary">Edit</button></a>
+                                                                    @if ($edit==1)
+                                                                        <a href="/filldata">
+                                                                            <button type="button" class="btn btn-secondary">Edit</button>
+                                                                        </a>
+                                                                    @endif
                                                                     <input type='hidden' name='usr_id'
                                                                            value={{session('usr_id')}}
                                                                                    id='usr_id'/>
