@@ -63,13 +63,11 @@
                                                         @if(session('data1.usr_no_hp'))
                                                             <input id="nohp" type="text" placeholder="Nomor handphone"
                                                                    name="nohp"
-                                                                   required
                                                                    autofocus
                                                                    value={{session('data1.usr_no_hp')}}>
                                                         @else
                                                             <input id="nohp" type="text" placeholder="Nomor handphone"
                                                                    name="nohp"
-                                                                   required
                                                                    autofocus>
                                                         @endif
                                                     </div>
@@ -78,13 +76,11 @@
                                                         @if(session('data1.usr_alamat'))
                                                             <input id="alamat" type="text" placeholder="Alamat"
                                                                    name="alamat"
-                                                                   required
                                                                    autofocus
                                                                    value={{session('data1.usr_alamat')}}>
                                                         @else
                                                             <input id="alamat" type="text" placeholder="Alamat"
                                                                    name="alamat"
-                                                                   required
                                                                    autofocus>
                                                         @endif
                                                     </div>
@@ -116,19 +112,16 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="jk">Jenis Kelamin*</label>
-                                                        <select name="jk">
+                                                        <select name="jk" >
                                                             @if(session('data1.usr_jk')== 'L')
-                                                                <option>jenis kelamin</option>
-                                                                <option value="L" selected>laki - laki</option>
-                                                                <option value="P">perempuan</option>
+                                                                <option value="L" selected>Laki - laki</option>
+                                                                <option value="P">Perempuan</option>
                                                             @elseif(session('data1.usr_jk')== 'P')
-                                                                <option>jenis kelamin</option>
-                                                                <option value="L">laki - laki</option>
-                                                                <option value="P" selected>perempuan</option>
+                                                                <option value="L">Laki - laki</option>
+                                                                <option value="P" selected>Perempuan</option>
                                                             @else
-                                                                <option>jenis kelamin*</option>
-                                                                <option value="Laki-laki">laki - laki</option>
-                                                                <option value="Perempuan">perempuan</option>
+                                                                <option value="L">Laki - laki</option>
+                                                                <option value="P">Perempuan</option>
                                                             @endif
                                                         </select>
                                                     </div>
@@ -136,25 +129,21 @@
                                                         <label for="goldar">Golongan Darah*</label>
                                                         <select name="goldar">
                                                             @if(session('data1.usr_goldar')=='A')
-                                                                <option>golongan darah</option>
                                                                 <option value="A" selected>A</option>
                                                                 <option value="B">B</option>
                                                                 <option value="AB">AB</option>
                                                                 <option value="O">O</option>
                                                             @elseif(session('data1.usr_goldar')=='B')
-                                                                <option>golongan darah</option>
                                                                 <option value="A">A</option>
                                                                 <option value="B" selected>B</option>
                                                                 <option value="AB">AB</option>
                                                                 <option value="O">O</option>
                                                             @elseif(session('data1.usr_goldar')=='AB')
-                                                                <option>golongan darah</option>
                                                                 <option value="A">A</option>
                                                                 <option value="B">B</option>
                                                                 <option value="AB" selected>AB</option>
                                                                 <option value="O">O</option>
                                                             @else
-                                                                <option>golongan darah</option>
                                                                 <option value="A">A</option>
                                                                 <option value="B">B</option>
                                                                 <option value="AB">AB</option>
@@ -349,7 +338,7 @@
                                                       action='do_filldata2'>
                                                     {!! csrf_field() !!}
                                                     <div class="col-md-4">
-                                                        <label for="tahun1">Tahun Pertama</label>
+                                                        <label for="tahun1">Tahun Pertama*</label>
                                                         @if(session('data2.usr_tahun1'))
                                                             <input id="tahun1" type="text" placeholder="tahun pertama"
                                                                    name="tahun1"
@@ -586,6 +575,11 @@
                                                     <div class="col-md-6">
                                                         <label for="bulanmulai">Bulan Mulai Bekerja</label>
                                                         <select name="bulanmulai">
+                                                          @if (null==session('data4.work_bulan1'))
+                                                            <option selected value="">Bulan Mulai Bekerja</option>
+                                                          @else 
+                                                            <option value="">Bulan Mulai Bekerja</option>
+                                                          @endif
                                                           @if (session('data4.work_bulan1')=="januari")
                                                             <option selected>januari</option>
                                                           @else 
@@ -663,62 +657,67 @@
                                                     <div class="col-md-6">
                                                         <label for="bulanakhir">Bulan Akhir Bekerja</label>
                                                         <select name="bulanakhir">
-                                                          @if (session('data4.work_bulan1')=="januari")
+                                                          @if (null==session('data4.work_bulan2'))
+                                                            <option selected value="">Bulan Akhir Bekerja</option>
+                                                          @else 
+                                                            <option value="">Bulan Akhir Bekerja</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan2')=="januari")
                                                             <option selected>januari</option>
                                                           @else 
                                                             <option>januari</option>
                                                           @endif
-                                                          @if (session('data4.work_bulan1')=="februari")
+                                                          @if (session('data4.work_bulan2')=="februari")
                                                             <option selected>februari</option>
                                                           @else 
                                                             <option>februari</option>
                                                           @endif
-                                                          @if (session('data4.work_bulan1')=="maret")
+                                                          @if (session('data4.work_bulan2')=="maret")
                                                             <option selected>maret</option>
                                                           @else 
                                                             <option>maret</option>
                                                           @endif
-                                                          @if (session('data4.work_bulan1')=="april")
+                                                          @if (session('data4.work_bulan2')=="april")
                                                             <option selected>april</option>
                                                           @else 
                                                             <option>april</option>
                                                           @endif
-                                                          @if (session('data4.work_bulan1')=="mei")
+                                                          @if (session('data4.work_bulan2')=="mei")
                                                             <option selected>mei</option>
                                                           @else 
                                                             <option>mei</option>
                                                           @endif
-                                                          @if (session('data4.work_bulan1')=="juni")
+                                                          @if (session('data4.work_bulan2')=="juni")
                                                             <option selected>juni</option>
                                                           @else 
                                                             <option>juni</option>
                                                           @endif
-                                                          @if (session('data4.work_bulan1')=="juli")
+                                                          @if (session('data4.work_bulan2')=="juli")
                                                             <option selected>juli</option>
                                                           @else 
                                                             <option>juli</option>
                                                           @endif
-                                                          @if (session('data4.work_bulan1')=="agustus")
+                                                          @if (session('data4.work_bulan2')=="agustus")
                                                             <option selected>agustus</option>
                                                           @else 
                                                             <option>agustus</option>
                                                           @endif
-                                                          @if (session('data4.work_bulan1')=="september")
+                                                          @if (session('data4.work_bulan2')=="september")
                                                             <option selected>september</option>
                                                           @else 
                                                             <option>september</option>
                                                           @endif
-                                                          @if (session('data4.work_bulan1')=="oktober")
+                                                          @if (session('data4.work_bulan2')=="oktober")
                                                             <option selected>oktober</option>
                                                           @else 
                                                             <option>oktober</option>
                                                           @endif
-                                                          @if (session('data4.work_bulan1')=="november")
+                                                          @if (session('data4.work_bulan2')=="november")
                                                             <option selected>november</option>
                                                           @else 
                                                             <option>november</option>
                                                           @endif
-                                                          @if (session('data4.work_bulan1')=="desember")
+                                                          @if (session('data4.work_bulan2')=="desember")
                                                             <option selected>desember</option>
                                                           @else 
                                                             <option>desember</option>

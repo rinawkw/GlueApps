@@ -166,19 +166,19 @@
                                                             <div class="col-md-4">
                                                                 <label for="tahun1">Tahun Pertama</label>
                                                                 <input id="tahun1" type="text" placeholder="tahun pertama"
-                                                                       name="tahun1" value={{$user[0]->usr_tahun1}}
+                                                                       name="tahun1" value="{{$user[0]->usr_tahun1}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label for="tahun2">Tahun Kedua</label>
                                                                 <input id="tahun2" type="text" placeholder="tahun kedua"
-                                                                       name="tahun2" value= {{$user[0]->usr_tahun2}}
+                                                                       name="tahun2" value="{{$user[0]->usr_tahun2}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label for="tahun3">Tahun Ketiga</label>
                                                                 <input id="tahun3" type="text" placeholder="tahun ketiga"
-                                                                       name="tahun3" value= {{$user[0]->usr_tahun3}}
+                                                                       name="tahun3" value="{{$user[0]->usr_tahun3}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-12">
@@ -217,50 +217,50 @@
                                                             <div class="col-md-12">
                                                                 <label for="universitas">Universitas</label>
                                                                 <input id="universitas" type="text" placeholder="universitas"
-                                                                       name="universitas" value={{$user[0]->usr_univ1}}
+                                                                       name="universitas" value="{{$user[0]->usr_univ1}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label for="fakultas">fakultas</label>
                                                                 <input id="fakultas" type="text" placeholder="fakultas"
-                                                                       name="fakultas" value={{$user[0]->usr_fakultas1}}
+                                                                       name="fakultas" value="{{$user[0]->usr_fakultas1}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label for="departemen">departemen</label>
                                                                 <input id="departemen" type="text" placeholder="departemen"
-                                                                       name="departemen" value={{$user[0]->usr_jurusan1}}
+                                                                       name="departemen" value="{{$user[0]->usr_jurusan1}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label for="periode">Periode</label>
                                                                 <input id="departemen" type="text" placeholder="departemen"
-                                                                       name="departemen" value={{$user[0]->usr_period1}}
+                                                                       name="departemen" value="{{$user[0]->usr_period1}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <label for="universitas2">Universitas S2</label>
                                                                 <input id="universitas2" type="text"
                                                                        placeholder="universitas sarjana master"
-                                                                       name="universitas2" value={{$user[0]->usr_univ2}}
+                                                                       name="universitas2" value="{{$user[0]->usr_univ2}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label for="fakultas2">Fakultas</label>
                                                                 <input id="fakultas2" type="text" placeholder="fakultas"
-                                                                       name="fakultas2" value={{$user[0]->usr_fakultas2}}
+                                                                       name="fakultas2" value="{{$user[0]->usr_fakultas2}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label for="departemen2">Departemen</label>
                                                                 <input id="departemen2" type="text" placeholder="departemen"
-                                                                       name="departemen2" value={{$user[0]->usr_jurusan2}}
+                                                                       name="departemen2" value="{{$user[0]->usr_jurusan2}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label for="periode2">Periode</label>
-                                                                <input id="departemen" type="text" placeholder="departemen"
-                                                                       name="departemen" value={{$user[0]->usr_period2}}
+                                                                <input id="periode2" type="text" placeholder="periode"
+                                                                       name="periode2" value="{{$user[0]->usr_period2}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-12">
@@ -297,48 +297,48 @@
                                                             <div class="col-md-12">
                                                                 <label for="jabatan">Jabatan</label>
                                                                 <input id="jabatan" type="text" placeholder="jabatan"
-                                                                       name="jabatan" value={{$userwork[0]->work_jabatan}}
+                                                                       name="jabatan" value="{{$userwork[0]->work_jabatan}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <label for="perusahaan">Nama Perusahaan</label>
                                                                 <input id="perusahaan" type="text" placeholder="perusahaan"
-                                                                       name="perusahaan" value={{$userwork[0]->work_company}}
+                                                                       name="perusahaan" value="{{$userwork[0]->work_company}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <label for="lokasiperusahaan">Lokasi perusahaan</label>
                                                                 <input id="lokasiperusahaan" type="text"
                                                                        placeholder="lokasi perusahaan"
-                                                                       name="lokasiperusahaan" value={{$userwork[0]->work_location}}
+                                                                       name="lokasiperusahaan" value="{{$userwork[0]->work_location}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label for="bulanmulai">Bulan Mulai Bekerja</label>
                                                                 <input id="tahunakhir" type="text"
                                                                        placeholder="tahun akhir bekerja"
-                                                                       name="tahunakhir" value={{$userwork[0]->work_bulan1}}
+                                                                       name="tahunakhir" value="{{$userwork[0]->work_bulan1}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label for="tahunmulai">Tahun Mulai Bekerja</label>
                                                                 <input id="tahunmulai" type="text"
                                                                        placeholder="tahun mulai bekerja"
-                                                                       name="tahunmulai" value={{$userwork[0]->work_tahun1}}
+                                                                       name="tahunmulai" value="{{$userwork[0]->work_tahun1}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label for="bulanakhir">Bulan Akhir Bekerja</label>
                                                                 <input id="tahunakhir" type="text"
                                                                        placeholder="tahun akhir bekerja"
-                                                                       name="tahunakhir" value={{$userwork[0]->work_bulan2}}
+                                                                       name="tahunakhir" value="{{$userwork[0]->work_bulan2}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label for="tahunakhir">Tahun Akhir Bekerja</label>
                                                                 <input id="tahunakhir" type="text"
                                                                        placeholder="tahun akhir bekerja"
-                                                                       name="tahunakhir" value={{$userwork[0]->work_tahun2}}
+                                                                       name="tahunakhir" value="{{$userwork[0]->work_tahun2}}"
                                                                        disabled>
                                                             </div>
                                                             <div class="col-md-12">

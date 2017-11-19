@@ -77,6 +77,12 @@ class AuthController extends Controller
                     'hak_akses' => 2,
                     'fk_usr_id' => $usr_id
                 ));
+
+        DB::table('work')
+            ->insert(
+                array(
+                    'work_usr_id' => $usr_id
+                ));
         DB::table('master_nrp')
             ->where('nrp', $nimnrp)
             ->update(array('id_pengguna' => $id));
@@ -273,7 +279,8 @@ class AuthController extends Controller
             'work_tahun2' => $tahunakhir
         );
         DB::table('work')
-            ->insert($data['data']);
+            ->where('work_usr_id', session('usr_id'))
+            ->update($data['data']);
         Session::put('data4', $data['data']);
         //dd($data);
         return redirect()->route('filldata');
