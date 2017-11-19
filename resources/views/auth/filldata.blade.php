@@ -164,18 +164,58 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="agama">Agama*</label>
-                                                        @if(session('data1.usr_agama'))
-                                                            <input id="agama" type="text" placeholder="agama"
-                                                                   name="agama"
-                                                                   required
-                                                                   autofocus
-                                                                   value={{session('data1.usr_agama')}}>
-                                                        @else
-                                                            <input id="agama" type="text" placeholder="agama"
-                                                                   name="agama"
-                                                                   required
-                                                                   autofocus>
-                                                        @endif
+                                                        <select name="agama">
+                                                            @if(session('data1.usr_agama')=='Islam')
+                                                                <option value="Islam" selected>Islam</option>
+                                                                <option value="Katolik">Katolik</option>
+                                                                <option value="Kristen">Kristen</option>
+                                                                <option value="Hindu">Hindu</option>
+                                                                <option value="Budha">Budha</option>
+                                                                <option value="Konghucu">Konghucu</option>
+                                                            @elseif(session('data1.usr_agama')=='Katolik')
+                                                                <option value="Islam">Islam</option>
+                                                                <option value="Katolik" selected>Katolik</option>
+                                                                <option value="Kristen">Kristen</option>
+                                                                <option value="Hindu">Hindu</option>
+                                                                <option value="Budha">Budha</option>
+                                                                <option value="Konghucu">Konghucu</option>
+                                                            @elseif(session('data1.usr_agama')=='Kristen')
+                                                                <option value="Islam">Islam</option>
+                                                                <option value="Katolik">Katolik</option>
+                                                                <option value="Kristen" selected>Kristen</option>
+                                                                <option value="Hindu">Hindu</option>
+                                                                <option value="Budha">Budha</option>
+                                                                <option value="Konghucu">Konghucu</option>
+                                                            @elseif(session('data1.usr_agama')=='Hindu')
+                                                                <option value="Islam">Islam</option>
+                                                                <option value="Katolik">Katolik</option>
+                                                                <option value="Kristen">Kristen</option>
+                                                                <option value="Hindu" selected>Hindu</option>
+                                                                <option value="Budha">Budha</option>
+                                                                <option value="Konghucu">Konghucu</option>
+                                                            @elseif(session('data1.usr_agama')=='Budha')
+                                                                <option value="Islam">Islam</option>
+                                                                <option value="Katolik">Katolik</option>
+                                                                <option value="Kristen">Kristen</option>
+                                                                <option value="Hindu">Hindu</option>
+                                                                <option value="Budha" selected>Budha</option>
+                                                                <option value="Konghucu">Konghucu</option>
+                                                            @elseif(session('data1.usr_agama')=='Konghucu')
+                                                                <option value="Islam">Islam</option>
+                                                                <option value="Katolik">Katolik</option>
+                                                                <option value="Kristen">Kristen</option>
+                                                                <option value="Hindu">Hindu</option>
+                                                                <option value="Budha">Budha</option>
+                                                                <option value="Konghucu" selected>Konghucu</option>
+                                                            @else
+                                                                <option value="Islam">Islam</option>
+                                                                <option value="Katolik">Katolik</option>
+                                                                <option value="Kristen">Kristen</option>
+                                                                <option value="Hindu">Hindu</option>
+                                                                <option value="Budha">Budha</option>
+                                                                <option value="Konghucu">Konghucu</option>
+                                                            @endif
+                                                        </select>
                                                     </div>
 
                                                     <div class="col-md-6">
@@ -546,19 +586,66 @@
                                                     <div class="col-md-6">
                                                         <label for="bulanmulai">Bulan Mulai Bekerja</label>
                                                         <select name="bulanmulai">
-                                                            <option>bulan mulai bekerja</option>
+                                                          @if (session('data4.work_bulan1')=="januari")
+                                                            <option selected>januari</option>
+                                                          @else 
                                                             <option>januari</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="februari")
+                                                            <option selected>februari</option>
+                                                          @else 
                                                             <option>februari</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="maret")
+                                                            <option selected>maret</option>
+                                                          @else 
                                                             <option>maret</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="april")
+                                                            <option selected>april</option>
+                                                          @else 
                                                             <option>april</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="mei")
+                                                            <option selected>mei</option>
+                                                          @else 
                                                             <option>mei</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="juni")
+                                                            <option selected>juni</option>
+                                                          @else 
                                                             <option>juni</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="juli")
+                                                            <option selected>juli</option>
+                                                          @else 
                                                             <option>juli</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="agustus")
+                                                            <option selected>agustus</option>
+                                                          @else 
                                                             <option>agustus</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="september")
+                                                            <option selected>september</option>
+                                                          @else 
                                                             <option>september</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="oktober")
+                                                            <option selected>oktober</option>
+                                                          @else 
                                                             <option>oktober</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="november")
+                                                            <option selected>november</option>
+                                                          @else 
                                                             <option>november</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="desember")
+                                                            <option selected>desember</option>
+                                                          @else 
                                                             <option>desember</option>
+                                                          @endif
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
@@ -576,19 +663,66 @@
                                                     <div class="col-md-6">
                                                         <label for="bulanakhir">Bulan Akhir Bekerja</label>
                                                         <select name="bulanakhir">
-                                                            <option>bulan akhir bekerja</option>
+                                                          @if (session('data4.work_bulan1')=="januari")
+                                                            <option selected>januari</option>
+                                                          @else 
                                                             <option>januari</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="februari")
+                                                            <option selected>februari</option>
+                                                          @else 
                                                             <option>februari</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="maret")
+                                                            <option selected>maret</option>
+                                                          @else 
                                                             <option>maret</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="april")
+                                                            <option selected>april</option>
+                                                          @else 
                                                             <option>april</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="mei")
+                                                            <option selected>mei</option>
+                                                          @else 
                                                             <option>mei</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="juni")
+                                                            <option selected>juni</option>
+                                                          @else 
                                                             <option>juni</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="juli")
+                                                            <option selected>juli</option>
+                                                          @else 
                                                             <option>juli</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="agustus")
+                                                            <option selected>agustus</option>
+                                                          @else 
                                                             <option>agustus</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="september")
+                                                            <option selected>september</option>
+                                                          @else 
                                                             <option>september</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="oktober")
+                                                            <option selected>oktober</option>
+                                                          @else 
                                                             <option>oktober</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="november")
+                                                            <option selected>november</option>
+                                                          @else 
                                                             <option>november</option>
+                                                          @endif
+                                                          @if (session('data4.work_bulan1')=="desember")
+                                                            <option selected>desember</option>
+                                                          @else 
                                                             <option>desember</option>
+                                                          @endif
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
