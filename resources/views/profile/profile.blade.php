@@ -16,6 +16,9 @@
                                     {{--<div class="diff-spacer spacer-1" style="background-color:#E3EFF3;color:#E3EFF3;"><i class="fa fa-sign-in"></i></div>--}}
                                     <!--== Post Reply ==-->
                                         <h3 style="color: #1a1a1a;"><b>{{$nama}}</b></h3>
+                                        @if ($user[0]->usr_foto)
+                                            <img src="{{URL::asset($user[0]->usr_foto)}}" height="200" width="200" class="img-thumbnail">
+                                        @endif
                                         <div class="short-tabs">
                                             <ul>
                                                 <li class="active"><a href="javascript:void(0);">Personal</a></li>

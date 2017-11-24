@@ -26,8 +26,20 @@
                                         <div class="comment-form-body">
                                             <div class="row" id="continer">
                                                 <form id="form" class="comment-form" role="form" method="POST"
-                                                      action='do_filldata1'>
+                                                      action='do_filldata1' enctype="multipart/form-data">
                                                     {!! csrf_field() !!}
+                                                    <div class="col-md-12">
+                                                        <label for="foto">Foto Profil</label>
+                                                    </div>
+                                                    <div class="col-md-12 text-left">
+                                                        @if (session('data1.usr_foto'))
+                                                            <img src="{{URL::asset(session('data1.usr_foto'))}}" height="200" width="200" class="rounded float-left">
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <input name="foto" type="file" accept="image/*" class="form">
+                                                        <input name="fotosession" type="hidden" value="{{session('data1.usr_foto')}}">
+                                                    </div>
                                                     <div class="col-md-12">
                                                         <label for="noktp">Nomor KTP*</label>
                                                         @if(session('data1.usr_no_kta'))

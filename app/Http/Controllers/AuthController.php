@@ -162,7 +162,7 @@ class AuthController extends Controller
         dd($data);
     }
 
-    public function do_filldata1()
+    public function do_filldata1(Request $request)
     {
         //$usr_id = Input::get('usr_id');
         $noktp = Input::get('noktp');
@@ -181,6 +181,22 @@ class AuthController extends Controller
         $idfb = Input::get('idfb');
         $idig = Input::get('idig');
         $idtwitter = Input::get('idtwitter');
+        // if(Input::file('foto'))
+        // {
+        //     $image = Input::file('foto');
+        //     $filename = time() . '.' . $image->getClientOriginalExtension();
+        //     $path = public_path('images/foto' . $filename);
+        //     Image::make($image->getRealPath())->resize(200, 200)->save($path);
+        //     $photopath = "/public/images/foto" + $filename;
+        // }
+        if ($request->file('foto')){
+            $img = time() . "." . $request->file('foto')->getClientOriginalExtension();
+            $request->file('foto')->move(base_path() . '/public/images/foto/', $img);
+            $photopath = "images/foto/" . $img;
+        }
+        else {
+            $photopath = Input::get('fotosession');
+        }
         $data['data'] = array(
             'usr_no_kta' => $noktp,
             'usr_email' => $usr_email,
@@ -198,6 +214,7 @@ class AuthController extends Controller
             'usr_fb' => $idfb,
             'usr_insta' => $idig,
             'usr_twit' => $idtwitter,
+            'usr_foto' => $photopath,
         );
         DB::table('members')
             ->where('usr_id', session('usr_id'))
