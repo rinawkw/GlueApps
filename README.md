@@ -12,8 +12,8 @@ TO DO LIST:
 	- pendidikan: periode, dan lainnya
 	- pekerjaan: semua
 - [DONE] tidak bisa akses menu sebelum data diisi lengkap (need checking)
-- [PROGRESS] simpan image di disk dan database
-- [PROGRESS] tampilkan image di list genbi
+- [DONE] simpan image di disk dan database
+- [DONE] tampilkan image di list genbi (kurang styling)
 
 @rinawkw
 

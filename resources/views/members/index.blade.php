@@ -21,6 +21,15 @@
                                             echo "<p>".$i."</p><br>";
                                             $i=$i+1;
                                         ?>
+                                        <div class="list-post-container">
+                                            <a href="/profile/{{$member->fk_usr_id}}">
+                                                @if ($member->usr_foto!=NULL)
+                                                    <img src="{{$member->usr_foto}}">
+                                                @else
+                                                    <img src="{{URL::asset("images/foto/1.png")}}">
+                                                @endif
+                                            </a><br>
+                                        </div>
                                         <a href="/profile/{{$member->fk_usr_id}}">{{$member->nama_pengguna}}</a><br>
                                         {{$member->usr_univ1}}<br>
                                         {{$member->nrp}}<br><br>
