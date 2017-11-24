@@ -21,18 +21,18 @@
                                             echo "<p>".$i."</p><br>";
                                             $i=$i+1;
                                         ?>
-                                        <div class="list-post-container">
+                                        <div>   
                                             <a href="/profile/{{$member->fk_usr_id}}">
                                                 @if ($member->usr_foto!=NULL)
-                                                    <img src="{{$member->usr_foto}}">
+                                                    <img src="{{$member->usr_foto}}" class="image-member-list">
                                                 @else
-                                                    <img src="{{URL::asset("images/foto/1.png")}}">
+                                                    <img src="{{URL::asset("images/foto/1.png")}}" class="image-member-list">
                                                 @endif
-                                            </a><br>
+                                                </a><br>
+                                            <a href="/profile/{{$member->fk_usr_id}}">{{$member->nama_pengguna}}</a><br>
+                                            {{$member->usr_univ1}}<br>
+                                            {{$member->nrp}}<br><br>
                                         </div>
-                                        <a href="/profile/{{$member->fk_usr_id}}">{{$member->nama_pengguna}}</a><br>
-                                        {{$member->usr_univ1}}<br>
-                                        {{$member->nrp}}<br><br>
                                     </div>
                                     <!-- end list post item -->
                                 @endforeach

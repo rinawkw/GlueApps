@@ -1,0 +1,10 @@
+.image-member-list {
+  float: left;
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+}
+
+.member-block {
+  display: inline-block;
+}
