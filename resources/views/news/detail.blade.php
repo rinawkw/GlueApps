@@ -9,7 +9,10 @@
                         <h4>by Zigmars Berzins</h4>
                     </div>
                     <div class="post-meta">
-                        <span>1. jule 2015</span> <span><a href="post.html">1 comments</a></span> <span>54 views</span>
+                        <span>{{$post->tanggal}}</span>
+                        {{--<span><a href="post.html">23 comments</a></span>--}}
+                        <span>{{$post->waktu}}</span>
+                        <span>{{$post->lokasi}}</span>
                     </div>
                 </div>
                 <div class="article-image"><img src="/{{$post->foto}}" alt=""></div>
@@ -53,6 +56,8 @@
                         {{--</div>--}}
                         <div class="ot-module">
                             <h4 class="section-title">Comments</h4>
+                            @if($comments == null)
+                            <!--== No Comment==-->
                             <div class="no_comments">
                                 <i class="fa fa-comments-o"></i>
                                 <div>
@@ -65,78 +70,28 @@
                                     </p>
                                 </div>
                             </div>
+                            @else
+                            @foreach($comments as $comment => $value)
                             <!--== Comments ==-->
                             <div class="comments">
                                 <ul class="comment-list">
                                     <li>
                                         <div class="comment">
                                             <div class="comment-author">
-                                                <img src="images/demo/author-1.jpg" alt="Author">
-                                                <a href="#" rel="external nofollow" class="comment-author-name">James</a>
-                                                <span class="comment-meta">March 17, 2015 at 18:45 AM</span>
+                                                <img src="/images/event/1.jpg" alt="Author">
+                                                <a href="#" rel="external nofollow" class="comment-author-name">{{$value->fk_user}}</a>
+                                                <span class="comment-meta">{{$value->waktu}}</span>
                                             </div>
                                             <div class="comment-body">
-                                                <p>Maecenas lobortis ante leo, ac rhoncus nisl elementum et. Maecenas lobortis ante leo, ac rhoncus nisl elementum et. Maecenas lobortis ante leo, ac rhoncus nisl elementum et. Maecenas lobortis ante leo, ac rhoncus nisl elementum et. Maecenas lobortis ante leo, ac rhoncus nisl elementum et.</p>
-                                                <a href="#" class="comment-reply-link"><i class="fa fa-reply"></i> Reply</a>
-                                            </div>
-                                        </div>
-                                        <ul class="children">
-                                            <li>
-                                                <div class="comment">
-                                                    <div class="comment-author">
-                                                        <img src="images/demo/author-1.jpg" alt="Author">
-                                                        <a href="#" rel="external nofollow" class="comment-author-name">Amanda</a>
-                                                        <span class="comment-meta">March 17, 2015 at 18:45 AM</span>
-                                                    </div>
-                                                    <div class="comment-body">
-                                                        <p>Quis autem vel eum iure reprehenderit qui </p>
-                                                        <a href="#" class="comment-reply-link"><i class="fa fa-reply"></i> Reply</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="comment">
-                                                    <div class="comment-author">
-                                                        <img src="images/demo/author-1.jpg" alt="Author">
-                                                        <a href="#" rel="external nofollow" class="comment-author-name">Sarah</a>
-                                                        <span class="comment-meta">March 17, 2015 at 18:45 AM</span>
-                                                    </div>
-                                                    <div class="comment-body">
-                                                        <p>Nulla fringilla massa a eros varius laoreet. Nulla fringilla massa a eros varius laoreet. Nulla fringilla massa a eros varius laoreet. Nulla fringilla massa a eros varius laoreet. Nulla fringilla massa a eros varius laoreet.</p>
-                                                        <a href="#" class="comment-reply-link"><i class="fa fa-reply"></i> Reply</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <div class="comment">
-                                            <div class="comment-author">
-                                                <img src="images/demo/author-1.jpg" alt="Author">
-                                                <a href="#" rel="external nofollow" class="comment-author-name">Amanda</a>
-                                                <span class="comment-meta">March 17, 2015 at 18:45 AM</span>
-                                            </div>
-                                            <div class="comment-body">
-                                                <p>Pellentesque suscipit cursus nibh.</p>
-                                                <a href="#" class="comment-reply-link"><i class="fa fa-reply"></i> Reply</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="comment">
-                                            <div class="comment-author">
-                                                <img src="images/demo/author-1.jpg" alt="Author">
-                                                <a href="#" rel="external nofollow" class="comment-author-name">Casper</a>
-                                                <span class="comment-meta">March 17, 2015 at 18:45 AM</span>
-                                            </div>
-                                            <div class="comment-body">
-                                                <p>Cras leo odio, ultrices et aliquam quis</p>
-                                                <a href="#" class="comment-reply-link"><i class="fa fa-reply"></i> Reply</a>
+                                                <p>{{$value->komentar}}</p>
+                                                {{--<a href="#" class="comment-reply-link"><i class="fa fa-reply"></i> Reply</a>--}}
                                             </div>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
+                            @endforeach
+                            @endif
                             <!--== Post Reply ==-->
                             <h4 class="main-heading"><span>Post Reply</span></h4>
                             <div class="comment-form-body">

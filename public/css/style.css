@@ -2611,9 +2611,9 @@ and (max-width : 480px) {
 
 /*-- Comments --*/
 .comments {
-	padding: 30px;
+	padding: 10px;
 	background: #fff;
-	margin-bottom: 50px;
+	margin-bottom: 0px;
 }
 
 .comment-list,
