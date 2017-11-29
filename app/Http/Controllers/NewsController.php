@@ -22,6 +22,7 @@ class NewsController extends Controller
     public function detail($event_id)
     {
         $post = DB::table('event')->where('id',$event_id)->first();
+//        dd($post);
         return view('news.detail',compact('post'));
     }
 

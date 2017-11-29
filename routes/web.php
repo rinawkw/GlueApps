@@ -23,15 +23,15 @@ Route::group(['middleware' => ['grouphome']], function () {
 	Route::get('/','HomeController@index')->name('home');
 	Route::get('/home','HomeController@index')->name('home');
 
-	Route::get('/news','NewsController@index');
-	Route::get('/news/{id}', 'NewsController@detail');    
+
 
 	Route::get('/profile','AuthController@show_myprofile')->name('profile');
 	Route::get('/profile/{username}','AuthController@show_profile');
 
 	Route::get('/members','MemberController@index')->name('members');
 });
-
+Route::get('/news','NewsController@index');
+Route::get('/news/{id}', 'NewsController@detail');
 
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/do_login','AuthController@do_login')->middleware('login');
