@@ -32,10 +32,10 @@
                             </p>
                         </div>
                         {{--<div class="ot-article-tags"><span><i class="fa fa-tags"></i></span><a href="index-grid.html">Street Art</a> <a href="index-grid.html">Fashion</a></div>--}}
-                        <div class="ot-next-prev-cont">
-                            <div class="ot-prev"><a href="post.html"><span><i class="fa fa-chevron-left"></i>Previous article</span><strong>Is This Outfit a Relationship Deal-Breaker?</strong></a></div>
-                            <div class="ot-next"><a href="post.html"><span>Next article<i class="fa fa-chevron-right"></i></span><strong>World's top designers muse on shoes</strong></a></div>
-                        </div>
+                        {{--<div class="ot-next-prev-cont">--}}
+                            {{--<div class="ot-prev"><a href="post.html"><span><i class="fa fa-chevron-left"></i>Previous article</span><strong>Is This Outfit a Relationship Deal-Breaker?</strong></a></div>--}}
+                            {{--<div class="ot-next"><a href="post.html"><span>Next article<i class="fa fa-chevron-right"></i></span><strong>World's top designers muse on shoes</strong></a></div>--}}
+                        {{--</div>--}}
                         {{--<div class="ot-author">--}}
                             {{--<div class="author-image">--}}
                                 {{--<img src="images/demo/720x720-2.jpg" alt="">--}}
@@ -56,7 +56,7 @@
                         {{--</div>--}}
                         <div class="ot-module">
                             <h4 class="section-title">Comments</h4>
-                            @if($comments == null)
+                            @if($comment_num < 1)
                             <!--== No Comment==-->
                             <div class="no_comments">
                                 <i class="fa fa-comments-o"></i>
@@ -93,22 +93,11 @@
                             @endforeach
                             @endif
                             <!--== Post Reply ==-->
-                            <h4 class="main-heading"><span>Post Reply</span></h4>
+                            {{--<h4 class="main-heading"><span>Post Comment</span></h4>--}}
                             <div class="comment-form-body">
                                 <div class="row">
-                                    <form class="comment-form" action="http://example.org/">
-                                        <div class="col-md-6">
-                                            <label for="author">Your name</label>
-                                            <input id="author" type="text" placeholder="Your name" name="author">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="email">Email</label>
-                                            <input id="email" type="text" placeholder="Email" name="author">
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label for="subject">Subject</label>
-                                            <input id="subject" type="text" placeholder="Subject" name="subject">
-                                        </div>
+                                    <form class="comment-form" role="form" method="POST" action='do_comment'>
+                                        {!! csrf_field() !!}
                                         <div class="col-md-12">
                                             <label for="comment">Comment</label>
                                             <textarea name="comment" id="comment" cols="35" rows="5"></textarea>
@@ -116,7 +105,7 @@
                                         <div class="col-md-12">
                                             <p class="form-submit">
                                                 <input name="submit" type="submit" id="submit" class="submit submit-button" value="Post Comment" />
-                                                <input type='hidden' name='comment_post_ID' value='2' id='comment_post_ID' />
+                                                {{--<input type='hidden' name='event_id' value={{$post->event_id}} id='event_id' />--}}
                                                 <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
                                             </p>
                                         </div>

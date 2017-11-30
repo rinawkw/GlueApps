@@ -186,4 +186,6 @@
         <i class="fa fa-copyright"></i> Copyright 2017. All rights reserved.<br />
         <a href="http://www.orange-themes.com/">GLUE - GenBI Line Up And Experience</a>
     </div>
+
+
 </footer>

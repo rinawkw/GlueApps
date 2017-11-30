@@ -23,14 +23,27 @@ class NewsController extends Controller
     {
         $post = DB::table('event')->where('id',$event_id)->first();
         $comments = $this->getComment($event_id);
-//        dd($post);
-        return view('news.detail',compact('post','comments'));
+        $comment_num = count($comments);
+//        dd($comment_num);
+        return view('news.detail',compact('post','comments', 'comment_num'));
     }
 
     public function getComment($event_id)
     {
         $comments = DB::table('komentar_event')->where('fk_event',$event_id)->get();
         return $comments;
+    }
+
+
+    public function do_comment()
+    {
+        $event_id = Input::get('event_id');
+        $comment = Input::get('comment');
+        $dat['data'] = array(
+            'fk_event' => $event_id,
+            'komentar' => $comment
+        );
+        return redirect()->route('home');
     }
 
     /**
@@ -40,7 +53,53 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        return view('news.create');
+    }
+
+    public function uploadImage(Request $request)
+    {
+        // A list of permitted file extensions
+        if(empty($_FILES['file']))
+        {
+            exit();
+        }
+        $errorImgFile = public_path()."/uploads/img/img_upload_error.jpg";
+        $destinationFilePath = public_path().'/uploads/img-uploads/'.$_FILES['file']['name'];
+        if(!move_uploaded_file($_FILES['file']['tmp_name'], $destinationFilePath)){
+            echo $errorImgFile;
+        }
+        else{
+            echo url('/').'/public/uploads/img-uploads/'.$_FILES['file']['name'];
+        }
+    }
+
+    public function getSummernote()
+    {
+        return view('news.create');
+    }
+
+    public function postSummernote(Request $request)
+    {
+        $this->validate($request, [
+            'detail' => 'required',
+        ]);
+        $detail=$request->input('detail');
+        $dom = new \DomDocument();
+        $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $images = $dom->getElementsByTagName('img');
+        foreach($images as $k => $img){
+            $data = $img->getAttribute('src');
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+            $data = base64_decode($data);
+            $image_name= "/upload/" . time().$k.'.png';
+            $path = public_path() . $image_name;
+            file_put_contents($path, $data);
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+        $detail = $dom->saveHTML();
+        dd($detail);
     }
 
     /**

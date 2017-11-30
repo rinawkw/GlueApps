@@ -23,15 +23,19 @@ Route::group(['middleware' => ['grouphome']], function () {
 	Route::get('/','HomeController@index')->name('home');
 	Route::get('/home','HomeController@index')->name('home');
 
-
-
-	Route::get('/profile','AuthController@show_myprofile')->name('profile');
+    Route::get('/profile','AuthController@show_myprofile')->name('profile');
 	Route::get('/profile/{username}','AuthController@show_profile');
 
 	Route::get('/members','MemberController@index')->name('members');
 });
+
 Route::get('/news','NewsController@index');
 Route::get('/news/{id}', 'NewsController@detail');
+Route::get('/create_news',array('as'=>'summernote.get','uses'=>'NewsController@getSummernote'));
+Route::post('/do_create_news',array('as'=>'summernote.post','uses'=>'NewsController@postSummernote'));
+
+//Route::get('summernote',array('as'=>'summernote.get','uses'=>'NewsController@getSummernote'));
+//Route::post('summernote',array('as'=>'summernote.post','uses'=>'NewsController@postSummernote'));
 
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/do_login','AuthController@do_login')->middleware('login');
