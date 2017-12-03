@@ -2,9 +2,19 @@
   float: left;
   padding: 10px;
   margin: 10px;
-  width: 200px;
+  width: 30%;
+  height: 30%;
 }
 
+.image-member-list:hover {
+  float: left;
+  padding: 10px;
+  margin: 10px;
+  width: 30%;
+  height: 30%;
+  /*background-color:#000;*/
+  opacity:0.5;
+}
 .member-block {
   display: inline-block;
 }
