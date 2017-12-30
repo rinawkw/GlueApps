@@ -8,7 +8,7 @@
                 <div class="col-md-8">
                     <div class="ot-module">
                         <!-- classic grid posts section -->
-                        <h4 class="section-title"><span>Berita Acara / Kegiatan GenBI</span>GenBI Events</h4>
+                        <h4 class="section-title"><span>DAFTAR ANGGOTA GENBI</span>ANGGOTA GENBI</h4>
                         <div class="row">
                             <div class="col-md-12">
                             <?php 
@@ -18,20 +18,36 @@
                                 <!-- end list post item -->
                                     <div class="list-post">
                                         <?php 
-                                            echo "<p>".$i."</p><br>";
-                                            $i=$i+1;
+                                            //echo "<p>".$i."</p><br>";
+                                            //$i=$i+1;
                                         ?>
                                         <div>   
-                                            <a href="/profile/{{$member->fk_usr_id}}">
+                                            {{-- <div class="list-post-container"> --}}
+                                                <a href="/profile/{{$member->fk_usr_id}}">
                                                 @if ($member->usr_foto!=NULL)
                                                     <img src="{{$member->usr_foto}}" class="image-member-list">
                                                 @else
                                                     <img src="{{URL::asset("images/foto/1.png")}}" class="image-member-list">
                                                 @endif
                                                 </a><br>
-                                            <a href="/profile/{{$member->fk_usr_id}}">{{$member->nama_pengguna}}</a><br>
-                                            {{$member->usr_univ1}}<br>
-                                            {{$member->nrp}}<br><br>
+                                            {{-- </div> --}}
+                                            <div class="list-post-body">
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <a href="/profile/{{$member->fk_usr_id}}"><h2>{{$member->nama_pengguna}}</h2></a>
+                                                    </div>
+                                                </div>
+                                                 <div class="row">
+                                                    <div class="col-md-8">
+                                                        {{$member->usr_univ1}}
+                                                    </div>
+                                                </div>
+                                                 <div class="row">
+                                                    <div class="col-md-8">
+                                                        {{$member->nrp}}
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- end list post item -->
