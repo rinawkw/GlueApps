@@ -1786,7 +1786,7 @@ text-align: left;
 
 .list-post-body a:hover {
 	color: #005191;
-	border-bottom: 1px solid #000;
+	/*border-bottom: 1px solid #000;*/
 }
 
 .list-post p {

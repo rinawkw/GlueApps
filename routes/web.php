@@ -27,6 +27,7 @@ Route::group(['middleware' => ['grouphome']], function () {
 	Route::get('/profile/{username}','AuthController@show_profile');
 
 	Route::get('/members','MemberController@index')->name('members');
+    Route::get('/about','AboutController@index')->name('about');
 });
 
 Route::get('/news','NewsController@index');

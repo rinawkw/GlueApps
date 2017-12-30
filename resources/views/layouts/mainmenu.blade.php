@@ -19,7 +19,7 @@
                 <a href="#"><i class="fa fa-location-arrow"></i> Near Me </a>
             </li>
             <li><a href="/{{'members'}}"><i class="fa fa-users"></i> GenBI </a></li>
-            <li><a href="about.html"><i class="fa fa-star"></i> About </a></li>
+            <li><a href="/{{'about'}}"><i class="fa fa-star"></i> About </a></li>
             {{--<li><a href="contact.html">Contact</a></li>--}}
             <li class="search-menu">
                 <a href="#">Trending <i class="fa fa-bolt"></i></a><span class="mega_menu_toggle"></span>
