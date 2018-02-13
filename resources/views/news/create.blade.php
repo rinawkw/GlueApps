@@ -35,7 +35,7 @@
                                                    name="tgllhr">
                                         </div>
                                         <div class="col-md-3">
-                                            <label for="date">Tanggal</label>
+                                            <label for="date">Waktu</label>
                                             <br><br>
                                             <div id="datetimepicker3" class="input-append">
                                                 <input data-format="hh:mm:ss" type="text">

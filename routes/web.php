@@ -11,13 +11,13 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('home.index');
-// });
+ Route::get('/regis2', function () {
+     return view('auth.register2');
+ });
 
-// Route::get('/dologin', function () {
-//     return view('auth.login');
-// });
+ Route::get('/login2', function () {
+     return view('auth.login2');
+ });
 
 Route::group(['middleware' => ['grouphome']], function () {
 	Route::get('/','HomeController@index')->name('home');
