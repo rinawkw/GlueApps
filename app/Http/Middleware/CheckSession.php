@@ -17,7 +17,7 @@ class CheckSession
      */
     public function handle($request, Closure $next)
     {
-        if (Session::exists('id')) {
+        if (Session::exists('user_id')) {
             return $next($request);
         } else {
             return redirect()->route('login')->with('error_message', 'anda belum login.');

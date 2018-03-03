@@ -29,7 +29,32 @@ class AuthController extends Controller
             'username' => $username,
             'password' => $password
         );
+        $this->get_data_user();
         return redirect()->route('home');
+    }
+
+    public function get_data_user()
+    {
+        $user = DB::select('call sp_getdatauser(?)', [Session::get('user_id')]);
+        // dd($user);
+        $data['data'] = array(
+            'user_nama' => $user[0]->user_nama,
+            'user_email' => $user[0]->user_email,
+            'user_no_hp' => $user[0]->user_no_hp,
+            'user_alamat' => $user[0]->user_alamat,
+            'user_tempat_lahir' => $user[0]->user_tempat_lahir,
+            'user_tanggal_lahir' => $user[0]->user_tanggal_lahir,
+            'user_jk' => $user[0]->user_jk,
+            'user_agama' => $user[0]->user_agama,
+            'user_goldar' => $user[0]->user_goldar,
+            'user_suku' => $user[0]->user_suku,
+            'user_status' => $user[0]->user_status,
+            'user_bio' => $user[0]->user_bio,
+            'user_thumbnail' => $user[0]->user_thumbnail,
+            'user_tahun_beasiswa' => $user[0]->user_tahun_beasiswa,
+
+        );
+        Session::put('data', $data['data']);
     }
 
     public function logout()
@@ -92,95 +117,25 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 
-    public function do_filldata()
-    {
-        $noktp = Input::get('noktp');
-        $tmplhr = Input::get('tmplhr');
-        $tgllhr = Input::get('tgllhr');
-        $jk = Input::get('jk');
-        $agama = Input::get('agama');
-        $goldar = Input::get('goldar');
-        $suku = Input::get('suku');
-        $status = Input::get('status');
-        $biodata = Input::get('biodata');
-        $idline = Input::get('idline');
-        $idfb = Input::get('idfb');
-        $idig = Input::get('idfb');
-        $idtwitter = Input::get('idtwitter');
-        $tahun1 = Input::get('tahun1');
-        $tahun2 = Input::get('tahun2');
-        $tahun3 = Input::get('tahun3');
-        $universitas = Input::get('universitas');
-        $fakultas = Input::get('fakultas');
-        $departemen = Input::get('departemen');
-        $periode = Input::get('periode');
-        $universitas2 = Input::get('universitas2');
-        $fakultas2 = Input::get('fakultas2');
-        $departemen2 = Input::get('departemen2');
-        $periode2 = Input::get('periode2');
-        $jabatan = Input::get('jabatan');
-        $perusahaan = Input::get('perusahaan');
-        $lokasiperusahaan = Input::get('lokasiperusahaan');
-        $bulanmulai = Input::get('bulanmulai');
-        $tahunmulai = Input::get('tahunmulai');
-        $bulanakhir = Input::get('bulanakhir');
-        $tahunakhir = Input::get('tahunakhir');
-
-        $data['data'] = array(
-            'noktp' => $noktp,
-            'tmplhr' => $tmplhr,
-            'tgllhr' => $tgllhr,
-            'jk' => $jk,
-            'agama' => $agama,
-            'goldar' => $goldar,
-            'suku' => $suku,
-            'status' => $status,
-            'biodata' => $biodata,
-            'idline' => $idline,
-            'idfb' => $idfb,
-            'idig' => $idig,
-            'idtwitter' => $idtwitter,
-            'tahun1' => $tahun1,
-            'tahun2' => $tahun2,
-            'tahun3' => $tahun3,
-            'universitas' => $universitas,
-            'fakultas' => $fakultas,
-            'departemen' => $departemen,
-            'periode' => $periode,
-            'universitas2' => $universitas2,
-            'fakultas2' => $fakultas2,
-            'departemen2' => $departemen2,
-            'periode2' => $periode2,
-            'jabatan' => $jabatan,
-            'perusahaan' => $perusahaan,
-            'lokasiperusahaan' => $lokasiperusahaan,
-            'bulanmulai' => $bulanmulai,
-            'tahunmulai' => $tahunmulai,
-            'bulanakhir' => $bulanakhir,
-            'tahunakhir' => $tahunakhir
-        );
-        dd($data);
-    }
-
     public function do_filldata1(Request $request)
     {
         //$usr_id = Input::get('usr_id');
-        $noktp = Input::get('noktp');
-        $usr_email = Input::get('email');
-        $usr_no_hp = Input::get('nohp');
-        $usr_alamat = Input::get('alamat');
-        $tmplhr = Input::get('tmplhr');
-        $tgllhr = Input::get('tgllhr');
-        $jk = Input::get('jk');
-        $agama = Input::get('agama');
-        $goldar = Input::get('goldar');
-        $suku = Input::get('suku');
-        $status = Input::get('status');
-        $biodata = Input::get('biodata');
-        $idline = Input::get('idline');
-        $idfb = Input::get('idfb');
-        $idig = Input::get('idig');
-        $idtwitter = Input::get('idtwitter');
+        $user_nama = Input::get('nama');
+        $user_email = Input::get('email');
+        $user_no_hp = Input::get('nohp');
+        $user_alamat = Input::get('alamat');
+        $user_tempat_lahir = Input::get('tmplhr');
+        $user_tanggal_lahir = Input::get('tgllhr');
+        $user_jk = Input::get('jk');
+        $user_agama = Input::get('agama');
+        $user_goldar = Input::get('goldar');
+        $user_suku = Input::get('suku');
+        $user_status = Input::get('status');
+        $user_bio = Input::get('biodata');
+        //$idline = Input::get('idline');
+        //$idfb = Input::get('idfb');
+        //$idig = Input::get('idig');
+        //$idtwitter = Input::get('idtwitter');
         // if(Input::file('foto'))
         // {
         //     $image = Input::file('foto');
@@ -198,33 +153,32 @@ class AuthController extends Controller
             $photopath = Input::get('fotosession');
         }
         $data['data'] = array(
-            'usr_no_kta' => $noktp,
-            'usr_email' => $usr_email,
-            'usr_no_hp' => $usr_no_hp,
-            'usr_alamat' => $usr_alamat,
-            'usr_tmpt_lahir' => $tmplhr,
-            'usr_tgl_lahir' => $tgllhr,
-            'usr_jk' => $jk,
-            'usr_agama' => $agama,
-            'usr_goldar' => $goldar,
-            'usr_suku' => $suku,
-            'usr_status' => $status,
-            'usr_bio' => $biodata,
-            'usr_line' => $idline,
-            'usr_fb' => $idfb,
-            'usr_insta' => $idig,
-            'usr_twit' => $idtwitter,
-            'usr_foto' => $photopath,
+            'user_nama' => $user_nama,
+            'user_email' => $user_email,
+            'user_no_hp' => $user_no_hp,
+            'user_alamat' => $user_alamat,
+            'user_tempat_lahir' => $user_tempat_lahir,
+            'user_tanggal_lahir' => $user_tanggal_lahir,
+            'user_jk' => $user_jk,
+            'user_agama' => $user_agama,
+            'user_goldar' => $user_goldar,
+            'user_suku' => $user_suku,
+            'user_status' => $user_status,
+            'user_bio' => $user_bio,
+            // 'user_line' => $idline,
+            // 'user_fb' => $idfb,
+            // 'user_insta' => $idig,
+            // 'user_twit' => $idtwitter,
+            'user_thumbnail' => $photopath,
         );
-        DB::table('members')
-            ->where('usr_id', session('usr_id'))
+        DB::table('user')
+            ->where('user_nrp', session('user_id'))
             ->update($data['data']);
 //        dd($data);
-        Session::put('data1', $data['data']);
+        Session::put('data', $data['data']);
 //        dd(session('data1.usr_no_kta'));
         return redirect()->route('filldata');
     }
-
 
     public function do_filldata2()
     {
@@ -233,15 +187,17 @@ class AuthController extends Controller
         $tahun2 = Input::get('tahun2');
         $tahun3 = Input::get('tahun3');
 
+        $user_tahun_beasiswa = $tahun1.",".$tahun2.",".$tahun3;
+
         $data['data'] = array(
-            'usr_tahun1' => $tahun1,
-            'usr_tahun2' => $tahun2,
-            'usr_tahun3' => $tahun3,
+            'user_tahun_beasiswa' => $user_tahun_beasiswa
         );
-        DB::table('members')
-            ->where('usr_id', session('usr_id'))
+        DB::table('user')
+            ->where('user_nrp', session('user_id'))
             ->update($data['data']);
-        Session::put('data2', $data['data']);
+        Session::put('data2.user_tahun1', $tahun1);
+        Session::put('data2.user_tahun2', $tahun2);
+        Session::put('data2.user_tahun3', $tahun3);
         //dd($data);
         return redirect()->route('filldata');
     }

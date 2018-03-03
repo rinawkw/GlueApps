@@ -12,7 +12,7 @@
                                 </a>
                             {{--<div class="diff-spacer spacer-1" style="background-color:#E3EFF3;color:#E3EFF3;"><i class="fa fa-sign-in"></i></div>--}}
                             <!--== Post Reply ==-->
-                                <h3 style="color: #1a1a1a;">Hai, <b>{{session('name')}}</b>!</h3>
+                                <h3 style="color: #1a1a1a;">Hai <b>{{session('data.user_nama')}}</b>!</h3>
                                 <h4>Mohon lengkapi data berikut terlebih dahulu.</h4>
                                 <div class="short-tabs">
                                     <ul>
@@ -32,37 +32,37 @@
                                                         <label for="foto">Foto Profil</label>
                                                     </div>
                                                     <div class="col-md-12 text-left">
-                                                        @if (session('data1.usr_foto'))
-                                                            <img src="{{URL::asset(session('data1.usr_foto'))}}" height="200" width="200" class="rounded float-left">
+                                                        @if (session('data.user_thumbnail'))
+                                                            <img src="{{URL::asset(session('data.user_thumbnail'))}}" height="200" width="200" class="rounded float-left">
                                                         @endif
                                                     </div>
                                                     <div class="col-md-12">
                                                         <input name="foto" type="file" accept="image/*" class="form">
-                                                        <input name="fotosession" type="hidden" value="{{session('data1.usr_foto')}}">
+                                                        <input name="fotosession" type="hidden" value="{{session('data.user_thumbnail')}}">
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <label for="noktp">Nomor KTP*</label>
-                                                        @if(session('data1.usr_no_kta'))
+                                                        <label for="nama">Nama*</label>
+                                                        @if(session('data.user_nama'))
                                                             <input id="noktp" type="text" placeholder="nomor ktp"
-                                                                   name="noktp"
+                                                                   name="nama"
                                                                    required
                                                                    autofocus
-                                                                   value={{session('data1.usr_no_kta')}}>
+                                                                   value={{session('data.user_nama')}}>
                                                         @else
                                                             <input id="noktp" type="text" placeholder="nomor ktp"
-                                                                   name="noktp"
+                                                                   name="nama"
                                                                    required
                                                                    autofocus>
                                                         @endif
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <label for="email">Email</label>
-                                                        @if(session('data1.usr_email'))
+                                                        <label for="email">Email*</label>
+                                                        @if(session('data.user_email'))
                                                             <input id="email" type="text" placeholder="Email"
                                                                    name="email"
                                                                    required
                                                                    autofocus
-                                                                   value={{session('data1.usr_email')}}>
+                                                                   value={{session('data.user_email')}}>
                                                         @else
                                                             <input id="email" type="text" placeholder="Email"
                                                                    name="email"
@@ -71,12 +71,12 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <label for="nohp">Nomor handphone</label>
-                                                        @if(session('data1.usr_no_hp'))
+                                                        <label for="nohp">Nomor Handphone*</label>
+                                                        @if(session('data.user_no_hp'))
                                                             <input id="nohp" type="text" placeholder="Nomor handphone"
                                                                    name="nohp"
                                                                    autofocus
-                                                                   value={{session('data1.usr_no_hp')}}>
+                                                                   value={{session('data.user_no_hp')}}>
                                                         @else
                                                             <input id="nohp" type="text" placeholder="Nomor handphone"
                                                                    name="nohp"
@@ -84,12 +84,12 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <label for="alamat">Alamat</label>
-                                                        @if(session('data1.usr_alamat'))
+                                                        <label for="alamat">Alamat*</label>
+                                                        @if(session('data.user_alamat'))
                                                             <input id="alamat" type="text" placeholder="Alamat"
                                                                    name="alamat"
                                                                    autofocus
-                                                                   value={{session('data1.usr_alamat')}}>
+                                                                   value={{session('data.user_alamat')}}>
                                                         @else
                                                             <input id="alamat" type="text" placeholder="Alamat"
                                                                    name="alamat"
@@ -97,12 +97,12 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <label for="tmplhr">Tempat Lahir</label>
-                                                        @if(session('data1.usr_tmpt_lahir'))
+                                                        <label for="tmplhr">Tempat Lahir*</label>
+                                                        @if(session('data.user_tempat_lahir'))
                                                             <input id="tmplhr" type="text" placeholder="tempat lahir"
                                                                    name="tmplhr" required
                                                                    autofocus
-                                                                   value={{session('data1.usr_tmpt_lahir')}}>
+                                                                   value={{session('data.user_tempat_lahir')}}>
                                                         @else
                                                             <input id="tmplhr" type="text" placeholder="tempat lahir"
                                                                    name="tmplhr" required
@@ -111,11 +111,11 @@
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label for="tgllhr">Tanggal Lahir*</label>
-                                                        @if(session('data1.usr_tgl_lahir'))
+                                                        @if(session('data.user_tanggal_lahir'))
                                                             <input id="tgllhr" type="date" placeholder="tanggal lahir"
                                                                    name="tgllhr"
                                                                    required autofocus
-                                                                   value={{session('data1.usr_tgl_lahir')}}>
+                                                                   value={{session('data.user_tanggal_lahir')}}>
                                                         @else
                                                             <input id="tgllhr" type="date" placeholder="tanggal lahir"
                                                                    name="tgllhr"
@@ -125,32 +125,32 @@
                                                     <div class="col-md-6">
                                                         <label for="jk">Jenis Kelamin*</label>
                                                         <select name="jk" >
-                                                            @if(session('data1.usr_jk')== 'L')
-                                                                <option value="L" selected>Laki - laki</option>
-                                                                <option value="P">Perempuan</option>
-                                                            @elseif(session('data1.usr_jk')== 'P')
-                                                                <option value="L">Laki - laki</option>
-                                                                <option value="P" selected>Perempuan</option>
+                                                            @if(session('data.user_jk')== 1)
+                                                                <option value=1 selected>Laki - laki</option>
+                                                                <option value=0 >Perempuan</option>
+                                                            @elseif(session('data.user_jk')== 0)
+                                                                <option value=1 >Laki - laki</option>
+                                                                <option value=0 selected>Perempuan</option>
                                                             @else
-                                                                <option value="L">Laki - laki</option>
-                                                                <option value="P">Perempuan</option>
+                                                                <option value=1>Laki - laki</option>
+                                                                <option value=0>Perempuan</option>
                                                             @endif
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="goldar">Golongan Darah*</label>
                                                         <select name="goldar">
-                                                            @if(session('data1.usr_goldar')=='A')
+                                                            @if(session('data.user_goldar')=='A')
                                                                 <option value="A" selected>A</option>
                                                                 <option value="B">B</option>
                                                                 <option value="AB">AB</option>
                                                                 <option value="O">O</option>
-                                                            @elseif(session('data1.usr_goldar')=='B')
+                                                            @elseif(session('data.user_goldar')=='B')
                                                                 <option value="A">A</option>
                                                                 <option value="B" selected>B</option>
                                                                 <option value="AB">AB</option>
                                                                 <option value="O">O</option>
-                                                            @elseif(session('data1.usr_goldar')=='AB')
+                                                            @elseif(session('data.user_goldar')=='AB')
                                                                 <option value="A">A</option>
                                                                 <option value="B">B</option>
                                                                 <option value="AB" selected>AB</option>
@@ -166,42 +166,42 @@
                                                     <div class="col-md-6">
                                                         <label for="agama">Agama*</label>
                                                         <select name="agama">
-                                                            @if(session('data1.usr_agama')=='Islam')
+                                                            @if(session('data.user_agama')=='Islam')
                                                                 <option value="Islam" selected>Islam</option>
                                                                 <option value="Katolik">Katolik</option>
                                                                 <option value="Kristen">Kristen</option>
                                                                 <option value="Hindu">Hindu</option>
                                                                 <option value="Budha">Budha</option>
                                                                 <option value="Konghucu">Konghucu</option>
-                                                            @elseif(session('data1.usr_agama')=='Katolik')
+                                                            @elseif(session('data.user_agama')=='Katolik')
                                                                 <option value="Islam">Islam</option>
                                                                 <option value="Katolik" selected>Katolik</option>
                                                                 <option value="Kristen">Kristen</option>
                                                                 <option value="Hindu">Hindu</option>
                                                                 <option value="Budha">Budha</option>
                                                                 <option value="Konghucu">Konghucu</option>
-                                                            @elseif(session('data1.usr_agama')=='Kristen')
+                                                            @elseif(session('data.user_agama')=='Kristen')
                                                                 <option value="Islam">Islam</option>
                                                                 <option value="Katolik">Katolik</option>
                                                                 <option value="Kristen" selected>Kristen</option>
                                                                 <option value="Hindu">Hindu</option>
                                                                 <option value="Budha">Budha</option>
                                                                 <option value="Konghucu">Konghucu</option>
-                                                            @elseif(session('data1.usr_agama')=='Hindu')
+                                                            @elseif(session('data.user_agama')=='Hindu')
                                                                 <option value="Islam">Islam</option>
                                                                 <option value="Katolik">Katolik</option>
                                                                 <option value="Kristen">Kristen</option>
                                                                 <option value="Hindu" selected>Hindu</option>
                                                                 <option value="Budha">Budha</option>
                                                                 <option value="Konghucu">Konghucu</option>
-                                                            @elseif(session('data1.usr_agama')=='Budha')
+                                                            @elseif(session('data.user_agama')=='Budha')
                                                                 <option value="Islam">Islam</option>
                                                                 <option value="Katolik">Katolik</option>
                                                                 <option value="Kristen">Kristen</option>
                                                                 <option value="Hindu">Hindu</option>
                                                                 <option value="Budha" selected>Budha</option>
                                                                 <option value="Konghucu">Konghucu</option>
-                                                            @elseif(session('data1.usr_agama')=='Konghucu')
+                                                            @elseif(session('data.user_agama')=='Konghucu')
                                                                 <option value="Islam">Islam</option>
                                                                 <option value="Katolik">Katolik</option>
                                                                 <option value="Kristen">Kristen</option>
@@ -221,11 +221,11 @@
 
                                                     <div class="col-md-6">
                                                         <label for="suku">Suku*</label>
-                                                        @if(session('data1.usr_suku'))
+                                                        @if(session('data.user_suku'))
                                                             <input id="suku" type="text" placeholder="suku" name="suku"
                                                                    required
                                                                    autofocus
-                                                                   value="{{session('data1.usr_suku')}}">
+                                                                   value="{{session('data.user_suku')}}">
                                                         @else
                                                             <input id="suku" type="text" placeholder="suku" name="suku"
                                                                    required
@@ -234,12 +234,12 @@
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label for="status">Status*</label>
-                                                        @if(session('data1.usr_status'))
+                                                        @if(session('data.user_status'))
                                                             <input id="status" type="text" placeholder="status"
                                                                    name="status"
                                                                    required
                                                                    autofocus
-                                                                   value="{{session('data1.usr_status')}}">
+                                                                   value="{{session('data.user_status')}}">
                                                         @else
                                                             <input id="status" type="text" placeholder="status"
                                                                    name="status"
@@ -249,17 +249,17 @@
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label for="biodata">Biodata*</label>
-                                                        @if(session('data1.usr_bio'))
+                                                        @if(session('data.user_bio'))
                                                             <textarea name="biodata" id="biodata" placeholder="biodata"
                                                                       cols="35"
-                                                                      rows="3">{{session('data1.usr_bio')}}</textarea>
+                                                                      rows="3">{{session('data.user_bio')}}</textarea>
                                                         @else
                                                             <textarea name="biodata" id="biodata" placeholder="biodata"
                                                                       cols="35"
                                                                       rows="3"></textarea>
                                                         @endif
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <!-- <div class="col-md-6">
                                                         <label for="idline">Id LINE*</label>
                                                         @if(session('data1.usr_line'))
                                                             <input id="idline" type="text" placeholder="id line"
@@ -318,7 +318,7 @@
                                                                    required
                                                                    autofocus>
                                                         @endif
-                                                    </div>
+                                                    </div> -->
                                                     <div class="col-md-12">
                                                         @if (session('error_message'))
                                                             <span class="error-msg comment-error"
@@ -329,9 +329,9 @@
                                                         <p class="form-submit">
                                                             <input name="submit" type="submit" id="button-1"
                                                                    class="submit submit-button" value="Save"/>
-                                                            <input type='hidden' name='usr_id'
-                                                                   value={{session('usr_id')}}
-                                                                           id='usr_id'/>
+                                                            <input type='hidden' name='user_id'
+                                                                   value={{session('user_id')}}
+                                                                           id='user_id'/>
                                                             <input type='hidden' name='comment_parent'
                                                                    id='comment_parent'
                                                                    value='0'/>
@@ -351,12 +351,12 @@
                                                     {!! csrf_field() !!}
                                                     <div class="col-md-4">
                                                         <label for="tahun1">Tahun Pertama*</label>
-                                                        @if(session('data2.usr_tahun1'))
+                                                        @if(session('data2.user_tahun1'))
                                                             <input id="tahun1" type="text" placeholder="tahun pertama"
                                                                    name="tahun1"
                                                                    required
                                                                    autofocus
-                                                                   value="{{session('data2.usr_tahun1')}}">
+                                                                   value="{{session('data2.user_tahun1')}}">
                                                         @else
                                                             <input id="tahun1" type="text" placeholder="tahun pertama"
                                                                    name="tahun1"
@@ -366,10 +366,10 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label for="tahun2">Tahun Kedua</label>
-                                                        @if(session('data2.usr_tahun2'))
+                                                        @if(session('data2.user_tahun2'))
                                                             <input id="tahun2" type="text" placeholder="tahun kedua"
                                                                    name="tahun2"
-                                                                   value="{{session('data2.usr_tahun2')}}">
+                                                                   value="{{session('data2.user_tahun2')}}">
                                                         @else
                                                             <input id="tahun2" type="text" placeholder="tahun kedua"
                                                                    name="tahun2">
@@ -377,10 +377,10 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label for="tahun3">Tahun Ketiga</label>
-                                                        @if(session('data2.usr_tahun3'))
+                                                        @if(session('data2.user_tahun3'))
                                                             <input id="tahun3" type="text" placeholder="tahun ketiga"
                                                                    name="tahun3"
-                                                                   value="{{session('data2.usr_tahun3')}}">
+                                                                   value="{{session('data2.user_tahun3')}}">
                                                         @else
                                                             <input id="tahun3" type="text" placeholder="tahun ketiga"
                                                                    name="tahun3">
@@ -396,9 +396,9 @@
                                                         <p class="form-submit">
                                                             <input name="submit" type="submit" id="button-2"
                                                                    class="submit submit-button" value="Save"/>
-                                                            <input type='hidden' name='usr_id'
-                                                                   value={{session('usr_id')}}
-                                                                           id='usr_id'/>
+                                                            <input type='hidden' name='user_id'
+                                                                   value={{session('user_id')}}
+                                                                           id='user_id'/>
                                                             <input type='hidden' name='comment_parent'
                                                                    id='comment_parent'
                                                                    value='0'/>

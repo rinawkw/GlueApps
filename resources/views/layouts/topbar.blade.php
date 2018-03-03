@@ -12,7 +12,7 @@
                 <li>
                     <a href="#"></i> Notification </a>
                 </li>
-                <li><a href="/profile"></i> {{session('name')}} </a></li>
+                <li><a href="/profile"></i> {{session('data1.user_nama')}} </a></li>
                 <li><a href="/logout"></i> Logout </a></li>
             </ul>
         </nav>
