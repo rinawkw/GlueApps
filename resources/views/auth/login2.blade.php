@@ -12,7 +12,8 @@
             <div class="or-line"></div>
         </div>
 
-        <form action="" method="post">
+        <form class="" role="form" method="POST" action='do_login'>
+            {!! csrf_field() !!}
             <div class="loginbox-textbox">
                 <input style="height: 2.5em; margin-bottom: 0" type="text" id="username" name="username" class="form-control" placeholder="username" />
             </div>

@@ -18,7 +18,7 @@ class AuthController extends Controller
      */
     public function login()
     {
-        return view('auth.login');
+        return view('auth.login2');
     }
 
     public function do_login()
@@ -40,7 +40,7 @@ class AuthController extends Controller
 
     public function register()
     {
-        return view('auth.register');
+        return view('auth.register2');
     }
 
     public function filldata()
