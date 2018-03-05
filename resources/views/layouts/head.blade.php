@@ -25,6 +25,9 @@
     <!-- include summernote css/js-->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+    <!-- form -->
+    <!-- <script src="/js/form.js" type="text/javascript"></script>
+    <link href="/css/form.css" rel="stylesheet" type="text/css"> -->
 
     <!--Beyond styles-->
     <link href="/css/beyond.min.css" rel="stylesheet" />

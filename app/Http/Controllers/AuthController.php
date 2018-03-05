@@ -252,21 +252,21 @@ class AuthController extends Controller
         $tahunmulai = Input::get('tahunmulai');
         $bulanakhir = Input::get('bulanakhir');
         $tahunakhir = Input::get('tahunakhir');
+        $masukkeluar = $bulanmulai."/".$tahunmulai.","."$bulanakhir"."/".$tahunakhir;
 
         $data['data'] = array(
-            'work_usr_id' => session('usr_id'),
-            'work_jabatan' => $jabatan,
-            'work_company' => $perusahaan,
-            'work_location' => $lokasiperusahaan,
-            'work_bulan1' => $bulanmulai,
-            'work_tahun1' => $tahunmulai,
-            'work_bulan2' => $bulanakhir,
-            'work_tahun2' => $tahunakhir
+            'user_nrp' => session('user_id'),
+            'kerja_jabatan' => $jabatan,
+            'kerja_perusahaan' => $perusahaan,
+            'kerja_lokasi' => $lokasiperusahaan,
+            'kerja_masuk_keluar' => $masukkeluar,
         );
-        DB::table('work')
-            ->where('work_usr_id', session('usr_id'))
-            ->update($data['data']);
-        Session::put('data4', $data['data']);
+        DB::table('user_kerja')
+            ->insert($data['data']);
+        Session::put('data.kerja_bulan_masuk', $bulanmulai);
+        Session::put('data.kerja_tahun_masuk', $tahunmulai);
+        Session::put('data.kerja_bulan_keluar', $bulanakhir);
+        Session::put('data.kerja_tahun_keluar', $tahunakhir);
         //dd($data);
         return redirect()->route('filldata');
     }

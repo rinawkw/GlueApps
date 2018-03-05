@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/cobaform', function () {
+    return view('auth.cobaform');
+});
+
 Route::group(['middleware' => ['grouphome']], function () {
 	Route::get('/','HomeController@index')->name('home');
 	Route::get('/home','HomeController@index')->name('home');
