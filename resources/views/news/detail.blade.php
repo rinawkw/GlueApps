@@ -5,17 +5,17 @@
             <div class="wide-article-container">
                 <div class="article-heading">
                     <div class="main-heading">
-                        <h2>{{$post->judul}}</h2>
+                        <h2>{{$post->event_judul}}</h2>
                         <h4>by Zigmars Berzins</h4>
                     </div>
                     <div class="post-meta">
-                        <span>{{$post->tanggal}}</span>
+                        <span>{{$post->event_tanggal}}</span>
                         {{--<span><a href="post.html">23 comments</a></span>--}}
-                        <span>{{$post->waktu}}</span>
-                        <span>{{$post->lokasi}}</span>
+                        <span>{{$post->event_waktu}}</span>
+                        <span>{{$post->event_lokasi}}</span>
                     </div>
                 </div>
-                <div class="article-image"><img src="/{{$post->foto}}" alt=""></div>
+                <div class="article-image"><img src="/{{$post->event_foto}}" alt=""></div>
             </div>
         </div>
     </section>
@@ -27,9 +27,9 @@
                 <div class="col-md-8">
                     <div class="theiaStickySidebar">
                         <div class="content ot-article">
-                            <p>
-                                {{$post->deskripsi}}
-                            </p>
+                            <div>
+                                    {{$post->event_deskripsi}}
+                            </div>
                         </div>
                         {{--<div class="ot-article-tags"><span><i class="fa fa-tags"></i></span><a href="index-grid.html">Street Art</a> <a href="index-grid.html">Fashion</a></div>--}}
                         {{--<div class="ot-next-prev-cont">--}}
@@ -80,10 +80,10 @@
                                             <div class="comment-author">
                                                 <img src="/images/event/1.jpg" alt="Author">
                                                 <a href="#" rel="external nofollow" class="comment-author-name">{{$value->fk_user}}</a>
-                                                <span class="comment-meta">{{$value->waktu}}</span>
+                                                <span class="comment-meta">{{$value->comment_created}}</span>
                                             </div>
                                             <div class="comment-body">
-                                                <p>{{$value->komentar}}</p>
+                                                <p>{{$value->comment_text}}</p>
                                                 {{--<a href="#" class="comment-reply-link"><i class="fa fa-reply"></i> Reply</a>--}}
                                             </div>
                                         </div>

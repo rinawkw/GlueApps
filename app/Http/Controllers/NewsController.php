@@ -24,7 +24,7 @@ class NewsController extends Controller
     }
     public function detail($event_id)
     {
-        $post = DB::table('event')->where('id',$event_id)->first();
+        $post = DB::table('event')->where('idevent',$event_id)->first();
         $comments = $this->getComment($event_id);
         $comment_num = count($comments);
 //        dd($comment_num);
@@ -33,7 +33,7 @@ class NewsController extends Controller
 
     public function getComment($event_id)
     {
-        $comments = DB::table('komentar_event')->where('fk_event',$event_id)->get();
+        $comments = DB::table('event_comment')->where('event_idevent',$event_id)->get();
         return $comments;
     }
 
