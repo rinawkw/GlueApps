@@ -21,13 +21,13 @@
             </li>
             <li><a href="/{{'members'}}"><i class="fa fa-users"></i> GenBI </a></li>
             <li><a href="/{{'about'}}"><i class="fa fa-star"></i> About </a></li>
-            <li><a href="contact.html"><i class="fa fa-map-marker"></i> Contact</a></li>
+            <li><a href="/{{'contact'}}"><i class="fa fa-map-marker"></i> Contact</a></li>
         @else
             <li>
                 <a href="/{{'home'}}"><i class="fa fa-home"></i> Home </a>
             </li>
             <li><a href="/{{'about'}}"><i class="fa fa-star"></i> About </a></li>
-            <li><a href="contact.html"><i class="fa fa-map-marker"></i> Contact</a></li>
+            <li><a href="/{{'contact'}}"><i class="fa fa-map-marker"></i> Contact</a></li>
         @endif    
         </ul>
     </div>

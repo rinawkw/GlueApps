@@ -20,6 +20,8 @@ Route::get('/home','HomeController@index')->name('home');
 
 Route::get('/about','AboutController@index')->name('about');
 
+Route::get('/contact','ContactController@index')->name('contact');
+
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/do_login','AuthController@do_login')->middleware('login');
 Route::get('/logout', 'AuthController@logout')->name('logout');

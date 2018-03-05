@@ -6,20 +6,14 @@
             <input type="checkbox" id="show-top-menu">
             <ul class="menu" id="mobile-menu">
             @if(session('user_id'))
-                <li>
-                    <a href="index.html"> Chats </a>
-                </li>
-
-                <li>
-                    <a href="#"></i> Notification </a>
-                </li>
+                <li><a href="index.html"> Chats </a></li>
+                <li><a href="#"></i> Notification </a></li>
                 <li><a href="/profile"></i> {{session('data.user_nama')}} </a></li>
                 <li><a href="/logout"></i> Logout </a></li>
                 @else
                 <li><a href="/login"></i> Login </a></li>
                 @endif
             </ul>
-            
         </nav>
         <!-- end main menu -->
         <span class="top-bar-socials">
