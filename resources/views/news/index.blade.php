@@ -15,21 +15,21 @@
                                 <!-- end list post item -->
                                     <div class="list-post">
                                         <div class="list-post-container">
-                                            <a href="post.html"><img src="{{$value->foto}}" alt=""></a>
+                                            <a href="post.html"><img src="{{$value->event_foto}}" alt=""></a>
                                             {{--<div class="post-cat2">--}}
                                                 {{--<span style="background-color: #F0CE49">Transport</span>--}}
                                             {{--</div>--}}
                                         </div>
                                         <div class="list-post-body">
-                                            <h2><a href="news/{{$value->id}}">{{ $value->judul }}</a>
+                                            <h2><a href="news/{{$value->idevent}}">{{ $value->event_judul }}</a>
                                             </h2>
                                             <div class="post-meta">
-                                                <span>{{$value->tanggal}}</span>
+                                                <span>{{$value->event_tanggal}}</span>
                                                 {{--<span><a href="post.html">23 comments</a></span>--}}
-                                                <span>{{$value->waktu}}</span>
-                                                <span>{{$value->lokasi}}</span>
+                                                <span>{{$value->event_waktu}}</span>
+                                                <span>{{$value->event_lokasi}}</span>
                                             </div>
-                                            <p><?php echo str_limit($value->deskripsi, 200)?></p>
+                                            <p><?php echo str_limit($value->event_deskripsi, 200)?></p>
                                         </div>
                                     </div>
                                     <!-- end list post item -->
@@ -40,7 +40,6 @@
                 </div>
                 <div class="col-md-4">
                     <aside class="sidebar">
-
                         <div class="widget-container">
                             <h4 class="section-title">Social</h4>
                             <div class="ot-social-button">

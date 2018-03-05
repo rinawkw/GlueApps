@@ -19,8 +19,20 @@
                         <div class="comment-form-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form class="comment-form" method="POST" action="{{ route('summernote.post') }}">
-                                        {{ csrf_field() }}
+                                    <form class="comment-form" method="POST" role="form" id="form" action="{{ route('summernote.post') }}" enctype="multipart/form-data">
+                                        {!! csrf_field() !!}
+                                        <div class="col-md-12">
+                                            <label for="foto">Foto Event</label>
+                                        </div>
+                                        <div class="col-md-12 text-left">
+                                        @if (session('event_foto'))
+                                            <img src="{{URL::asset(session('event_foto'))}}" height="200" width="200" class="rounded float-left">
+                                        @endif
+                                        </div>
+                                        <div class="col-md-12" >
+                                            <input name="foto" style="height:50px" type="file" accept="image/*" class="form">
+                                            <input name="fotosession" type="hidden" value="{{session('event_foto')}}">
+                                        </div> 
                                         <div class="col-md-12">
                                             <label for="title">Judul</label>
                                             <input id="title" type="text" placeholder="judul" name="title">
@@ -31,14 +43,14 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label for="date">Tanggal</label>
-                                            <input type="date" placeholder="tanggal lahir"
-                                                   name="tgllhr">
+                                            <input type="date" placeholder="tanggal"
+                                                   name="tanggal">
                                         </div>
                                         <div class="col-md-3">
                                             <label for="date">Waktu</label>
                                             <br><br>
                                             <div id="datetimepicker3" class="input-append">
-                                                <input data-format="hh:mm:ss" type="text">
+                                                <input data-format="hh:mm:ss" name="waktu" type="text">
                                                 <span class="add-on">
                                                     <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                                                 </span>

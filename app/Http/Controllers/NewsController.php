@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rules\In;
 
 class NewsController extends Controller
 {
@@ -15,7 +18,7 @@ class NewsController extends Controller
     public function index()
     {
         $news = DB::table('event')->get();
-//        dd($news);
+    //    dd($news);
         return view('news.index',compact('news'));
 
     }
@@ -83,23 +86,47 @@ class NewsController extends Controller
         $this->validate($request, [
             'detail' => 'required',
         ]);
+        $title=$request->input('title');
+        $location=$request->input('location');
+        $tanggal=$request->input('tanggal');
+        $waktu=$request->input('waktu');
         $detail=$request->input('detail');
         $dom = new \DomDocument();
         $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-        $images = $dom->getElementsByTagName('img');
-        foreach($images as $k => $img){
-            $data = $img->getAttribute('src');
-            list($type, $data) = explode(';', $data);
-            list(, $data)      = explode(',', $data);
-            $data = base64_decode($data);
-            $image_name= "/upload/" . time().$k.'.png';
-            $path = public_path() . $image_name;
-            file_put_contents($path, $data);
-            $img->removeAttribute('src');
-            $img->setAttribute('src', $image_name);
+        // $images = $dom->getElementsByTagName('img');
+        // foreach($images as $k => $img){
+        //     $data = $img->getAttribute('src');
+        //     list($type, $data) = explode(';', $data);
+        //     list(, $data)      = explode(',', $data);
+        //     $data = base64_decode($data);
+        //     $image_name= "/uploads/" . time().$k.'.png';
+        //     $path = public_path() . $image_name;
+        //     file_put_contents($path, $data);
+        //     $img->removeAttribute('src');
+        //     $img->setAttribute('src', $image_name);
+        // }
+        if ($request->file('foto')){
+            $img = time() . "." . $request->file('foto')->getClientOriginalExtension();
+            $request->file('foto')->move(base_path() . '/public/images/foto/', $img);
+            $photopath = "images/foto/" . $img;
         }
-        $detail = $dom->saveHTML();
-        dd($detail);
+        else {
+            $photopath = Input::get('fotosession');
+        }
+        $data['data'] = array(
+            'user_nrp' => session('user_id'),
+            'event_judul' => $title,
+            'event_deskripsi' => $detail,
+            'event_tanggal' => $tanggal,
+            'event_waktu' => $waktu,
+            'event_lokasi' => $location,
+            'event_foto' => $photopath,
+        );
+        DB::table('event')
+            ->insert($data['data']);
+        // dd($detail);
+        // dd($path);
+        return redirect()->route('news');
     }
 
     /**

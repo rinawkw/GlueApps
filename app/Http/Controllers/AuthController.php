@@ -50,7 +50,7 @@ class AuthController extends Controller
             'user_suku' => $user[0]->user_suku,
             'user_status' => $user[0]->user_status,
             'user_bio' => $user[0]->user_bio,
-            'user_foto' => $user[0]->user_thumbnail,
+            'user_foto' => $user[0]->user_foto,
             'user_tahun_beasiswa' => $user[0]->user_tahun_beasiswa,
             'kuliah_fakultas1' => $user[0]->kuliah_fakultas1,
             'kuliah_jurusan1' => $user[0]->kuliah_jurusan1,
