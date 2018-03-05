@@ -50,11 +50,23 @@ class AuthController extends Controller
             'user_suku' => $user[0]->user_suku,
             'user_status' => $user[0]->user_status,
             'user_bio' => $user[0]->user_bio,
-            'user_thumbnail' => $user[0]->user_thumbnail,
+            'user_foto' => $user[0]->user_thumbnail,
             'user_tahun_beasiswa' => $user[0]->user_tahun_beasiswa,
-
+            'kuliah_fakultas1' => $user[0]->kuliah_fakultas1,
+            'kuliah_jurusan1' => $user[0]->kuliah_jurusan1,
+            'kuliah_masuk_keluar1' => $user[0]->kuliah_masuk_keluar1,
+            'kuliah_univ2' => $user[0]->kuliah_univ2,
+            'kuliah_fakultas2' => $user[0]->kuliah_fakultas2,
+            'kuliah_jurusan2' => $user[0]->kuliah_jurusan2,
+            'kuliah_masuk_keluar2' => $user[0]->kuliah_masuk_keluar2,
         );
+        // dd($data);
         Session::put('data', $data['data']);
+        $tahun = explode(",", $user[0]->user_tahun_beasiswa);
+        Session::put('data.user_tahun1', $tahun[0]);
+        Session::put('data.user_tahun2', $tahun[1]);
+        Session::put('data.user_tahun3', $tahun[2]);
+        // dd($tahun[0]);
     }
 
     public function logout()
@@ -169,14 +181,15 @@ class AuthController extends Controller
             // 'user_fb' => $idfb,
             // 'user_insta' => $idig,
             // 'user_twit' => $idtwitter,
-            'user_thumbnail' => $photopath,
+            'user_foto' => $photopath,
         );
         DB::table('user')
             ->where('user_nrp', session('user_id'))
             ->update($data['data']);
-//        dd($data);
-        Session::put('data', $data['data']);
-//        dd(session('data1.usr_no_kta'));
+        //  dd($data);
+        $this->get_data_user();        
+        //  Session::put('data', $data['data']);
+        //  dd(session('data1.usr_no_kta'));
         return redirect()->route('filldata');
     }
 
@@ -195,15 +208,13 @@ class AuthController extends Controller
         DB::table('user')
             ->where('user_nrp', session('user_id'))
             ->update($data['data']);
-        Session::put('data2.user_tahun1', $tahun1);
-        Session::put('data2.user_tahun2', $tahun2);
-        Session::put('data2.user_tahun3', $tahun3);
+        $this->get_data_user();        
         //dd($data);
         return redirect()->route('filldata');
     }
     public function do_filldata3()
     {
-        $usr_id = Input::get('usr_id');
+        // $user_id = Input::get('usr_id');
         $universitas = Input::get('universitas');
         $fakultas = Input::get('fakultas');
         $departemen = Input::get('departemen');
@@ -214,20 +225,21 @@ class AuthController extends Controller
         $periode2 = Input::get('periode2');
 
         $data['data'] = array(
-            'usr_univ1' => $universitas,
-            'usr_fakultas1' => $fakultas,
-            'usr_jurusan1' => $departemen,
-            'usr_period1' => $periode,
-            'usr_univ2' => $universitas2,
-            'usr_fakultas2' => $fakultas2,
-            'usr_jurusan2' => $departemen2,
-            'usr_period2' => $periode2,
+            'kuliah_fakultas1' => $fakultas,
+            'kuliah_jurusan1' => $departemen,
+            'kuliah_masuk_keluar1' => $periode,
+            // 'kuliah_univ2' => $universitas2,
+            // 'kuliah_fakultas2' => $fakultas2,
+            // 'kuliah_jurusan2' => $departemen2,
+            // 'kuliah_masuk_keluar2' => $periode2,
         );
-        DB::table('members')
-            ->where('usr_id', session('usr_id'))
+        DB::table('user')
+            ->where('user_nrp', session('user_id'))
             ->update($data['data']);
-        Session::put('data3', $data['data']);
-        //dd($data);
+        $this->get_data_user();        
+        // Session::put('data', $data['data']);
+        // Session::put('data.univ1', $universitas);
+        // dd($data);
         return redirect()->route('filldata');
     }
     public function do_filldata4()

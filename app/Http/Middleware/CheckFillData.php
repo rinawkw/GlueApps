@@ -19,7 +19,9 @@ class CheckFillData
      */
     public function handle($request, Closure $next)
     {
-        $flagLogin = DB::select('CALL sp_checkfilldata(?)', [session('usr_id')]);
+        $flagLogin = DB::select('CALL sp_checkfilldata(?)', [session('user_id')]);
+        // echo session('user_id');
+        // dd($flagLogin);
         if ($flagLogin[0]->flag == 2){
             return redirect()->route('filldata');
         }
