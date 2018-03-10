@@ -15,8 +15,7 @@
 //     return view('auth.cobaform');
 // });
 
-Route::get('/','HomeController@index')->name('home');
-Route::get('/home','HomeController@index')->name('home');
+Route::get('/','HomeController@index')->name('external');
 
 Route::get('/about','AboutController@index')->name('about');
 
@@ -29,13 +28,16 @@ Route::get('/logout', 'AuthController@logout')->name('logout');
 Route::get('/register', 'AuthController@register')->name('register');
 Route::post('/do_register','AuthController@do_register')->middleware('register');
 
+Route::post('/do_filldata', 'AuthController@do_filldata');
+Route::get('/filldata', 'AuthController@filldata')->name('filldata');
+Route::post('/do_filldata1', 'AuthController@do_filldata1');
+Route::post('/do_filldata2', 'AuthController@do_filldata2');
+Route::post('/do_filldata3', 'AuthController@do_filldata3');
+Route::post('/do_filldata4', 'AuthController@do_filldata4');
+
 Route::group(['middleware' => ['grouphome']], function () {
-	Route::get('/filldata', 'AuthController@filldata')->name('filldata');
-	Route::post('/do_filldata', 'AuthController@do_filldata');
-	Route::post('/do_filldata1', 'AuthController@do_filldata1');
-	Route::post('/do_filldata2', 'AuthController@do_filldata2');
-	Route::post('/do_filldata3', 'AuthController@do_filldata3');
-	Route::post('/do_filldata4', 'AuthController@do_filldata4');
+	
+	Route::get('/home','HomeController@index')->name('home');
 
     Route::get('/profile','AuthController@show_myprofile')->name('profile');
 	Route::get('/profile/{username}','AuthController@show_profile');

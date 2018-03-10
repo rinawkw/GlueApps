@@ -28,6 +28,7 @@
                     <div class="theiaStickySidebar">
                         <div class="content ot-article">
                             <div>
+                            testing
                                     {{$post->event_deskripsi}}
                             </div>
                         </div>

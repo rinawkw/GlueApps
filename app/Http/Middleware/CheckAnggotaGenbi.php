@@ -19,7 +19,7 @@ class CheckAnggotaGenbi
     {
         $flagRegister = DB::select('call sp_isgenbi(?)', [$request->nimnrp]);
         if($flagRegister[0]->flag == 1) {
-            Session::put('nrp', $request->nimnrp);
+            Session::flash('message',$flagRegister[0]->message);
         }
         else {
             Session::flash('error_message',$flagRegister[0]->message);

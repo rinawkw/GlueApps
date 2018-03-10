@@ -2,6 +2,27 @@
 <html lang="en">
 @include('layouts.head')
 <body>
+@if(null!=session('error_message'))
+<!-- Modal -->
+<div class="" id="myModal" role="dialog">
+    <div class="modal-dialog" style="z-index: 1050;">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Gagal Registrasi</h4>
+        </div>
+        <div class="modal-body">
+        {{session('error_message')}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+@endif
 <div style="max-width: 500px; align-self: center; position:relative; margin: 5% auto"
      class="login-container animated fadeInDown">
     <div style="padding: 2em 2em 1em 2em; width: 500px !important" class="loginbox" align="center">
@@ -27,16 +48,16 @@
                 <input style="height: 2.5em;" id="password" type="password" placeholder="password" name="password"
                        required autofocus class="form-control"/>
             </div>
-            <div class="loginbox-textbox">
+            <!-- <div class="loginbox-textbox">
                 <input style="height: 2.5em;" id="nomortelepon" type="text" placeholder="nomor telepon"
                        name="nomortelepon" required autofocus class="form-control"/>
-            </div>
+            </div> -->
             <div class="loginbox-textbox">
                 <input style="height: 2.5em;" id="nimnrp" type="text" placeholder="nim / nrp" name="nimnrp" required
                        autofocus class="form-control"/>
             </div>
             <div class="loginbox-textbox">
-                <input type="button" id="register" name="register" value="Register" data-toggle="modal"
+                <input type="submit" id="register" name="register" value="Register" data-toggle="modal"
                        data-target="#on" class="btn btn-info btn-block" placeholder="Register"/>
             </div>
             <div class="loginbox-or">
@@ -44,7 +65,9 @@
                 <div class="or">OR</div>
             </div>
             <div class="loginbox-submit">
-                <input type="submit" class="btn btn-primary btn-block" value="Login Now">
+            <a href="{{'login'}}">
+                <input type="button" class="btn btn-primary btn-block" value="Login Now">
+            </a>
             </div>
         </form>
 
@@ -107,6 +130,12 @@
         });
     }
     ;</script>
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#myModal").modal('show');
+    });
+</script>
 </body>
 <!--Body Ends-->
 

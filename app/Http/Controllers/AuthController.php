@@ -72,7 +72,7 @@ class AuthController extends Controller
     public function logout()
     {
         Session::flush();
-        return redirect()->route('home');
+        return redirect()->route('external');
     }
 
     public function register()
@@ -91,41 +91,16 @@ class AuthController extends Controller
         $namalengkap = Input::get('namalengkap');
         $email = Input::get('email');
         $password = Input::get('password');
-        $nomortelepon = Input::get('nomortelepon');
+        // $nomortelepon = Input::get('nomortelepon');
         $nimnrp = Input::get('nimnrp');
         $data['data'] = array(
-            'namalengkap' => $namalengkap,
-            'email' => $email,
-            'password' => $password,
-            'nomortelepon' => $nomortelepon,
-            'nimnrp' => $nimnrp
+            'user_nama' => $namalengkap,
+            'user_email' => $email,
+            'user_password' => $password,
         );
-        $usr_id = DB::table('members')
-            ->insertGetId(
-                array('usr_fullname' => $namalengkap)
-            );
-        $id = DB::table('pengguna')
-            ->insertGetId(
-                array(
-                    'username' => $email,
-                    'password' => $password,
-                    'nama_pengguna' => $namalengkap,
-                    'nrp' => $nimnrp,
-                    'hak_akses' => 2,
-                    'fk_usr_id' => $usr_id
-                ));
-
-        DB::table('work')
-            ->insert(
-                array(
-                    'work_usr_id' => $usr_id
-                ));
-        DB::table('master_nrp')
-            ->where('nrp', $nimnrp)
-            ->update(array('id_pengguna' => $id));
-        
-        Session::put('usr_id',$usr_id);
-//        DB::select('call sp_createuser(?,?,?)', [$email, $password, $namalengkap]);
+        DB::table('user')
+            ->where('user_nrp', $nimnrp)
+            ->update($data['data']);
         return redirect()->route('login');
     }
 
