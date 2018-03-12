@@ -60,12 +60,30 @@ class AuthController extends Controller
             'kuliah_jurusan2' => $user[0]->kuliah_jurusan2,
             'kuliah_masuk_keluar2' => $user[0]->kuliah_masuk_keluar2,
         );
-        // dd($data);
+        $kerja = DB::table('user_kerja')->where('user_nrp', session('user_id'))->get();
+        //dd($kerja);
         Session::put('data', $data['data']);
+        if(isset($kerja[0])) {
+            Session::put('data.kerja_jabatan', $kerja[0]->kerja_jabatan);
+            Session::put('data.kerja_perusahaan', $kerja[0]->kerja_perusahaan);
+            Session::put('data.kerja_lokasi', $kerja[0]->kerja_lokasi);
+
+            $kerja_waktu = explode(",",$kerja[0]->kerja_masuk_keluar);
+            $kerja_masuk = explode("/",$kerja_waktu[0]);
+            $kerja_keluar = explode("/",$kerja_waktu[1]);
+            Session::put('data.kerja_bulan_masuk', $kerja_masuk[0]);
+            Session::put('data.kerja_tahun_masuk', $kerja_masuk[1]);
+            Session::put('data.kerja_bulan_keluar', $kerja_keluar[0]);
+            Session::put('data.kerja_tahun_keluar', $kerja_keluar[1]);
+        }
         $tahun = explode(",", $user[0]->user_tahun_beasiswa);
         Session::put('data.user_tahun1', $tahun[0]);
-        Session::put('data.user_tahun2', $tahun[1]);
-        Session::put('data.user_tahun3', $tahun[2]);
+        if(isset($tahun[1])){
+            Session::put('data.user_tahun2', $tahun[1]);
+        }
+        if(isset($tahun[2])){
+            Session::put('data.user_tahun3', $tahun[2]);
+        }
         // dd($tahun[0]);
     }
 
@@ -157,6 +175,7 @@ class AuthController extends Controller
             // 'user_insta' => $idig,
             // 'user_twit' => $idtwitter,
             'user_foto' => $photopath,
+            'user_thumbnail' => $photopath,
         );
         DB::table('user')
             ->where('user_nrp', session('user_id'))
@@ -235,9 +254,15 @@ class AuthController extends Controller
             'kerja_perusahaan' => $perusahaan,
             'kerja_lokasi' => $lokasiperusahaan,
             'kerja_masuk_keluar' => $masukkeluar,
+            "kerja_created" =>  \Carbon\Carbon::now(), # \Datetime()
+            "kerja_updated" => \Carbon\Carbon::now(),  # \Datetime()
         );
         DB::table('user_kerja')
             ->insert($data['data']);
+        Session::put('data.kerja_jabatan', $jabatan);
+        Session::put('data.kerja_perusahaan', $perusahaan);
+        Session::put('data.kerja_lokasi', $lokasiperusahaan);
+
         Session::put('data.kerja_bulan_masuk', $bulanmulai);
         Session::put('data.kerja_tahun_masuk', $tahunmulai);
         Session::put('data.kerja_bulan_keluar', $bulanakhir);
@@ -248,16 +273,17 @@ class AuthController extends Controller
     public function show_myprofile()
     {
         $edit = 1;
-        $nama = session('name');
-        $user = DB::table('members')->where('usr_id', session('usr_id'))->get();
-        $userwork = DB::table('work')->where('work_usr_id', session('usr_id'))->get();
-        $user1 = (array) $user[0];
-        $userwork1 = (array) $userwork[0];
-        Session::put('data1', $user1);
-        Session::put('data2', $user1);
-        Session::put('data3', $user1);
-        Session::put('data4', $userwork1);
-        return view('profile.profile', compact('nama','user','userwork','edit'));
+        $nama = session('data.user_nama');
+        $user = DB::table('user')->where('user_nrp', session('user_id'))->get();
+        $userwork = DB::table('user_kerja')->where('user_nrp', session('user_id'))->get();
+
+        // $user1 = (array) $user[0];
+        // $userwork1 = (array) $userwork[0];
+        // Session::put('data1', $user1);
+        // Session::put('data2', $user1);
+        // Session::put('data3', $user1);
+        // Session::put('data4', $userwork1);
+        return view('profile.profile', compact('edit'));
     }
     public function show_profile($usr_id)
     {

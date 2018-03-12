@@ -15,126 +15,313 @@
                                         </a>
                                     {{--<div class="diff-spacer spacer-1" style="background-color:#E3EFF3;color:#E3EFF3;"><i class="fa fa-sign-in"></i></div>--}}
                                     <!--== Post Reply ==-->
-                                        <h3 style="color: #1a1a1a;"><b>{{$nama}}</b></h3>
-                                        @if ($user[0]->usr_foto)
-                                            <img src="{{URL::asset($user[0]->usr_foto)}}" height="200" width="200" class="img-thumbnail">
-                                        @endif
+                                        <h3 style="color: #1a1a1a;">Hai <b>{{session('data.user_nama')}}</b>!</h3>
+                                        <h4>Mohon lengkapi data berikut terlebih dahulu.</h4>
                                         <div class="short-tabs">
                                             <ul>
-                                                <li class="active"><a href="javascript:void(0);">Personal</a></li>
-                                                <li><a href="javascript:void(0);">Keanggotaan</a></li>
+                                                <li class="active"><a href="javascript:void(0);">Identitas</a></li>
+                                                <li><a href="javascript:void(0);">Tahun Keanggotaan</a></li>
                                                 <li><a href="javascript:void(0);">Pendidikan</a></li>
                                                 <li><a href="javascript:void(0);">Pengalaman Pekerjaan</a></li>
                                             </ul>
                                             <div class="active">
-                                                {{--<h4 class="main-heading"><span>Data Identitas</span></h4>--}}
+                                                <h4 class="main-heading"><span>Data Identitas Diri</span></h4>
                                                 <div class="comment-form-body">
                                                     <div class="row" id="continer">
                                                         <form id="form" class="comment-form" role="form" method="POST"
-                                                              action='do_filldata1'>
+                                                              action='do_filldata1' enctype="multipart/form-data">
                                                             {!! csrf_field() !!}
                                                             <div class="col-md-12">
-                                                                <label for="noktp">Nomor KTP</label>
-                                                                <input id="tmplhr" type="text" placeholder="tempat lahir"
-                                                                        name="tmplhr" 
-                                                                        value={{$user[0]->usr_no_kta}}
-                                                                        disabled>
+                                                                <label for="foto">Foto Profil</label>
+                                                            </div>
+                                                            <div class="col-md-12 text-left">
+                                                                @if (session('data.user_foto'))
+                                                                    <img src="{{URL::asset(session('data.user_foto'))}}" height="200" width="200" class="rounded float-left">
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <label for="email">Email</label>
-                                                                <input id="email" type="text" placeholder="Email" 
-                                                                        name="email"
-                                                                        value={{$user[0]->usr_email}}
-                                                                        disabled>
+                                                                <input name="foto" type="file" accept="image/*" class="form">
+                                                                <input name="fotosession" type="hidden" value="{{session('data.user_foto')}}">
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <label for="nohp">Nomor handphone</label>
-                                                                <input id="nohp" type="text" placeholder="Nomor handphone"
-                                                                           name="nohp"
-                                                                           value={{$user[0]->usr_no_hp}}
-                                                                            disabled>
+                                                                <label for="nama">Nama*</label>
+                                                                @if(session('data.user_nama'))
+                                                                    <input id="noktp" type="text" placeholder="Nama"
+                                                                           name="nama"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data.user_nama')}}">
+                                                                @else
+                                                                    <input id="noktp" type="text" placeholder="Nama"
+                                                                           name="nama"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <label for="alamat">Alamat</label>
-                                                                <input id="alamat" type="text" placeholder="Alamat"
-                                                                           name="alamat"
-                                                                           value={{$user[0]->usr_alamat}}
-                                                                          disabled>
+                                                                <label for="email">Email*</label>
+                                                                @if(session('data.user_email'))
+                                                                    <input id="email" type="text" placeholder="Email"
+                                                                           name="email"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data.user_email')}}">
+                                                                @else
+                                                                    <input id="email" type="text" placeholder="Email"
+                                                                           name="email" 
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <label for="tmplhr">Tempat Lahir</label>
-                                                                <input id="tmplhr" type="text" placeholder="tempat lahir"
-                                                                        name="tmplhr" 
-                                                                        value={{$user[0]->usr_tmpt_lahir}}
-                                                                        disabled>
+                                                                <label for="nohp">Nomor Handphone*</label>
+                                                                @if(session('data.user_no_hp'))
+                                                                    <input id="nohp" type="text" placeholder="Nomor handphone"
+                                                                           name="nohp" required
+                                                                           autofocus
+                                                                           value="{{session('data.user_no_hp')}}">
+                                                                @else
+                                                                    <input id="nohp" type="text" placeholder="Nomor handphone"
+                                                                           name="nohp" required
+                                                                           autofocus>
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <label for="tgllhr">Tanggal Lahir</label>
-                                                                <input id="tmplhr" type="text" placeholder="tempat lahir"
-                                                                        name="tmplhr" 
-                                                                        value={{$user[0]->usr_tgl_lahir}}
-                                                                        disabled>
+                                                                <label for="alamat">Alamat*</label>
+                                                                @if(session('data.user_alamat'))
+                                                                    <input id="alamat" type="text" placeholder="Alamat"
+                                                                           name="alamat" required
+                                                                           autofocus
+                                                                           value="{{session('data.user_alamat')}}">
+                                                                @else
+                                                                    <input id="alamat" type="text" placeholder="Alamat"
+                                                                           name="alamat" required
+                                                                           autofocus>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="tmplhr">Tempat Lahir*</label>
+                                                                @if(session('data.user_tempat_lahir'))
+                                                                    <input id="tmplhr" type="text" placeholder="tempat lahir"
+                                                                           name="tmplhr" required
+                                                                           autofocus
+                                                                           value="{{session('data.user_tempat_lahir')}}">
+                                                                @else
+                                                                    <input id="tmplhr" type="text" placeholder="tempat lahir"
+                                                                           name="tmplhr" required
+                                                                           autofocus>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="tgllhr">Tanggal Lahir*</label>
+                                                                @if(session('data.user_tanggal_lahir'))
+                                                                    <input id="tgllhr" type="date" placeholder="tanggal lahir"
+                                                                           name="tgllhr"
+                                                                           required autofocus
+                                                                           value="{{session('data.user_tanggal_lahir')}}">
+                                                                @else
+                                                                    <input id="tgllhr" type="date" placeholder="tanggal lahir"
+                                                                           name="tgllhr"
+                                                                           required autofocus>
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="jk">Jenis Kelamin</label>
-                                                                    @if($user[0]->usr_jk== 'L')
-                                                                      <input id="tmplhr" type="text" placeholder="tempat lahir"
-                                                                          name="tmplhr" 
-                                                                          value="Laki-laki"
-                                                                          disabled>
-                                                                    @elseif($user[0]->usr_jk== 'P')
-                                                                      <input id="tmplhr" type="text" placeholder="tempat lahir"
-                                                                          name="tmplhr" 
-                                                                          value="Perempuan"
-                                                                          disabled>
+                                                                <label for="jk">Jenis Kelamin*</label>
+                                                                <select name="jk" >
+                                                                    @if(session('data.user_jk')== 1)
+                                                                        <option value=1 selected>Laki - laki</option>
+                                                                        <option value=0 >Perempuan</option>
+                                                                    @elseif(session('data.user_jk')== 0)
+                                                                        <option value=1 >Laki - laki</option>
+                                                                        <option value=0 selected>Perempuan</option>
+                                                                    @else
+                                                                        <option value=1>Laki - laki</option>
+                                                                        <option value=0>Perempuan</option>
                                                                     @endif
+                                                                </select>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="goldar">Golongan Darah</label>
-                                                                <input  id="tmplhr" type="text" placeholder="tempat lahir" 
-                                                                        name="tmplhr" value="{{$user[0]->usr_goldar}}" disabled>
+                                                                <label for="goldar">Golongan Darah*</label>
+                                                                <select name="goldar">
+                                                                    @if(session('data.user_goldar')=='A')
+                                                                        <option value="A" selected>A</option>
+                                                                        <option value="B">B</option>
+                                                                        <option value="AB">AB</option>
+                                                                        <option value="O">O</option>
+                                                                    @elseif(session('data.user_goldar')=='B')
+                                                                        <option value="A">A</option>
+                                                                        <option value="B" selected>B</option>
+                                                                        <option value="AB">AB</option>
+                                                                        <option value="O">O</option>
+                                                                    @elseif(session('data.user_goldar')=='AB')
+                                                                        <option value="A">A</option>
+                                                                        <option value="B">B</option>
+                                                                        <option value="AB" selected>AB</option>
+                                                                        <option value="O">O</option>
+                                                                    @else
+                                                                        <option value="A">A</option>
+                                                                        <option value="B">B</option>
+                                                                        <option value="AB">AB</option>
+                                                                        <option value="O">O</option>
+                                                                    @endif
+                                                                </select>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="agama">Agama</label>
-                                                                <input  id="tmplhr" type="text" placeholder="tempat lahir" 
-                                                                        name="tmplhr" value="{{$user[0]->usr_agama}}" disabled>
+                                                                <label for="agama">Agama*</label>
+                                                                <select name="agama">
+                                                                    @if(session('data.user_agama')=='Islam')
+                                                                        <option value="Islam" selected>Islam</option>
+                                                                        <option value="Katolik">Katolik</option>
+                                                                        <option value="Kristen">Kristen</option>
+                                                                        <option value="Hindu">Hindu</option>
+                                                                        <option value="Budha">Budha</option>
+                                                                        <option value="Konghucu">Konghucu</option>
+                                                                    @elseif(session('data.user_agama')=='Katolik')
+                                                                        <option value="Islam">Islam</option>
+                                                                        <option value="Katolik" selected>Katolik</option>
+                                                                        <option value="Kristen">Kristen</option>
+                                                                        <option value="Hindu">Hindu</option>
+                                                                        <option value="Budha">Budha</option>
+                                                                        <option value="Konghucu">Konghucu</option>
+                                                                    @elseif(session('data.user_agama')=='Kristen')
+                                                                        <option value="Islam">Islam</option>
+                                                                        <option value="Katolik">Katolik</option>
+                                                                        <option value="Kristen" selected>Kristen</option>
+                                                                        <option value="Hindu">Hindu</option>
+                                                                        <option value="Budha">Budha</option>
+                                                                        <option value="Konghucu">Konghucu</option>
+                                                                    @elseif(session('data.user_agama')=='Hindu')
+                                                                        <option value="Islam">Islam</option>
+                                                                        <option value="Katolik">Katolik</option>
+                                                                        <option value="Kristen">Kristen</option>
+                                                                        <option value="Hindu" selected>Hindu</option>
+                                                                        <option value="Budha">Budha</option>
+                                                                        <option value="Konghucu">Konghucu</option>
+                                                                    @elseif(session('data.user_agama')=='Budha')
+                                                                        <option value="Islam">Islam</option>
+                                                                        <option value="Katolik">Katolik</option>
+                                                                        <option value="Kristen">Kristen</option>
+                                                                        <option value="Hindu">Hindu</option>
+                                                                        <option value="Budha" selected>Budha</option>
+                                                                        <option value="Konghucu">Konghucu</option>
+                                                                    @elseif(session('data.user_agama')=='Konghucu')
+                                                                        <option value="Islam">Islam</option>
+                                                                        <option value="Katolik">Katolik</option>
+                                                                        <option value="Kristen">Kristen</option>
+                                                                        <option value="Hindu">Hindu</option>
+                                                                        <option value="Budha">Budha</option>
+                                                                        <option value="Konghucu" selected>Konghucu</option>
+                                                                    @else
+                                                                        <option value="Islam">Islam</option>
+                                                                        <option value="Katolik">Katolik</option>
+                                                                        <option value="Kristen">Kristen</option>
+                                                                        <option value="Hindu">Hindu</option>
+                                                                        <option value="Budha">Budha</option>
+                                                                        <option value="Konghucu">Konghucu</option>
+                                                                    @endif
+                                                                </select>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label for="suku">Suku</label>
-                                                                <input  id="tmplhr" type="text" placeholder="tempat lahir" 
-                                                                        name="tmplhr" value="{{$user[0]->usr_suku}}" disabled>
+                                                                <label for="suku">Suku*</label>
+                                                                @if(session('data.user_suku'))
+                                                                    <input id="suku" type="text" placeholder="suku" name="suku"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data.user_suku')}}">
+                                                                @else
+                                                                    <input id="suku" type="text" placeholder="suku" name="suku"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <label for="status">Status</label>
-                                                                <input  id="tmplhr" type="text" placeholder="tempat lahir" 
-                                                                        name="tmplhr" value="{{$user[0]->usr_status}}" disabled>
+                                                                <label for="status">Status*</label>
+                                                                @if(session('data.user_status'))
+                                                                    <input id="status" type="text" placeholder="status"
+                                                                           name="status"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data.user_status')}}">
+                                                                @else
+                                                                    <input id="status" type="text" placeholder="status"
+                                                                           name="status"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <label for="biodata">Biodata</label>
-                                                                <input  id="tmplhr" type="text" placeholder="tempat lahir" 
-                                                                        name="tmplhr" value="{{$user[0]->usr_bio}}" disabled>
+                                                                <label for="biodata">Biodata*</label>
+                                                                @if(session('data.user_bio'))
+                                                                    <textarea name="biodata" id="biodata" placeholder="biodata"
+                                                                              cols="35"
+                                                                              rows="3">{{session('data.user_bio')}}</textarea>
+                                                                @else
+                                                                    <textarea name="biodata" id="biodata" placeholder="biodata"
+                                                                              cols="35"
+                                                                              rows="3"></textarea>
+                                                                @endif
+                                                            </div>
+                                                            <!-- <div class="col-md-6">
+                                                                <label for="idline">Id LINE*</label>
+                                                                @if(session('data1.usr_line'))
+                                                                    <input id="idline" type="text" placeholder="id line"
+                                                                           name="idline"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data1.usr_line')}}">
+                                                                @else
+                                                                    <input id="idline" type="text" placeholder="id line"
+                                                                           name="idline"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="idline">Id LINE</label>
-                                                                <input  id="tmplhr" type="text" placeholder="tempat lahir" 
-                                                                        name="tmplhr" value="{{$user[0]->usr_line}}" disabled>
+                                                                <label for="idfb">Id Facebok*</label>
+                                                                @if(session('data1.usr_fb'))
+                                                                    <input id="idfb" type="text" placeholder="id facebook"
+                                                                           name="idfb"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data1.usr_fb')}}">
+                                                                @else
+                                                                    <input id="idfb" type="text" placeholder="id facebook"
+                                                                           name="idfb"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="idfb">Id Facebok</label>
-                                                                <input  id="tmplhr" type="text" placeholder="tempat lahir" 
-                                                                        name="tmplhr" value="{{$user[0]->usr_fb}}" disabled>
+                                                                <label for="idig">Id Instagram*</label>
+                                                                @if(session('data1.usr_insta'))
+                                                                    <input id="idig" type="text" placeholder="id instagram"
+                                                                           name="idig"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data1.usr_insta')}}">
+                                                                @else
+                                                                    <input id="idig" type="text" placeholder="id instagram"
+                                                                           name="idig"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="idig">Id Instagram</label>
-                                                                <input  id="tmplhr" type="text" placeholder="tempat lahir" 
-                                                                        name="tmplhr" value="{{$user[0]->usr_insta}}" disabled>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label for="idtwitter">Id Twitter</label>
-                                                                <input  id="tmplhr" type="text" placeholder="tempat lahir" 
-                                                                        name="tmplhr" value="{{$user[0]->usr_twit}}" disabled>
-                                                            </div>
+                                                                <label for="idtwitter">Id Twitter*</label>
+                                                                @if(session('data1.usr_twit'))
+                                                                    <input id="idtwitter" type="text" placeholder="id twitter"
+                                                                           name="idtwitter"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data1.usr_twit')}}">
+                                                                @else
+                                                                    <input id="idtwitter" type="text" placeholder="id twitter"
+                                                                           name="idtwitter"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
+                                                            </div> -->
                                                             <div class="col-md-12">
                                                                 @if (session('error_message'))
                                                                     <span class="error-msg comment-error"
@@ -142,47 +329,58 @@
                                                                           style="display:block; background-color: #B80000">
                                                         <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
                                                                 @endif
-                                                                <p class="form-submit"><br>
-                                                                    @if ($edit==1)
-                                                                        <a href="/filldata">
-                                                                            <button type="button" class="btn btn-secondary">Edit</button>
-                                                                        </a>
-                                                                    @endif
-                                                                    <input type='hidden' name='usr_id'
-                                                                           value={{session('usr_id')}}
-                                                                                   id='usr_id'/>
-                                                                    <input type='hidden' name='comment_parent'
-                                                                           id='comment_parent'
-                                                                           value='0'/>
-                                                                </p>
+                                                                @if ($edit==1)
+                                                                    <a href="/filldata" class="submit-button">Edit</a>
+                                                                @endif
+                                                                <p style="float: left">* Harus Diisi</p>
                                                             </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div>
+                                                <h4 class="main-heading"><span>Data Tahun Penerimaan Beasiswa</span></h4>
                                                 <div class="comment-form-body">
                                                     <div class="row" id="continer">
                                                         <form id="form" class="comment-form" role="form" method="POST"
                                                               action='do_filldata2'>
                                                             {!! csrf_field() !!}
                                                             <div class="col-md-4">
-                                                                <label for="tahun1">Tahun Pertama</label>
-                                                                <input id="tahun1" type="text" placeholder="tahun pertama"
-                                                                       name="tahun1" value="{{$user[0]->usr_tahun1}}"
-                                                                       disabled>
+                                                                <label for="tahun1">Tahun Pertama*</label>
+                                                                @if(session('data.user_tahun1'))
+                                                                    <input id="tahun1" type="text" placeholder="tahun pertama"
+                                                                           name="tahun1"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data.user_tahun1')}}">
+                                                                @else
+                                                                    <input id="tahun1" type="text" placeholder="tahun pertama"
+                                                                           name="tahun1"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label for="tahun2">Tahun Kedua</label>
-                                                                <input id="tahun2" type="text" placeholder="tahun kedua"
-                                                                       name="tahun2" value="{{$user[0]->usr_tahun2}}"
-                                                                       disabled>
+                                                                @if(session('data.user_tahun2'))
+                                                                    <input id="tahun2" type="text" placeholder="tahun kedua"
+                                                                           name="tahun2"
+                                                                           value="{{session('data.user_tahun2')}}">
+                                                                @else
+                                                                    <input id="tahun2" type="text" placeholder="tahun kedua"
+                                                                           name="tahun2">
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label for="tahun3">Tahun Ketiga</label>
-                                                                <input id="tahun3" type="text" placeholder="tahun ketiga"
-                                                                       name="tahun3" value="{{$user[0]->usr_tahun3}}"
-                                                                       disabled>
+                                                                @if(session('data.user_tahun3'))
+                                                                    <input id="tahun3" type="text" placeholder="tahun ketiga"
+                                                                           name="tahun3"
+                                                                           value="{{session('data.user_tahun3')}}">
+                                                                @else
+                                                                    <input id="tahun3" type="text" placeholder="tahun ketiga"
+                                                                           name="tahun3">
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-12">
                                                                 @if (session('error_message'))
@@ -191,19 +389,9 @@
                                                                           style="display:block; background-color: #B80000">
                                                         <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
                                                                 @endif
-                                                                <p class="form-submit"><br>
-                                                                    @if ($edit==1)
-                                                                        <a href="/filldata">
-                                                                            <button type="button" class="btn btn-secondary">Edit</button>
-                                                                        </a>
-                                                                    @endif
-                                                                    <input type='hidden' name='usr_id'
-                                                                           value={{session('usr_id')}}
-                                                                                   id='usr_id'/>
-                                                                    <input type='hidden' name='comment_parent'
-                                                                           id='comment_parent'
-                                                                           value='0'/>
-                                                                </p>
+                                                                @if ($edit==1)
+                                                                    <a href="/filldata" class="submit-button">Edit</a>
+                                                                @endif
                                                             </div>
                                                         </form>
                                                     </div>
@@ -212,59 +400,117 @@
                                                 </div>
                                             </div>
                                             <div>
+                                                <h4 class="main-heading"><span>Data Pendidikan</span></h4>
                                                 <div class="comment-form-body">
                                                     <div class="row" id="continer">
                                                         <form id="form" class="comment-form" role="form" method="POST"
                                                               action='do_filldata3'>
                                                             {!! csrf_field() !!}
                                                             <div class="col-md-12">
-                                                                <label for="universitas">Universitas</label>
-                                                                <input id="universitas" type="text" placeholder="universitas"
-                                                                       name="universitas" value="{{$user[0]->usr_univ1}}"
-                                                                       disabled>
+                                                                <label for="universitas">Universitas (S1)*</label>
+                                                                @if(session('data.kuliah_univ1'))
+                                                                    <input id="universitas" type="text"
+                                                                           placeholder="universitas"
+                                                                           name="universitas"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data.kuliah_univ1')}}">
+                                                                @else
+                                                                    <input id="universitas" type="text"
+                                                                           placeholder="universitas"
+                                                                           name="universitas"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <label for="fakultas">fakultas</label>
-                                                                <input id="fakultas" type="text" placeholder="fakultas"
-                                                                       name="fakultas" value="{{$user[0]->usr_fakultas1}}"
-                                                                       disabled>
+                                                                <label for="fakultas">Fakultas (S1)*</label>
+                                                                @if(session('data.kuliah_fakultas1'))
+                                                                    <input id="fakultas" type="text" placeholder="fakultas"
+                                                                           name="fakultas" required
+                                                                           autofocus
+                                                                           value="{{session('data.kuliah_fakultas1')}}">
+                                                                @else
+                                                                    <input id="fakultas" type="text" placeholder="fakultas"
+                                                                           name="fakultas" required
+                                                                           autofocus>
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <label for="departemen">departemen</label>
-                                                                <input id="departemen" type="text" placeholder="departemen"
-                                                                       name="departemen" value="{{$user[0]->usr_jurusan1}}"
-                                                                       disabled>
+                                                                <label for="departemen">Departemen/Jurusan (S1)*</label>
+                                                                @if(session('data.kuliah_jurusan1'))
+                                                                    <input id="departemen" type="text" placeholder="departemen"
+                                                                           name="departemen"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data.kuliah_jurusan1')}}">
+                                                                @else
+                                                                    <input id="departemen" type="text" placeholder="departemen"
+                                                                           name="departemen"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <label for="periode">Periode</label>
-                                                                <input id="departemen" type="text" placeholder="departemen"
-                                                                       name="departemen" value="{{$user[0]->usr_period1}}"
-                                                                       disabled>
+                                                                <label for="periode">Periode (S1)*</label>
+                                                                @if(session('data.kuliah_masuk_keluar1'))
+                                                                    <input id="periode" type="text" placeholder="periode"
+                                                                           name="periode"
+                                                                           required
+                                                                           autofocus
+                                                                           value="{{session('data.kuliah_masuk_keluar1')}}">
+                                                                @else
+                                                                    <input id="periode" type="text" placeholder="periode"
+                                                                           name="periode"
+                                                                           required
+                                                                           autofocus>
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <label for="universitas2">Universitas S2</label>
-                                                                <input id="universitas2" type="text"
-                                                                       placeholder="universitas sarjana master"
-                                                                       name="universitas2" value="{{$user[0]->usr_univ2}}"
-                                                                       disabled>
+                                                                <label for="universitas2">Universitas (S2)</label>
+                                                                @if(session('data3.kuliah_univ2'))
+                                                                    <input id="universitas2" type="text"
+                                                                           placeholder="universitas"
+                                                                           name="universitas2"
+                                                                           value="{{session('data.kuliah_univ2')}}">
+                                                                @else
+                                                                    <input id="universitas2" type="text"
+                                                                           placeholder="universitas"
+                                                                           name="universitas2">
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <label for="fakultas2">Fakultas</label>
-                                                                <input id="fakultas2" type="text" placeholder="fakultas"
-                                                                       name="fakultas2" value="{{$user[0]->usr_fakultas2}}"
-                                                                       disabled>
+                                                                <label for="fakultas2">Fakultas (S2)</label>
+                                                                @if(session('data.kuliah_fakultas2'))
+                                                                    <input id="fakultas2" type="text" placeholder="fakultas"
+                                                                           name="fakultas2"
+                                                                           value="{{session('data.kuliah_fakultas2')}}">
+                                                                @else
+                                                                    <input id="fakultas2" type="text" placeholder="fakultas"
+                                                                           name="fakultas2">
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <label for="departemen2">Departemen</label>
-                                                                <input id="departemen2" type="text" placeholder="departemen"
-                                                                       name="departemen2" value="{{$user[0]->usr_jurusan2}}"
-                                                                       disabled>
+                                                                <label for="departemen2">Departemen/Jurusan (S2)</label>
+                                                                @if(session('data.kuliah_jurusan2'))
+                                                                    <input id="departemen2" type="text" placeholder="departemen"
+                                                                           name="departemen2"
+                                                                           value="{{session('data.kuliah_jurusan2')}}">
+                                                                @else
+                                                                    <input id="departemen2" type="text" placeholder="departemen"
+                                                                           name="departemen2">
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <label for="periode2">Periode</label>
-                                                                <input id="periode2" type="text" placeholder="periode"
-                                                                       name="periode2" value="{{$user[0]->usr_period2}}"
-                                                                       disabled>
+                                                                <label for="periode2">Periode (S2)</label>
+                                                                @if(session('data.kuliah_masuk_keluar2'))
+                                                                    <input id="periode2" type="text" placeholder="periode"
+                                                                           name="periode2"
+                                                                           value="{{session('data.kuliah_masuk_keluar2')}}">
+                                                                @else
+                                                                    <input id="periode" type="text" placeholder="periode"
+                                                                           name="periode2">
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-12">
                                                                 @if (session('error_message'))
@@ -273,19 +519,9 @@
                                                                           style="display:block; background-color: #B80000">
                                                         <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
                                                                 @endif
-                                                                <p class="form-submit"><br>
-                                                                    @if ($edit==1)
-                                                                        <a href="/filldata">
-                                                                            <button type="button" class="btn btn-secondary">Edit</button>
-                                                                        </a>
-                                                                    @endif
-                                                                    <input type='hidden' name='usr_id'
-                                                                           value={{session('usr_id')}}
-                                                                                   id='usr_id'/>
-                                                                    <input type='hidden' name='comment_parent'
-                                                                           id='comment_parent'
-                                                                           value='0'/>
-                                                                </p>
+                                                                @if ($edit==1)
+                                                                    <a href="/filldata" class="submit-button">Edit</a>
+                                                                @endif
                                                             </div>
                                                         </form>
                                                     </div>
@@ -298,75 +534,216 @@
                                                               action='do_filldata4'>
                                                             {!! csrf_field() !!}
                                                             <div class="col-md-12">
-                                                                <label for="jabatan">Jabatan</label>
-                                                                <input id="jabatan" type="text" placeholder="jabatan"
-                                                                       name="jabatan" value="{{$userwork[0]->work_jabatan}}"
-                                                                       disabled>
-                                                            </div>
-                                                            <div class="col-md-12">
                                                                 <label for="perusahaan">Nama Perusahaan</label>
+                                                                @if(session('data.kerja_perusahaan'))
                                                                 <input id="perusahaan" type="text" placeholder="perusahaan"
-                                                                       name="perusahaan" value="{{$userwork[0]->work_company}}"
-                                                                       disabled>
+                                                                       name="perusahaan" value="{{session('data.kerja_perusahaan')}}">
+                                                                @else
+                                                                <input id="perusahaan" type="text" placeholder="perusahaan"
+                                                                       name="perusahaan">
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <label for="lokasiperusahaan">Lokasi perusahaan</label>
+                                                                <label for="jabatan">Jabatan</label>
+                                                                @if(session('data.kerja_jabatan'))
+                                                                <input id="jabatan" type="text" placeholder="jabatan"
+                                                                       name="jabatan" value="{{session('data.kerja_jabatan')}}">
+                                                                @else
+                                                                <input id="jabatan" type="text" placeholder="jabatan"
+                                                                       name="jabatan">
+                                                                @endif
+                                                            </div>
+
+                                                            <div class="col-md-12">
+                                                                <label for="lokasiperusahaan">Lokasi Perusahaan</label>
+                                                                @if(session('data.kerja_lokasi'))
                                                                 <input id="lokasiperusahaan" type="text"
                                                                        placeholder="lokasi perusahaan"
-                                                                       name="lokasiperusahaan" value="{{$userwork[0]->work_location}}"
-                                                                       disabled>
+                                                                       name="lokasiperusahaan" value="{{session('data.kerja_lokasi')}}">
+                                                                @else
+                                                                <input id="lokasiperusahaan" type="text"
+                                                                       placeholder="lokasi perusahaan"
+                                                                       name="lokasiperusahaan">
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label for="bulanmulai">Bulan Mulai Bekerja</label>
-                                                                <input id="tahunakhir" type="text"
-                                                                       placeholder="tahun akhir bekerja"
-                                                                       name="tahunakhir" value="{{$userwork[0]->work_bulan1}}"
-                                                                       disabled>
+                                                                <select name="bulanmulai">
+                                                                  @if (null==session('data.kerja_bulan'))
+                                                                    <option selected value="">Bulan Mulai Bekerja</option>
+                                                                  @else 
+                                                                    <option value="">Bulan Mulai Bekerja</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_masuk')=="januari")
+                                                                    <option selected>januari</option>
+                                                                  @else 
+                                                                    <option>januari</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_masuk')=="februari")
+                                                                    <option selected>februari</option>
+                                                                  @else 
+                                                                    <option>februari</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_masuk')=="maret")
+                                                                    <option selected>maret</option>
+                                                                  @else 
+                                                                    <option>maret</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_masuk')=="april")
+                                                                    <option selected>april</option>
+                                                                  @else 
+                                                                    <option>april</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_masuk')=="mei")
+                                                                    <option selected>mei</option>
+                                                                  @else 
+                                                                    <option>mei</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_masuk')=="juni")
+                                                                    <option selected>juni</option>
+                                                                  @else 
+                                                                    <option>juni</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_masuk')=="juli")
+                                                                    <option selected>juli</option>
+                                                                  @else 
+                                                                    <option>juli</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_masuk')=="agustus")
+                                                                    <option selected>agustus</option>
+                                                                  @else 
+                                                                    <option>agustus</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_masuk')=="september")
+                                                                    <option selected>september</option>
+                                                                  @else 
+                                                                    <option>september</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_masuk')=="oktober")
+                                                                    <option selected>oktober</option>
+                                                                  @else 
+                                                                    <option>oktober</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_masuk')=="november")
+                                                                    <option selected>november</option>
+                                                                  @else 
+                                                                    <option>november</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_masuk')=="desember")
+                                                                    <option selected>desember</option>
+                                                                  @else 
+                                                                    <option>desember</option>
+                                                                  @endif
+                                                                </select>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label for="tahunmulai">Tahun Mulai Bekerja</label>
+                                                                @if(session('data.kerja_tahun_masuk'))
                                                                 <input id="tahunmulai" type="text"
                                                                        placeholder="tahun mulai bekerja"
-                                                                       name="tahunmulai" value="{{$userwork[0]->work_tahun1}}"
-                                                                       disabled>
+                                                                       name="tahunmulai" value="{{session('data.kerja_tahun_masuk')}}">
+                                                                @else
+                                                                <input id="tahunmulai" type="text"
+                                                                       placeholder="tahun mulai bekerja"
+                                                                       name="tahunmulai">
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label for="bulanakhir">Bulan Akhir Bekerja</label>
-                                                                <input id="tahunakhir" type="text"
-                                                                       placeholder="tahun akhir bekerja"
-                                                                       name="tahunakhir" value="{{$userwork[0]->work_bulan2}}"
-                                                                       disabled>
+                                                                <select name="bulanakhir">
+                                                                  @if (null==session('data.kerja_bulan_keluar'))
+                                                                    <option selected value="">Bulan Akhir Bekerja</option>
+                                                                  @else 
+                                                                    <option value="">Bulan Akhir Bekerja</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_keluar')=="januari")
+                                                                    <option selected>januari</option>
+                                                                  @else 
+                                                                    <option>januari</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_keluar')=="februari")
+                                                                    <option selected>februari</option>
+                                                                  @else 
+                                                                    <option>februari</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_keluar')=="maret")
+                                                                    <option selected>maret</option>
+                                                                  @else 
+                                                                    <option>maret</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_keluar')=="april")
+                                                                    <option selected>april</option>
+                                                                  @else 
+                                                                    <option>april</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_keluar')=="mei")
+                                                                    <option selected>mei</option>
+                                                                  @else 
+                                                                    <option>mei</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_keluar')=="juni")
+                                                                    <option selected>juni</option>
+                                                                  @else 
+                                                                    <option>juni</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_keluar')=="juli")
+                                                                    <option selected>juli</option>
+                                                                  @else 
+                                                                    <option>juli</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_keluar')=="agustus")
+                                                                    <option selected>agustus</option>
+                                                                  @else 
+                                                                    <option>agustus</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_keluar')=="september")
+                                                                    <option selected>september</option>
+                                                                  @else 
+                                                                    <option>september</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_keluar')=="oktober")
+                                                                    <option selected>oktober</option>
+                                                                  @else 
+                                                                    <option>oktober</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_keluar')=="november")
+                                                                    <option selected>november</option>
+                                                                  @else 
+                                                                    <option>november</option>
+                                                                  @endif
+                                                                  @if (session('data.kerja_bulan_keluar')=="desember")
+                                                                    <option selected>desember</option>
+                                                                  @else 
+                                                                    <option>desember</option>
+                                                                  @endif
+                                                                </select>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label for="tahunakhir">Tahun Akhir Bekerja</label>
+                                                                @if(session('data.kerja_tahun_keluar'))
                                                                 <input id="tahunakhir" type="text"
                                                                        placeholder="tahun akhir bekerja"
-                                                                       name="tahunakhir" value="{{$userwork[0]->work_tahun2}}"
-                                                                       disabled>
+                                                                       name="tahunakhir" value="{{session('data.kerja_tahun_keluar')}}">
+                                                                @else
+                                                                <input id="tahunakhir" type="text"
+                                                                       placeholder="tahun akhir bekerja"
+                                                                       name="tahunakhir">
+                                                                @endif
                                                             </div>
+
                                                             <div class="col-md-12">
                                                                 @if (session('error_message'))
                                                                     <span class="error-msg comment-error"
                                                                           id="contact-mail-error"
                                                                           style="display:block; background-color: #B80000">
-                                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
+                                                                    <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
                                                                 @endif
-                                                                <p class="form-submit"><br>
-                                                                    @if ($edit==1)
-                                                                        <a href="/filldata">
-                                                                            <button type="button" class="btn btn-secondary">Edit</button>
-                                                                        </a>
-                                                                    @endif
-                                                                    <input type='hidden' name='usr_id'
-                                                                           value={{session('usr_id')}}
-                                                                                   id='usr_id'/>
-                                                                    <input type='hidden' name='comment_parent'
-                                                                           id='comment_parent'
-                                                                           value='0'/>
-                                                                </p>
+                                                                @if ($edit==1)
+                                                                    <a href="/filldata" class="submit-button">Edit</a>
+                                                                @endif
                                                             </div>
                                                         </form>
-                                                    </div>
+                                                    </div> 
                                                 </div>
                                             </div>
                                         </div>
