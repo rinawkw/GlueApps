@@ -14,7 +14,7 @@
                             <?php 
                                 $i=1;
                             ?>
-                            @foreach($members as $member)
+                            @foreach($members as $key => $member)
                                 <!-- end list post item -->
                                     <div class="list-post">
                                         <?php 
@@ -23,28 +23,28 @@
                                         ?>
                                         <div>   
                                             {{-- <div class="list-post-container"> --}}
-                                                <a href="/profile/{{$member->fk_usr_id}}">
-                                                @if ($member->usr_foto!=NULL)
-                                                    <img src="{{$member->usr_foto}}" class="image-member-list">
+                                                <a href="/profile/{{$member->user_nrp}}">
+                                                @if ($member->user_foto!=NULL)
+                                                    <img src="{{$member->user_foto}}" class="image-member-list">
                                                 @else
-                                                    <img src="{{URL::asset("images/foto/1.png")}}" class="image-member-list">
+                                                    <img src="http://rehrealestate.com/wp-content/uploads/2015/08/facebook-default-no-profile-pic-300x300.jpg" class="image-member-list">
                                                 @endif
                                                 </a><br>
                                             {{-- </div> --}}
                                             <div class="list-post-body">
                                                 <div class="row">
                                                     <div class="col-md-8">
-                                                        <a href="/profile/{{$member->fk_usr_id}}"><h2>{{$member->nama_pengguna}}</h2></a>
+                                                        <a href="/profile/{{$member->user_nrp}}"><h2>{{$member->user_nama}}</h2></a>
                                                     </div>
                                                 </div>
                                                  <div class="row">
                                                     <div class="col-md-8">
-                                                        {{$member->usr_univ1}}
+                                                        {{$univ[$kode[$key][2]]}}
                                                     </div>
                                                 </div>
                                                  <div class="row">
                                                     <div class="col-md-8">
-                                                        {{$member->nrp}}
+                                                        {{$member->user_nrp}}
                                                     </div>
                                                 </div>
                                             </div>
