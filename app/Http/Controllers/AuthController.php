@@ -288,10 +288,22 @@ class AuthController extends Controller
     public function show_profile($usr_id)
     {
         $edit = 0;
-        $nama = DB::table('pengguna')->where('fk_usr_id', $usr_id)->value('nama_pengguna');
-        $user = DB::table('members')->where('usr_id', $usr_id)->get();
-        $userwork = DB::table('work')->where('work_usr_id', session('usr_id'))->get();
-        return view('profile.profile', compact('nama','user','userwork','edit'));
+        $user = DB::table('user')->where('user_nrp', $usr_id)->get();
+        $userwork = DB::table('user_kerja')->where('user_nrp', $usr_id)->get();
+        $usertahun = explode(",",$user[0]->user_tahun_beasiswa);
+
+        $kode = explode("-",$user[0]->user_no_kta);
+        $detil_univ = DB::table('universitas')->where('iduniversitas', $kode[2])->get();
+
+        if($userwork->count()){
+            $kerja_waktu = explode(",",$userwork[0]->kerja_masuk_keluar);
+            $kerja_masuk = explode("/",$kerja_waktu[0]);
+            $kerja_keluar = explode("/",$kerja_waktu[1]);
+            return view('members.profile', compact('user','userwork','edit', 'usertahun', 'detil_univ','kerja_masuk','kerja_keluar'));
+        }
+        else {
+            return view('members.profile', compact('user','userwork','edit', 'usertahun', 'detil_univ'));
+        }
     }
     public function index()
     {
