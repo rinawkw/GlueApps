@@ -36,7 +36,11 @@ class AuthController extends Controller
     public function get_data_user()
     {
         $user = DB::select('call sp_getdatauser(?)', [Session::get('user_id')]);
-        // dd($user);
+        $nrp = explode("-", $user[0]->user_no_kta);
+        //dd($nrp);
+        $univ = DB::table('universitas')->where('iduniversitas', $nrp[2])->get();
+        //Session::put('data.kuliah_univ1', $univ[0]->universitas_nama);
+        //dd($univ);
         $data['data'] = array(
             'user_nama' => $user[0]->user_nama,
             'user_email' => $user[0]->user_email,
@@ -63,6 +67,7 @@ class AuthController extends Controller
         $kerja = DB::table('user_kerja')->where('user_nrp', session('user_id'))->get();
         //dd($kerja);
         Session::put('data', $data['data']);
+        Session::put('data.kuliah_univ1', $univ[0]->universitas_nama);
         if(isset($kerja[0])) {
             Session::put('data.kerja_jabatan', $kerja[0]->kerja_jabatan);
             Session::put('data.kerja_perusahaan', $kerja[0]->kerja_perusahaan);

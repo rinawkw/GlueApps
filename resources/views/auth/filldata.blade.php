@@ -31,13 +31,14 @@
                                                     <div class="col-md-12">
                                                         <label for="foto">Foto Profil</label>
                                                     </div>
+                                                    @if (session('data.user_foto'))
                                                     <div class="col-md-12 text-left">
-                                                        @if (session('data.user_foto'))
                                                             <img src="{{URL::asset(session('data.user_foto'))}}" height="200" width="200" class="rounded float-left">
-                                                        @endif
+                                                     
                                                     </div>
+                                                    @endif
                                                     <div class="col-md-12">
-                                                        <input name="foto" type="file" accept="image/*" class="form">
+                                                        <input name="foto" type="file" accept="image/*" class="form" style="padding: 10px;">
                                                         <input name="fotosession" type="hidden" value="{{session('data.user_foto')}}">
                                                     </div>
                                                     <div class="col-md-12">
@@ -425,7 +426,7 @@
                                                                    name="universitas"
                                                                    required
                                                                    autofocus
-                                                                   value="{{session('data.kuliah_univ1')}}">
+                                                                   value="{{session('data.kuliah_univ1')}}" disabled>
                                                         @else
                                                             <input id="universitas" type="text"
                                                                    placeholder="universitas"
