@@ -60,7 +60,7 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <label for="description">Deskripsi</label>
                                             <div class="form-group">
-                                                <textarea class="form-control summernote" name="detail"></textarea>
+                                                <textarea class="form-control summernote" name="detail" rows="8"></textarea>
                                             </div>
                                         </div>
                                         {{--<div class="col-xs-12 col-sm-12 col-md-12 text-center">--}}
