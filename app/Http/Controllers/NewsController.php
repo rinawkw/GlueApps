@@ -27,13 +27,15 @@ class NewsController extends Controller
         $post = DB::table('event')->where('idevent',$event_id)->first();
         $comments = $this->getComment($event_id);
         $comment_num = count($comments);
-//        dd($comment_num);
+        // dd($comments);
         return view('news.detail',compact('post','comments', 'comment_num'));
     }
 
     public function getComment($event_id)
     {
-        $comments = DB::table('event_comment')->where('event_idevent',$event_id)->get();
+        $comments = DB::table('event_comment')
+                    ->leftjoin('user','user.user_nrp','event_comment.user_nrp')
+                    ->where('event_idevent',$event_id)->get();
         return $comments;
     }
 
@@ -42,11 +44,15 @@ class NewsController extends Controller
     {
         $event_id = Input::get('event_id');
         $comment = Input::get('comment');
-        $dat['data'] = array(
-            'fk_event' => $event_id,
-            'komentar' => $comment
+        $data['data'] = array(
+            'user_nrp' => session('user_id'),
+            'event_idevent' => $event_id,
+            'comment_text' => $comment
         );
-        return redirect()->route('home');
+        // dd($data);
+        DB::table('event_comment')
+            ->insert($data['data']);
+            return \Redirect::route('detail', $event_id);
     }
 
     /**

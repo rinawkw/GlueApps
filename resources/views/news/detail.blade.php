@@ -15,7 +15,7 @@
                         <span>{{$post->event_lokasi}}</span>
                     </div>
                 </div>
-                <div class="article-image"><img src="/{{$post->event_foto}}" alt=""></div>
+                <div class="article-image"><img src="{{$post->event_foto}}" alt=""></div>
             </div>
         </div>
     </section>
@@ -79,14 +79,14 @@
                                     <li>
                                         <div class="comment">
                                             <div class="comment-author">
-                                                <img src="/images/event/1.jpg" alt="Author">
-                                                <a href="#" rel="external nofollow" class="comment-author-name">{{$value->fk_user}}</a>
+                                                <img src="{{$value->user_foto}}" alt="Author">
+                                                <a href="#" rel="external nofollow" class="comment-author-name">{{$value->user_nama}}</a>
                                                 <span class="comment-meta">{{$value->comment_created}}</span>
                                             </div>
-                                            <div class="comment-body">
-                                                <p>{{$value->comment_text}}</p>
+                                            <!-- <div class="comment-body"> -->
+                                                {{$value->comment_text}}
                                                 {{--<a href="#" class="comment-reply-link"><i class="fa fa-reply"></i> Reply</a>--}}
-                                            </div>
+                                            <!-- </div> -->
                                         </div>
                                     </li>
                                 </ul>
@@ -97,17 +97,17 @@
                             {{--<h4 class="main-heading"><span>Post Comment</span></h4>--}}
                             <div class="comment-form-body">
                                 <div class="row">
-                                    <form class="comment-form" role="form" method="POST" action='do_comment'>
+                                    <form class="comment-form" role="form" method="POST" action="{{ route('do_comment') }}">
                                         {!! csrf_field() !!}
                                         <div class="col-md-12">
                                             <label for="comment">Comment</label>
                                             <textarea name="comment" id="comment" cols="35" rows="5"></textarea>
                                         </div>
+                                        <input type='hidden' name='event_id' value='{{$post->idevent}}' id='event_id'/>
                                         <div class="col-md-12">
                                             <p class="form-submit">
                                                 <input name="submit" type="submit" id="submit" class="submit submit-button" value="Post Comment" />
-                                                {{--<input type='hidden' name='event_id' value={{$post->event_id}} id='event_id' />--}}
-                                                <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                                                <!-- <input type='hidden' name='comment_parent' id='comment_parent' value='0' /> -->
                                             </p>
                                         </div>
                                     </form>
