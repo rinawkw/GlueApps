@@ -17,7 +17,7 @@
                 {{--</ul>--}}
             </li>
             <li class="menu-item-has-children">
-                <a href="#"><i class="fa fa-location-arrow"></i> Near Me </a>
+                <a href="/{{'nearme'}}"><i class="fa fa-location-arrow"></i> Near Me </a>
             </li>
             <li><a href="/{{'members'}}"><i class="fa fa-users"></i> GenBI </a></li>
             <li><a href="/{{'about'}}"><i class="fa fa-star"></i> About </a></li>

@@ -51,6 +51,7 @@ Route::group(['middleware' => ['grouphome']], function () {
 	Route::get('/create_news',array('as'=>'summernote.get','uses'=>'NewsController@getSummernote'));
 	Route::post('/do_create_news',array('as'=>'summernote.post','uses'=>'NewsController@postSummernote'));
 
+	Route::get('/nearme','NearmeController@index')->name('nearme');
 });
 
 //Route::get('summernote',array('as'=>'summernote.get','uses'=>'NewsController@getSummernote'));
