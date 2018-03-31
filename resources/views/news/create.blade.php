@@ -21,6 +21,14 @@
                                 <div class="col-md-12">
                                     <form class="comment-form" method="POST" role="form" id="form" action="{{ route('summernote.post') }}" enctype="multipart/form-data">
                                         {!! csrf_field() !!}
+                                        <div class="btn-group col-md-12" data-toggle="buttons">
+                                            <label class="btn btn-primary active">
+                                                <input type="radio" name="internal" id="option1" value=1 autocomplete="off" checked> Internal News Only
+                                            </label>
+                                            <label class="btn btn-primary">
+                                                <input type="radio" name="internal" id="option2" value=0 autocomplete="off"> External and Internal News
+                                            </label>
+                                        </div>
                                         <div class="col-md-12">
                                             <label for="foto">Foto Event</label>
                                         </div>

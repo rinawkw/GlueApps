@@ -8,8 +8,7 @@
     <link rel="icon" href="/images/favicon-glue.png">
     <title>GLUE - GenBI Line Up And Experience</title>
     <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    {{-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></script> --}}
+    <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/font-awesome.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
     <link href="/css/shortcodes.css" rel="stylesheet">
@@ -18,14 +17,15 @@
     <link href="/css/custom-style.css" rel="stylesheet">
 
     <link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <!-- <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet"> -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" /> -->
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <!-- include summernote css/js-->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- form -->
     <!-- <script src="/js/form.js" type="text/javascript"></script>

@@ -124,6 +124,7 @@ class NewsController extends Controller
         $this->validate($request, [
             'detail' => 'required',
         ]);
+        $internal=$request->input('internal');
         $title=$request->input('title');
         $location=$request->input('location');
         $tanggal=$request->input('tanggal');
@@ -159,6 +160,7 @@ class NewsController extends Controller
             'event_waktu' => $waktu,
             'event_lokasi' => $location,
             'event_foto' => $photopath,
+            'event_internal' => $internal,
         );
         DB::table('event')
             ->insert($data['data']);
