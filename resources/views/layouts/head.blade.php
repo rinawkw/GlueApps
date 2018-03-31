@@ -25,6 +25,8 @@
     <!-- include summernote css/js-->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- form -->
     <!-- <script src="/js/form.js" type="text/javascript"></script>
     <link href="/css/form.css" rel="stylesheet" type="text/css"> -->
@@ -48,4 +50,27 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- provide the csrf token -->
+    
+    <script>
+        $(document).ready(function(){
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $(".postbutton").click(function(){
+                $.ajax({
+                    /* the route pointing to the post function */
+                    url: '/do_like',
+                    type: 'POST',
+                    /* send the csrf-token and the input to the controller */
+                    data: {_token: CSRF_TOKEN, message:$(".getinfo").val()},
+                    dataType: 'JSON',
+                    /* remind that 'data' is the response of the AjaxController */
+                    success: function (data) { 
+                        $(".writeinfo").text(data.like_num); 
+                        $(".liked").css({"color": "red"});
+                    }
+                }); 
+            });
+       });    
+    </script>
 </head>

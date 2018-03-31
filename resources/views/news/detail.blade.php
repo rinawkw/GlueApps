@@ -1,5 +1,12 @@
-@extends('layouts.index')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+@include('layouts.head')
+<body>
+<div class="boxed active">
+    @include('layouts.topbar')
+    {{--        @include('layouts.header')--}}
+    @include('layouts.mainmenu')
+
     <section class="ot-section-b wide-article">
         <div class="container">
             <div class="wide-article-container">
@@ -24,7 +31,7 @@
         <!-- container -->
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="theiaStickySidebar">
                         <div class="content ot-article">
                             <div>
@@ -56,7 +63,29 @@
                             {{--</div>--}}
                         {{--</div>--}}
                         <div class="ot-module">
-                            <h4 class="section-title">Comments</h4>
+                            
+                            <h4 class="section-title" style="float:left">Comments</h4>
+                            
+                            <form style="float:right">
+                            @if($do_like < 1)
+                            <input type="hidden" name="name" class="getinfo" value="{{$post->idevent}}">
+                            <h4 class="section-title"><b class="writeinfo">{{$like_num}}</b> Likes
+                            <button style="color:grey; margin-top:0; margin-bottom:0; padding-top: 0; border: none; background: none;" 
+                            class="postbutton btn-submit liked">
+                            <i style="margin-top:0;" class="fa fa-heart fa-sm fa-heart2"></i></button>        
+                            @else
+                            <h4 class="section-title" ><b class="writeinfo">{{$like_num}}</b> Likes
+                            <i style="margin-top:0; color:red" class="fa fa-heart fa-sm"></i>  
+                            @endif
+                            </h4>
+                            </form>
+                            </br>
+                            </br>
+                            </br>
+                            </br>
+                            <!-- <h4 class="section-title"></h4> -->
+                            
+                            <!-- <h4 class="section-title" style="float: right">Likes</h4>  -->
                             @if($comment_num < 1)
                             <!--== No Comment==-->
                             <div class="no_comments">
@@ -65,9 +94,7 @@
                                     <h4>No Comments Yet!</h4>
                                     <p>
                                         You can be first to
-                                        <a href="#respond">
                                             comment this post!
-                                        </a>
                                     </p>
                                 </div>
                             </div>
@@ -118,69 +145,39 @@
                     </div>
                     <!-- end theiaStickySidebar -->
                 </div>
-                <div class="col-md-4">
-                    <div class="theiaStickySidebar">
-                        <aside class="sidebar">
-                            <!-- widget articles section -->
-                            <div class="widget-container">
-                                <h4 class="section-title"><span>Latest From All Categories</span>Latest News</h4>
-                                <!-- article post -->
-                                <article class="widget-post">
-                                    <div class="post-image">
-                                        <a href="post.html"><img src="images/demo/1200x800-10.jpg" alt=""></a>
-                                    </div>
-                                    <div class="post-body">
-                                        <h2><a href="post.html">Make Stories Come Alive with Jodi Harvey-Brown</a></h2>
-                                    </div>
-                                </article>
-                                <!-- end article item -->
-                                <!-- article post -->
-                                <article class="widget-post">
-                                    <div class="post-image">
-                                        <a href="post.html"><img src="images/demo/1200x800-11.jpg" alt=""></a>
-                                    </div>
-                                    <div class="post-body">
-                                        <h2><span class="hot">Hot <i class="fa fa-bolt"></i></span><a href="post.html">The View From a Peaceful Villa I Visited</a></h2>
-                                    </div>
-                                </article>
-                                <!-- end article item -->
-                                <!-- article post -->
-                                <article class="widget-post">
-                                    <div class="post-image">
-                                        <a href="post.html"><img src="images/demo/1200x800-9.jpg" alt=""></a>
-                                    </div>
-                                    <div class="post-body">
-                                        <h2><a href="post.html">Is This Outfit a Relationship Deal-Breaker?</a></h2>
-                                    </div>
-                                </article>
-                                <!-- end article item -->
-                                <!-- article post -->
-                                <article class="widget-post">
-                                    <div class="post-image">
-                                        <a href="post.html"><img src="images/demo/1200x800-12.jpg" alt=""></a>
-                                    </div>
-                                    <div class="post-body">
-                                        <h2><a href="post.html">The View From a Peaceful Villa I Visited</a></h2>
-                                    </div>
-                                </article>
-                                <!-- end article item -->
-                            </div>
-                            <!-- end widget articles section -->
-                            <!-- widget advertisement -->
-                            <div class="widget-container widget_tag_cloud">
-                                <h4 class="section-title">Advertisement</h4>
-                                <img src="images/ad340x550.jpg" alt="" />
-                            </div>
-                            <!-- end widget advertisement -->
-                        </aside>
-                    </div>
-                    <!-- end theiaStickySidebar -->
-                </div>
-                <!-- col-md-4 -->
             </div>
             <!-- row -->
             <!-- end main content -->
         </div>
         <!-- container -->
     </section>
-@stop
+    @include('layouts.footer')
+</div>
+
+<script type="text/javascript" src="/js/bootstrap-datetimepicker.min.js"></script>
+{{--<script type="text/javascript" src="/js/jquery-latest.min.js"></script>--}}
+{{--<script type="text/javascript" src="/js/bootstrap.min.js"></script>--}}
+{{--<script type="text/javascript" src="js/demo-settings.js"></script>--}}
+{{--<script type="text/javascript" src="/js/owl.carousel.min.js"></script>--}}
+{{--<script type="text/javascript" src="/js/theia-sticky-sidebar.js"></script>--}}
+{{--<script type="text/javascript" src="/js/themescripts.js"></script>--}}
+</body>
+
+<script type="text/javascript">
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+$(".btn-submit").click(function(e){
+    e.preventDefault();
+    $.ajax({
+       type:'POST',
+       url:'ajaxRequest',
+       success:function(data){
+          alert(data.success);
+       }
+    });
+});
+</script>
+</html>

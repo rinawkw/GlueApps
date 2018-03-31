@@ -27,8 +27,11 @@ class NewsController extends Controller
         $post = DB::table('event')->where('idevent',$event_id)->first();
         $comments = $this->getComment($event_id);
         $comment_num = count($comments);
-        // dd($comments);
-        return view('news.detail',compact('post','comments', 'comment_num'));
+        $likes = $this->getLike($event_id);
+        $like_num = count($likes);
+        $do_like = $this->doLike($event_id)[0]->do_like;
+        //  dd($do_like);
+        return view('news.detail',compact('post','comments','comment_num','likes','like_num','do_like'));
     }
 
     public function getComment($event_id)
@@ -39,6 +42,35 @@ class NewsController extends Controller
         return $comments;
     }
 
+    public function getLike($event_id)
+    {
+        $likes = DB::select('CALL sp_eventlikes(?)', [$event_id]);
+        return $likes;
+    }
+
+    public function doLike($event_id)
+    {
+        $likes = DB::select('CALL sp_dolike(?,?)', [session('user_id'), $event_id]);
+        return $likes;
+    }
+
+    public function do_like(Request $request)
+    {
+        $event_id = $request->message;
+        $data['data'] = array(
+            'event_idevent' => $event_id,
+            'user_nrp' => session('user_id'),
+        );
+        DB::table('event_like')
+            ->insert($data['data']);
+        // dd($event_id);
+        $likes = $this->getLike($event_id);
+        $like_num = count($likes);
+        $do_like = $this->doLike($event_id)[0]->do_like;
+        $msg = "This is a simple message.";
+        return response()->json(array('msg'=> $event_id,'like_num'=>$like_num), 200, $likes);
+        // return response()->json(['success'=>'Got Simple Ajax Request.']);
+    }
 
     public function do_comment()
     {

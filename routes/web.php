@@ -47,6 +47,7 @@ Route::group(['middleware' => ['grouphome']], function () {
 	Route::get('/news','NewsController@index')->name('news');
 	Route::get('/news/{id}', 'NewsController@detail')->name('detail');
 	Route::post('/do_comment','NewsController@do_comment')->name('do_comment');
+	Route::post('/do_like', 'NewsController@do_like');
 	Route::get('/create_news',array('as'=>'summernote.get','uses'=>'NewsController@getSummernote'));
 	Route::post('/do_create_news',array('as'=>'summernote.post','uses'=>'NewsController@postSummernote'));
 

@@ -178,6 +178,11 @@
 .fa-heart:before {
   content: "\f004";
 }
+
+.fa-heart:hover {
+  background-color: "red";
+}
+
 .fa-star:before {
   content: "\f005";
 }

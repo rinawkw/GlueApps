@@ -178,6 +178,9 @@
 .fa-heart:before {
   content: "\f004";
 }
+.button .fa-heart2:hover {
+  color: "red";
+}
 .fa-star:before {
   content: "\f005";
 }
