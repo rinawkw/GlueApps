@@ -41,7 +41,7 @@
                 <input style="height: 2.5em;" type="password" id="password" name="password" class="form-control" placeholder="password" />
             </div>
             <div class="loginbox-submit">
-                <input type="submit" class="btn btn-primary btn-block" value="Login">
+                <input type="submit" style="background-color:white"class="btn btn-primary btn-block" value="Login">
             </div>
             <div class="loginbox-or">
                 <div class="or-line"></div>
