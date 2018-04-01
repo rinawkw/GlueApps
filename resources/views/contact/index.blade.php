@@ -1,36 +1,60 @@
-@extends('layouts.index')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+@include('layouts.head')
+<body>
+<div class="boxed active">
+    @include('layouts.topbar')
+    @include('layouts.mainmenu')
 			<!-- main content -->
 			<section class="ot-section-a">
 				<!-- container -->
 				<div class="container">
 					<div class="row">
-						<div class="col-md-8">
+					<div class="col-md-12">
+                            <h4 class="section-title"><span></span>Contact</h4>
+                        </div>
+						<div class="col-md-12">
 							<div class="content ot-article">
-								
-								<h2>Contact</h2>
-								<p>
-									Praesent vitae leo et sapien fermentum pretium eu sed velit. Phasellus tincidunt eleifend mauris a pellentesque. Duis at porttitor nisl, vitae vestibulum ex. Quisque commodo turpis libero, in consectetur lectus luctus eget. Nam tincidunt elementum massa vel egestas. Sed hendrerit lacus tincidunt, consectetur mauris eget, varius augue. Duis tincidunt bibendum felis at bibendum. Proin lectus elit, molestie eu faucibus in, convallis vel turpis. Pellentesque sit amet accumsan mi, in volutpat urna. Morbi maximus metus et ligula accumsan, id euismod lectus fringilla. Ut a nisl sed risus convallis viverra.
-								</p>
-								<h3>Advertise With Us!</h3>
-								<p>Duis at porttitor nisl, vitae vestibulum ex. Quisque commodo turpis libero, in consectetur lectus luctus eget. Nam tincidunt elementum massa vel egestas. Sed hendrerit lacus tincidunt, consectetur mauris eget, varius augue. </p>
-								<h3>The Editors</h3>
-								<p>Duis at porttitor nisl, vitae vestibulum ex. Quisque commodo turpis libero, in consectetur lectus luctus eget. Nam tincidunt elementum massa vel egestas. Sed hendrerit lacus tincidunt, consectetur mauris eget, varius augue. </p>
-								<h3>Write For Us</h3>
-								<p>Duis at porttitor nisl, vitae vestibulum ex. Quisque commodo turpis libero, in consectetur lectus luctus eget. Nam tincidunt elementum massa vel egestas. Sed hendrerit lacus tincidunt, consectetur mauris eget, varius augue. </p>
-								<p>
-									Via della Canonica, 1<br>
-									50122 - Firenze<br>
-									Tel: +39 055 23028523<br>
-									Fax: +39 055 23028854<br>
-									Mail: no@spam.it<br>
-									P. Iva: 0053384204804<br>
-								</p>
-								<div class="iframe-rwd embed-container  maps">
-									<iframe style="pointer-events: none;" allowfullscreen src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d30168.04676543787!2d-121.99255408324822!3d37.36557829291264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1slv!2slv!4v1436973231006"></iframe><br /><small><a href="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d30168.04676543787!2d-121.99255408324822!3d37.36557829291264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1slv!2slv!4v1436973231006" style="color:#0000FF;text-align:left">View Larger Map</a></small>
-								</div>
+								<div style="border: 0.5rem solid rgb(81, 174, 224);position: relative;overflow: hidden;padding-bottom: 300px;" 
+								id="mymap" class="iframe-rwd embed-container maps">
+                                </div>								
 							</div>
-							<!-- end content -->
+						</div>
+						<div class="col-md-8">
+						<h3>Kesekretariatan GenBI Surabaya</h3>
+						<p>
+							Alamat: Jalan a<br>
+							Email: no@spam.it<br>
+							CP: P. Iva (0053384204804)<br>
+						</p> 
+						<h3>Kesekretariatan GenBI Malang</h3>
+						<p>
+							Alamat: Jalan a<br>
+							Email: no@spam.it<br>
+							CP: P. Iva (0053384204804)<br>
+						</p>
+						<h3>Kesekretariatan GenBI Jember</h3>
+						<p>
+							Alamat: Jalan a<br>
+							Email: no@spam.it<br>
+							CP: P. Iva (0053384204804)<br>
+						</p>
+						<h3>Kesekretariatan GenBI Kediri</h3>
+						<p>
+							Alamat: Jalan a<br>
+							Email: no@spam.it<br>
+							CP: P. Iva (0053384204804)<br>
+						</p>
+						<h3>Kesekretariatan GenBI Tulungagung</h3>
+						<p>
+							Alamat: Jalan a<br>
+							Email: no@spam.it<br>
+							CP: P. Iva (0053384204804)<br>
+							<br>
+							<br>
+
+
+						</p>
 						</div>
 						<div class="col-md-4">
 							<aside class="sidebar">
@@ -39,7 +63,7 @@
 									
 								<!-- widget tag cloud -->
 								<div class="widget-container">
-									<h4 class="section-title">Social</h4>
+									<h4 class="section-title">Social Media</h4>
 									<div class="ot-social-button">
 										<a href="#"><i class="fa fa-facebook"></i></a>
 										<div class="ot-social-details">
@@ -93,4 +117,38 @@
 				</div>
 				<!-- container -->
 			</section>
-@stop
+			@include('layouts.footer')
+</div>
+
+
+<script type="text/javascript">
+
+
+
+var mymap = new GMaps({
+  el: '#mymap',
+  lat: -7.2441903,
+  lng: 112.7355586,
+  zoom:15
+});
+var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+var markersby = mymap.addMarker({
+    lat: -7.2441903,
+    lng: 112.7355586,
+    title: "Kesekretariatan GenBI Surabaya",
+    icon: "images/sekretariat.png",
+    click: function(e) {
+        
+    }    
+});
+</script>
+
+<script type="text/javascript" src="/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/js/jquery-latest.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/demo-settings.js"></script>
+<script type="text/javascript" src="/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/js/theia-sticky-sidebar.js"></script>
+<script type="text/javascript" src="/js/themescripts.js"></script>
+</body>
+</html>
