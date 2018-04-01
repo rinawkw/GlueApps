@@ -588,7 +588,7 @@ nav.top-menu ul.menu ul.sub-menu ul.sub-menu li:hover a {
 
 nav.main-menu {
 	/* background-color: #353537; */
-	margin-bottom: 30px;
+	margin-bottom: 0.5rem;
 	/* border-top: 1px solid #353537; */
 	/* border-bottom: 4px solid #FFC000; */
 }
