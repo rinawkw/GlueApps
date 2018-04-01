@@ -4,7 +4,7 @@
 <body>
 <div class="boxed active">
     @include('layouts.topbar')
-    {{--        @include('layouts.header')--}}
+
     @include('layouts.mainmenu')
 
     <section class="ot-section-b wide-article">

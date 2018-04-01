@@ -1,5 +1,11 @@
-@extends('layouts.index')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+@include('layouts.head')
+<body>
+<div class="boxed active">
+    @include('layouts.topbar')
+    @include('layouts.mainmenu')
+
 			<!-- main content -->
 			<section class="ot-section-a">
                 <!-- container -->
@@ -11,35 +17,8 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="content ot-article">
-								<div class="iframe-rwd embed-container maps">
-                                <iframe 
-                                    allowfullscreen
-                                    width="300" 
-                                    height="170" 
-                                    frameborder="0" 
-                                    scrolling="no" 
-                                    marginheight="0" 
-                                    marginwidth="0" 
-                                    src="https://maps.google.com/maps?q=-7.2821281,112.7929391&hl=es;z=14&amp;output=embed"
-                                    >
-                                    </iframe>
-                                    <br />
-                                    <small>
-                                    <a 
-                                        href="https://maps.google.com/maps?q='+data.lat+','+data.lon+'&hl=es;z=14&amp;output=embed" 
-                                        style="color:#0000FF;text-align:left" 
-                                        target="_blank"
-                                    >
-                                        See map bigger
-                                    </a>
-                                    </small>   
-                                
-                                <!-- <iframe allowfullscreen src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d30168.04676543787!2d-121.99255408324822!3d37.36557829291264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1slv!2slv!4v1436973231006"></iframe>
-                                        <br />
-                                        <small>
-                                            <a href="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d30168.04676543787!2d-121.99255408324822!3d37.36557829291264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1slv!2slv!4v1436973231006" style="color:#0000FF;text-align:left">
-                                                View Larger Map</a></small> -->
-								</div>
+								<div style="border:0.5rem solid #51aee0;" id="mymap" class="iframe-rwd embed-container maps">
+                                </div>
 							</div>
 							<!-- end content -->
 						</div>
@@ -51,4 +30,42 @@
 				</div>
 				<!-- container -->
 			</section>
-@stop
+            @include('layouts.footer')
+</div>
+
+<script type="text/javascript">
+
+
+var locations = <?php print_r(json_encode($locMe)) ?>;
+
+var mymap = new GMaps({
+  el: '#mymap',
+  lat: 21.170240,
+  lng: 72.831061,
+  zoom:15
+});
+
+
+$.each( locations, function( index, value ){
+    mymap.addMarker({
+        lat: value.lat,
+        lng: value.lng,
+        title: value.city,
+        click: function(e) {
+            alert('This is '+value.city+', gujarat from India.');
+        }
+    });
+});
+
+
+</script>
+
+<script type="text/javascript" src="/js/bootstrap-datetimepicker.min.js"></script>
+{{--<script type="text/javascript" src="/js/jquery-latest.min.js"></script>--}}
+{{--<script type="text/javascript" src="/js/bootstrap.min.js"></script>--}}
+{{--<script type="text/javascript" src="js/demo-settings.js"></script>--}}
+{{--<script type="text/javascript" src="/js/owl.carousel.min.js"></script>--}}
+{{--<script type="text/javascript" src="/js/theia-sticky-sidebar.js"></script>--}}
+{{--<script type="text/javascript" src="/js/themescripts.js"></script>--}}
+</body>
+</html>

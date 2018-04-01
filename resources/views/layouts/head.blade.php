@@ -27,31 +27,21 @@
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <!-- form -->
-    <!-- <script src="/js/form.js" type="text/javascript"></script>
-    <link href="/css/form.css" rel="stylesheet" type="text/css"> -->
-
     <!--Beyond styles-->
     <link href="/css/beyond.min.css" rel="stylesheet" />
     <link href="/css/demo.min.css" rel="stylesheet" />
     <link href="/css/animate.min.css" rel="stylesheet" />
     <link id="skin-link" href="#" rel="stylesheet" type="text/css" />
-
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
     <script src="/js/skins.min.js"></script>
-
     <!--Fonts-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css">
-
     <!-- only for demo -->
     <link href="/css/demo-settings.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- provide the csrf token -->
+    <!-- Maps -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.js"></script>
     
     <script>
         $(document).ready(function(){
