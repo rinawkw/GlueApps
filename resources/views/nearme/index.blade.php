@@ -12,6 +12,13 @@
                 
 				<div class="container">
                 <div class="ot-module">
+                    <!-- Modal -->
+                    <div style="z-index: 1050;" class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            </div>
+                        </div>
+                    </div>
                     <!-- classic grid posts section -->
                     <h4 class="section-title"><span>Lokasi Anggota GenBI</span>GenBI Near Me</h4>
 					<div class="row">
@@ -33,26 +40,41 @@
             @include('layouts.footer')
 </div>
 
+
 <script type="text/javascript">
 
-
-var locations = <?php print_r(json_encode($locMe)) ?>;
+var locMe = <?php print_r(json_encode($locMe)) ?>;
+var locOthers = <?php print_r(json_encode($locOthers)) ?>;
 
 var mymap = new GMaps({
   el: '#mymap',
-  lat: 21.170240,
-  lng: 72.831061,
+  lat: locMe[0].user_lat,
+  lng: locMe[0].user_lng,
   zoom:15
 });
 
+var marker = mymap.addMarker({
+    lat: locMe[0].user_lat,
+    lng: locMe[0].user_lng,
+    title: "YOU",
+    icon: "images/me.png",
+    click: function() {
+        $("#myModal").modal('show');
+    }    
+});
 
-$.each( locations, function( index, value ){
+marker.addListener('click', function() {
+    $("#myModal").modal('show');
+});
+
+$.each( locOthers, function( index, value ){
     mymap.addMarker({
-        lat: value.lat,
-        lng: value.lng,
-        title: value.city,
+        lat: value.user_lat,
+        lng: value.user_lng,
+        title: value.user_nama,
+        icon: "images/other.png",
         click: function(e) {
-            alert('This is '+value.city+', gujarat from India.');
+            $("#myModal").modal('show');
         }
     });
 });
