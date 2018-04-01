@@ -26,6 +26,11 @@
 								<!-- widget articles section -->
 								<!-- <div class="widget-container"> -->
                                 <div class="content ot-article">
+                                <div class="coloralert contact-success-block" style="text-size:5sp display:block; background: #68a117;">
+									<i class="fa fa-check"></i>
+									<p style="size:2sp">Click on Marker to see GenBI near you!</p>
+									<a href="#close-alert" class="close-alert"><i class="fa fa-times-circle"></i></a>
+								</div>
                                     <div class="post-image" style="margin:2rem">
 										<img id="pic"  src="{{session('data.user_foto')}}" alt="">
                                     </div>
@@ -69,6 +74,8 @@ var marker = mymap.addMarker({
     click: function(e) {
         $('#demo').text(locMe[0].user_nama);
         $("#pic").attr({ src: locMe[0].user_foto});
+        $("#profile").attr("href", "profile");
+        $(".section-title b").css({color: "#62b1f6"});
     }    
 });
 
@@ -85,7 +92,9 @@ $.each( locOthers, function( index, value ){
         click: function(e) {
             $('#demo').text(value.user_nama);
             $("#pic").attr({ src: value.user_foto});
+            $(".section-title b").css({color: "#ffa500"});
             $("#profile").attr("href", "profile/".value.user_nrp);
+            
         }
     });
 });
@@ -94,11 +103,11 @@ $.each( locOthers, function( index, value ){
 </script>
 
 <script type="text/javascript" src="/js/bootstrap-datetimepicker.min.js"></script>
-{{--<script type="text/javascript" src="/js/jquery-latest.min.js"></script>--}}
-{{--<script type="text/javascript" src="/js/bootstrap.min.js"></script>--}}
-{{--<script type="text/javascript" src="js/demo-settings.js"></script>--}}
-{{--<script type="text/javascript" src="/js/owl.carousel.min.js"></script>--}}
-{{--<script type="text/javascript" src="/js/theia-sticky-sidebar.js"></script>--}}
-{{--<script type="text/javascript" src="/js/themescripts.js"></script>--}}
+<script type="text/javascript" src="/js/jquery-latest.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/demo-settings.js"></script>
+<script type="text/javascript" src="/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/js/theia-sticky-sidebar.js"></script>
+<script type="text/javascript" src="/js/themescripts.js"></script>
 </body>
 </html>
