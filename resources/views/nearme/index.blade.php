@@ -10,7 +10,9 @@
 				<!-- container -->
 				<div class="container">
 					<div class="row">
-                    <h4 class="section-title"><span>Lokasi Anggota GenBI</span>GenBI Near Me</h4>
+                        <div class="col-md-12">
+                            <h4 class="section-title"><span>Lokasi Anggota GenBI</span>GenBI Near Me</h4>
+                        </div>
 						<div class="col-md-8">
 							<div class="content ot-article">
                                 

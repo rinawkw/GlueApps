@@ -21,7 +21,7 @@
                                             {{--</div>--}}
                                         </div>
                                         <div class="list-post-body">
-                                            <h2><a href="news/{{$value->idevent}}">{{ $value->event_judul }}</a>
+                                            <h2><a href="news/{{$value->idevent}}"><b>{{ $value->event_judul }}</b></a>
                                             </h2>
                                             <div class="post-meta">
                                                 <span>{{$value->event_tanggal}}</span>
