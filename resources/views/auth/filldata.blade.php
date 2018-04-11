@@ -14,6 +14,28 @@
                             <!--== Post Reply ==-->
                                 <h3 style="color: #1a1a1a;">Hai <b>{{session('data.user_nama')}}</b>!</h3>
                                 <h4>Mohon lengkapi data berikut terlebih dahulu.</h4>
+                                <br>
+                                @if (session('success_message1'))
+                                    <div class="col-md-12">
+                                    <span class="alert alert-success" role="alert">{{ session('success_message1') }}</span>
+                                    </div>
+                                    <br><br><br>
+                                @elseif (session('success_message2'))
+                                    <div class="col-md-12">
+                                        <span class="alert alert-success" role="alert">{{ session('success_message2') }}</span>
+                                    </div>
+                                    <br><br><br>
+                                @elseif (session('success_message3'))
+                                    <div class="col-md-12">
+                                        <span class="alert alert-success" role="alert">{{ session('success_message3') }}</span>
+                                    </div>
+                                    <br><br><br>
+                                @elseif (session('success_message4'))
+                                    <div class="col-md-12">
+                                        <span class="alert alert-success" role="alert">{{ session('success_message4') }}</span>
+                                    </div>
+                                    <br><br><br>
+                                @endif
                                 <div class="short-tabs">
                                     <ul>
                                         <li class="active"><a href="javascript:void(0);">Identitas</a></li>
@@ -260,73 +282,7 @@
                                                                       rows="3"></textarea>
                                                         @endif
                                                     </div>
-                                                    <!-- <div class="col-md-6">
-                                                        <label for="idline">Id LINE*</label>
-                                                        @if(session('data1.usr_line'))
-                                                            <input id="idline" type="text" placeholder="id line"
-                                                                   name="idline"
-                                                                   required
-                                                                   autofocus
-                                                                   value="{{session('data1.usr_line')}}">
-                                                        @else
-                                                            <input id="idline" type="text" placeholder="id line"
-                                                                   name="idline"
-                                                                   required
-                                                                   autofocus>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="idfb">Id Facebok*</label>
-                                                        @if(session('data1.usr_fb'))
-                                                            <input id="idfb" type="text" placeholder="id facebook"
-                                                                   name="idfb"
-                                                                   required
-                                                                   autofocus
-                                                                   value="{{session('data1.usr_fb')}}">
-                                                        @else
-                                                            <input id="idfb" type="text" placeholder="id facebook"
-                                                                   name="idfb"
-                                                                   required
-                                                                   autofocus>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="idig">Id Instagram*</label>
-                                                        @if(session('data1.usr_insta'))
-                                                            <input id="idig" type="text" placeholder="id instagram"
-                                                                   name="idig"
-                                                                   required
-                                                                   autofocus
-                                                                   value="{{session('data1.usr_insta')}}">
-                                                        @else
-                                                            <input id="idig" type="text" placeholder="id instagram"
-                                                                   name="idig"
-                                                                   required
-                                                                   autofocus>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="idtwitter">Id Twitter*</label>
-                                                        @if(session('data1.usr_twit'))
-                                                            <input id="idtwitter" type="text" placeholder="id twitter"
-                                                                   name="idtwitter"
-                                                                   required
-                                                                   autofocus
-                                                                   value="{{session('data1.usr_twit')}}">
-                                                        @else
-                                                            <input id="idtwitter" type="text" placeholder="id twitter"
-                                                                   name="idtwitter"
-                                                                   required
-                                                                   autofocus>
-                                                        @endif
-                                                    </div> -->
                                                     <div class="col-md-12">
-                                                        @if (session('error_message'))
-                                                            <span class="error-msg comment-error"
-                                                                  id="contact-mail-error"
-                                                                  style="display:block; background-color: #B80000">
-                                                <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
-                                                        @endif
                                                         <p class="form-submit">
                                                             <input name="submit" type="submit" id="button-1"
                                                                    class="submit submit-button" value="Save"/>
@@ -388,12 +344,6 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-12">
-                                                        @if (session('error_message'))
-                                                            <span class="error-msg comment-error"
-                                                                  id="contact-mail-error"
-                                                                  style="display:block; background-color: #B80000">
-                                                <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
-                                                        @endif
                                                         <p class="form-submit">
                                                             <input name="submit" type="submit" id="button-2"
                                                                    class="submit submit-button" value="Save"/>
@@ -525,12 +475,6 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-12">
-                                                        @if (session('error_message'))
-                                                            <span class="error-msg comment-error"
-                                                                  id="contact-mail-error"
-                                                                  style="display:block; background-color: #B80000">
-                                                <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
-                                                        @endif
                                                         <p class="form-submit">
                                                             <input name="submit" type="submit" id="button-3"
                                                                    class="submit submit-button" value="Save"/>
@@ -751,12 +695,6 @@
                                                     </div>
 
                                                     <div class="col-md-12">
-                                                        @if (session('error_message'))
-                                                            <span class="error-msg comment-error"
-                                                                  id="contact-mail-error"
-                                                                  style="display:block; background-color: #B80000">
-                                                            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ session('error_message') }}</span>
-                                                        @endif
                                                         <p class="form-submit">
                                                             <input name="submit" type="submit" id="button-4"
                                                                    class="submit submit-button" value="Save"/>
