@@ -15,7 +15,7 @@
                                         </a>
                                     {{--<div class="diff-spacer spacer-1" style="background-color:#E3EFF3;color:#E3EFF3;"><i class="fa fa-sign-in"></i></div>--}}
                                     <!--== Post Reply ==-->
-                                        <h3 style="color: #1a1a1a;">Hai <b>{{session('data.user_nama')}}</b>!</h3>
+                                        <h3 style="color: #1a1a1a;">Hai <b>{{$user[0]->user_nama}}</b>!</h3>
                                         <div class="short-tabs">
                                             <ul>
                                                 <li class="active"><a href="javascript:void(0);">Identitas</a></li>
@@ -35,7 +35,7 @@
                                                             </div>
                                                             <div class="col-md-12 text-left">
                                                                 @if (session('data.user_foto'))
-                                                                    <img src="{{URL::asset(session('data.user_foto'))}}" height="200" width="200" class="rounded float-left">
+                                                                    <img src="{{URL::asset($user[0]->user_foto)}}" height="200" width="200" class="rounded float-left">
                                                                 @else
                                                                     <img src="http://rehrealestate.com/wp-content/uploads/2015/08/facebook-default-no-profile-pic-300x300.jpg" height="200" width="200" class="rounded float-left">
                                                                 @endif

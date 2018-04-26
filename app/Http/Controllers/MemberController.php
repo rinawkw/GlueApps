@@ -9,7 +9,7 @@ class MemberController extends Controller
 {
     public function index()
     {
-        $members = DB::table('user')->get();
+        $members = DB::table('user')->where('user_akses', '3')->get();
         $detil_univ = DB::table('universitas')->get();
 
         foreach ($detil_univ as $value) {

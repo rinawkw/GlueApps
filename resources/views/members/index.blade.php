@@ -22,7 +22,7 @@
                                             //$i=$i+1;
                                         ?>
                                         <div>   
-                                            {{-- <div class="list-post-container"> --}}
+                                            <div class="profile-image-container">
                                                 <a href="/profile/{{$member->user_nrp}}">
                                                 @if ($member->user_foto!=NULL)
                                                     <img src="{{$member->user_foto}}" class="image-member-list">
@@ -30,7 +30,7 @@
                                                     <img src="http://rehrealestate.com/wp-content/uploads/2015/08/facebook-default-no-profile-pic-300x300.jpg" class="image-member-list">
                                                 @endif
                                                 </a><br>
-                                            {{-- </div> --}}
+                                            </div>
                                             <div class="list-post-body">
                                                 <div class="row">
                                                     <div class="col-md-8">
