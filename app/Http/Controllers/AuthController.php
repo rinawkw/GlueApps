@@ -39,6 +39,7 @@ class AuthController extends Controller
         $nrp = explode("-", $user[0]->user_no_kta);
         $univ = DB::table('universitas')->where('iduniversitas', $nrp[2])->get();
         $data['data'] = array(
+            'user_akses' => $user[0]->user_akses,
             'user_nama' => $user[0]->user_nama,
             'user_email' => $user[0]->user_email,
             'user_no_hp' => $user[0]->user_no_hp,
