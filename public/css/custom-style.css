@@ -1,20 +1,32 @@
 .image-member-list {
   float: left;
-  padding: 10px;
+  padding: 0px;
   margin: 10px;
-  width: 17%;
-  height: 17%;
+  max-width:75px;
+  max-height:75px;
+  width: auto;
+  height: auto;
 }
 
 .image-member-list:hover {
   float: left;
-  padding: 10px;
+  padding: 0px;
   margin: 10px;
-  width: 17%;
-  height: 17%;
-  /*background-color:#000;*/
+  max-width:75px;
+  max-height:75px;
+  width: auto;
+  height: auto;
   opacity:0.5;
 }
+
 .member-block {
   display: inline-block;
+}
+
+.profile-image-container {
+  float: left;
+  width: 75px;
+  height: 75px;
+  margin: 20px;
+  margin-right: 40px;
 }

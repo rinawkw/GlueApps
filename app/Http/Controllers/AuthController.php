@@ -37,10 +37,7 @@ class AuthController extends Controller
     {
         $user = DB::select('call sp_getdatauser(?)', [Session::get('user_id')]);
         $nrp = explode("-", $user[0]->user_no_kta);
-        //dd($nrp);
         $univ = DB::table('universitas')->where('iduniversitas', $nrp[2])->get();
-        //Session::put('data.kuliah_univ1', $univ[0]->universitas_nama);
-        //dd($univ);
         $data['data'] = array(
             'user_nama' => $user[0]->user_nama,
             'user_email' => $user[0]->user_email,
@@ -65,7 +62,6 @@ class AuthController extends Controller
             'kuliah_masuk_keluar2' => $user[0]->kuliah_masuk_keluar2,
         );
         $kerja = DB::table('user_kerja')->where('user_nrp', session('user_id'))->get();
-        //dd($kerja);
         Session::put('data', $data['data']);
         Session::put('data.kuliah_univ1', $univ[0]->universitas_nama);
         if(isset($kerja[0])) {
@@ -89,7 +85,6 @@ class AuthController extends Controller
         if(isset($tahun[2])){
             Session::put('data.user_tahun3', $tahun[2]);
         }
-        // dd($tahun[0]);
     }
 
     public function logout()
@@ -114,7 +109,6 @@ class AuthController extends Controller
         $namalengkap = Input::get('namalengkap');
         $email = Input::get('email');
         $password = Input::get('password');
-        // $nomortelepon = Input::get('nomortelepon');
         $nimnrp = Input::get('nimnrp');
         $data['data'] = array(
             'user_nama' => $namalengkap,
@@ -129,7 +123,6 @@ class AuthController extends Controller
 
     public function do_filldata1(Request $request)
     {
-        //$usr_id = Input::get('usr_id');
         $user_nama = Input::get('nama');
         $user_email = Input::get('email');
         $user_no_hp = Input::get('nohp');
@@ -142,18 +135,6 @@ class AuthController extends Controller
         $user_suku = Input::get('suku');
         $user_status = Input::get('status');
         $user_bio = Input::get('biodata');
-        //$idline = Input::get('idline');
-        //$idfb = Input::get('idfb');
-        //$idig = Input::get('idig');
-        //$idtwitter = Input::get('idtwitter');
-        // if(Input::file('foto'))
-        // {
-        //     $image = Input::file('foto');
-        //     $filename = time() . '.' . $image->getClientOriginalExtension();
-        //     $path = public_path('images/foto' . $filename);
-        //     Image::make($image->getRealPath())->resize(200, 200)->save($path);
-        //     $photopath = "/public/images/foto" + $filename;
-        // }
         if ($request->file('foto')){
             $img = time() . "." . $request->file('foto')->getClientOriginalExtension();
             $request->file('foto')->move(base_path() . '/public/images/foto/', $img);
@@ -175,26 +156,19 @@ class AuthController extends Controller
             'user_suku' => $user_suku,
             'user_status' => $user_status,
             'user_bio' => $user_bio,
-            // 'user_line' => $idline,
-            // 'user_fb' => $idfb,
-            // 'user_insta' => $idig,
-            // 'user_twit' => $idtwitter,
             'user_foto' => $photopath,
             'user_thumbnail' => $photopath,
         );
         DB::table('user')
             ->where('user_nrp', session('user_id'))
             ->update($data['data']);
-        //  dd($data);
         $this->get_data_user();        
-        //  Session::put('data', $data['data']);
-        //  dd(session('data1.usr_no_kta'));
+        Session::flash('success_message1','Data identitas berhasil disimpan');
         return redirect()->route('filldata');
     }
 
     public function do_filldata2()
     {
-        //$usr_id = Input::get('usr_id');
         $tahun1 = Input::get('tahun1');
         $tahun2 = Input::get('tahun2');
         $tahun3 = Input::get('tahun3');
@@ -207,13 +181,12 @@ class AuthController extends Controller
         DB::table('user')
             ->where('user_nrp', session('user_id'))
             ->update($data['data']);
-        $this->get_data_user();        
-        //dd($data);
+        $this->get_data_user();       
+        Session::flash('success_message2','Data tahun berhasil disimpan');
         return redirect()->route('filldata');
     }
     public function do_filldata3()
     {
-        // $user_id = Input::get('usr_id');
         $universitas = Input::get('universitas');
         $fakultas = Input::get('fakultas');
         $departemen = Input::get('departemen');
@@ -227,18 +200,12 @@ class AuthController extends Controller
             'kuliah_fakultas1' => $fakultas,
             'kuliah_jurusan1' => $departemen,
             'kuliah_masuk_keluar1' => $periode,
-            // 'kuliah_univ2' => $universitas2,
-            // 'kuliah_fakultas2' => $fakultas2,
-            // 'kuliah_jurusan2' => $departemen2,
-            // 'kuliah_masuk_keluar2' => $periode2,
         );
         DB::table('user')
             ->where('user_nrp', session('user_id'))
             ->update($data['data']);
-        $this->get_data_user();        
-        // Session::put('data', $data['data']);
-        // Session::put('data.univ1', $universitas);
-        // dd($data);
+        $this->get_data_user();       
+        Session::flash('success_message3','Data pendidikan berhasil disimpan');
         return redirect()->route('filldata');
     }
     public function do_filldata4()
@@ -272,7 +239,7 @@ class AuthController extends Controller
         Session::put('data.kerja_tahun_masuk', $tahunmulai);
         Session::put('data.kerja_bulan_keluar', $bulanakhir);
         Session::put('data.kerja_tahun_keluar', $tahunakhir);
-        //dd($data);
+        Session::flash('success_message4','Data pengalaman pekerjaan berhasil disimpan');
         return redirect()->route('filldata');
     }
     public function show_myprofile()
@@ -281,13 +248,6 @@ class AuthController extends Controller
         $nama = session('data.user_nama');
         $user = DB::table('user')->where('user_nrp', session('user_id'))->get();
         $userwork = DB::table('user_kerja')->where('user_nrp', session('user_id'))->get();
-
-        // $user1 = (array) $user[0];
-        // $userwork1 = (array) $userwork[0];
-        // Session::put('data1', $user1);
-        // Session::put('data2', $user1);
-        // Session::put('data3', $user1);
-        // Session::put('data4', $userwork1);
         return view('profile.profile', compact('edit'));
     }
     public function show_profile($usr_id)
@@ -309,75 +269,5 @@ class AuthController extends Controller
         else {
             return view('members.profile', compact('user','userwork','edit', 'usertahun', 'detil_univ'));
         }
-    }
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
