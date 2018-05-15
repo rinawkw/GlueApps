@@ -5,7 +5,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/images/favicon-glue.png">
+    <link rel="icon" href="{{url("/images/favicon-glue.png")}}">
     <title>GLUE - GenBI Line Up And Experience</title>
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -63,4 +63,5 @@
             });
        });    
     </script>
+    
 </head>

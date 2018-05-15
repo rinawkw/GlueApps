@@ -18,27 +18,26 @@ class NewsController extends Controller
     public function index()
     {
         $news = DB::table('event')->get();
-    //    dd($news);
-        return view('news.index',compact('news'));
-
+        //    dd($news);
+        return view('news.index', compact('news'));
     }
     public function detail($event_id)
     {
-        $post = DB::table('event')->where('idevent',$event_id)->first();
+        $post = DB::table('event')->where('idevent', $event_id)->first();
         $comments = $this->getComment($event_id);
         $comment_num = count($comments);
         $likes = $this->getLike($event_id);
         $like_num = count($likes);
         $do_like = $this->doLike($event_id)[0]->do_like;
         //  dd($do_like);
-        return view('news.detail',compact('post','comments','comment_num','likes','like_num','do_like'));
+        return view('news.detail', compact('post', 'comments', 'comment_num', 'likes', 'like_num', 'do_like'));
     }
 
     public function getComment($event_id)
     {
         $comments = DB::table('event_comment')
-                    ->leftjoin('user','user.user_nrp','event_comment.user_nrp')
-                    ->where('event_idevent',$event_id)->get();
+                    ->leftjoin('user', 'user.user_nrp', 'event_comment.user_nrp')
+                    ->where('event_idevent', $event_id)->get();
         return $comments;
     }
 
@@ -84,7 +83,7 @@ class NewsController extends Controller
         // dd($data);
         DB::table('event_comment')
             ->insert($data['data']);
-            return \Redirect::route('detail', $event_id);
+        return \Redirect::route('detail', $event_id);
     }
 
     /**
@@ -100,16 +99,14 @@ class NewsController extends Controller
     public function uploadImage(Request $request)
     {
         // A list of permitted file extensions
-        if(empty($_FILES['file']))
-        {
+        if (empty($_FILES['file'])) {
             exit();
         }
         $errorImgFile = public_path()."/uploads/img/img_upload_error.jpg";
         $destinationFilePath = public_path().'/uploads/img-uploads/'.$_FILES['file']['name'];
-        if(!move_uploaded_file($_FILES['file']['tmp_name'], $destinationFilePath)){
+        if (!move_uploaded_file($_FILES['file']['tmp_name'], $destinationFilePath)) {
             echo $errorImgFile;
-        }
-        else{
+        } else {
             echo url('/').'/public/uploads/img-uploads/'.$_FILES['file']['name'];
         }
     }
@@ -144,12 +141,11 @@ class NewsController extends Controller
         //     $img->removeAttribute('src');
         //     $img->setAttribute('src', $image_name);
         // }
-        if ($request->file('foto')){
+        if ($request->file('foto')) {
             $img = time() . "." . $request->file('foto')->getClientOriginalExtension();
             $request->file('foto')->move(base_path() . '/public/images/foto/', $img);
-            $photopath = "images/foto/" . $img;
-        }
-        else {
+            $photopath = url("/") . "/images/foto/" . $img;
+        } else {
             $photopath = Input::get('fotosession');
         }
         $data['data'] = array(
@@ -169,58 +165,85 @@ class NewsController extends Controller
         return redirect()->route('news');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function list()
     {
-        //
+        $events = DB::table('event')->get();
+        return view('news.list', compact('events'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        $post = DB::table('event')->where('id',$id)->first();
-        return view('news.detail',compact('post'));
+        $post = DB::table('event')->where('id', $id)->first();
+        return view('news.detail', compact('post'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
-        //
+        $post = DB::table('event')->where('idevent', $id)->first();
+        return view('news.edit', compact('post'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function edit_news(Request $request)
+    {
+        $this->validate($request, [
+            'detail' => 'required',
+        ]);
+        $id=$request->input('event_id');
+        $internal=$request->input('internal');
+        $title=$request->input('title');
+        $location=$request->input('location');
+        $tanggal=$request->input('tanggal');
+        $waktu=$request->input('waktu');
+        $detail=$request->input('detail');
+        $dom = new \DomDocument();
+        $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        // $images = $dom->getElementsByTagName('img');
+        // foreach($images as $k => $img){
+        //     $data = $img->getAttribute('src');
+        //     list($type, $data) = explode(';', $data);
+        //     list(, $data)      = explode(',', $data);
+        //     $data = base64_decode($data);
+        //     $image_name= "/uploads/" . time().$k.'.png';
+        //     $path = public_path() . $image_name;
+        //     file_put_contents($path, $data);
+        //     $img->removeAttribute('src');
+        //     $img->setAttribute('src', $image_name);
+        // }
+        if ($request->file('foto')) {
+            $img = time() . "." . $request->file('foto')->getClientOriginalExtension();
+            $request->file('foto')->move(base_path() . '/public/images/foto/', $img);
+            $photopath = url("/") . "/images/foto/" . $img;
+        } else {
+            $photopath = Input::get('fotosession');
+        }
+        $data['data'] = array(
+            'user_nrp' => session('user_id'),
+            'event_judul' => $title,
+            'event_deskripsi' => $detail,
+            'event_tanggal' => $tanggal,
+            'event_waktu' => $waktu,
+            'event_lokasi' => $location,
+            'event_foto' => $photopath,
+            'event_internal' => $internal,
+        );
+        DB::table('event')
+            ->where('idevent', $id)
+            ->update($data['data']);
+            
+        // dd($detail);
+        // dd($path);
+        return redirect()->route('newslist');
+    }
+    public function delete($id)
+    {
+        DB::table('event')->where('idevent', $id)->delete();
+        return redirect('/newslist');
+    }
     public function destroy($id)
     {
         //

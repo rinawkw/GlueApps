@@ -39,7 +39,7 @@
 			            <tr>
 			                <th>KTA</th>
 			                <th>NRP</th>
-			                <th>Nama</th>
+			                <th2>Nama</th>
 			                <th>Universitas</th>
 			                <th>Action</th>
 			            </tr>
