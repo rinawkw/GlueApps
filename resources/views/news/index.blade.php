@@ -15,13 +15,13 @@
                                 <!-- end list post item -->
                                     <div class="list-post">
                                         <div class="list-post-container">
-                                            <a href="post.html"><img src="{{$value->event_foto}}" alt=""></a>
+                                            <a href="{{url("news/".$value->idevent)}}"><img src="{{$value->event_foto}}" alt=""></a>
                                             {{--<div class="post-cat2">--}}
                                                 {{--<span style="background-color: #F0CE49">Transport</span>--}}
                                             {{--</div>--}}
                                         </div>
                                         <div class="list-post-body">
-                                            <h2><a href="news/{{$value->idevent}}"><b>{{ $value->event_judul }}</b></a>
+                                            <h2><a href="{{url("news/"$value->idevent)}}"><b>{{ $value->event_judul }}</b></a>
                                             </h2>
                                             <div class="post-meta">
                                                 <span>{{$value->event_tanggal}}</span>

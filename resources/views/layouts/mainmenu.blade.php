@@ -12,9 +12,9 @@
                 <a href="/{{'news'}}"><i class="fa fa-newspaper-o"></i> News</a><span
                         class="sub_menu_toggle"></span>
                 <ul class="sub-menu">
-                    <li><a href="{{'news'}}">All News</a></li>
-                    <li><a href="{{'create_news'}}">Create News</a></li>
-                    <li><a href="{{'newslist'}}">Manage News</a></li>
+                    <li><a href="/{{'news'}}">All News</a></li>
+                    <li><a href="/{{'create_news'}}">Create News</a></li>
+                    <li><a href="/{{'newslist'}}">Manage News</a></li>
                </ul>
             </li>
             <li class="menu-item-has-children">

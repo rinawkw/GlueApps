@@ -21,10 +21,10 @@
                                         <div class="post-image">
                                             <div class="post-title">
                                                 <!-- <div class="post-cat2"><span>Artwork</span></div> -->
-                                                <h2><a href="post.html">{{ $value[$i]->event_judul }}</a>
+                                                <h2><a href="{{url("news/".$value[$i]->idevent)}}">{{ $value[$i]->event_judul }}</a>
                                                 </h2>
                                             </div>
-                                            <a  href="post.html">
+                                            <a  href="{{url("news/".$value[$i]->idevent)}}">
                                                 <img style="width: 400px; height: 300px; overflow: hidden;" src="{{$value[$i]->event_foto}}" alt="">
                                             </a>
                                         </div>
@@ -35,7 +35,7 @@
                                             </div>
                                             <p><?php echo str_limit($value[$i]->event_deskripsi, 200) ?></p>
                                         </div>
-                                        <div class="read-more"><a href="post.html">read more</a></div>
+                                        <div class="read-more"><a href="{{url("news/".$value[$i]->idevent)}}">read more</a></div>
                                     </div>
                                 </div>
                                 <?php $i++ ?>
@@ -44,10 +44,10 @@
                                         <div class="post-image">
                                             <div class="post-title">
                                                 <!-- <div class="post-cat2"><span>Artwork</span></div> -->
-                                                <h2><a href="post.html">{{ $value[$i]->event_judul }}</a>
+                                                <h2><a href="{{url("news/".$value[$i]->idevent)}}">{{ $value[$i]->event_judul }}</a>
                                                 </h2>
                                             </div>
-                                            <a href="post.html">
+                                            <a href="{{url("news/".$value[$i]->idevent)}}">
                                                 <img style="width: 400px; height: 300px; overflow: hidden;" src="{{$value[$i]->event_foto}}" alt=""></a>
                                         </div>
                                         <div class="post-body">
@@ -57,7 +57,7 @@
                                             </div>
                                             <p><?php echo str_limit($value[$i]->event_deskripsi, 200) ?></p>
                                         </div>
-                                        <div class="read-more"><a href="post.html">read more</a></div>
+                                        <div class="read-more"><a href="{{url("news/".$value[$i]->idevent)}}">read more</a></div>
                                     </div>
                                 </div>
                             </div>

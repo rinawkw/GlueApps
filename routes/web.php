@@ -37,7 +37,7 @@ Route::post('/do_filldata3', 'AuthController@do_filldata3');
 Route::post('/do_filldata4', 'AuthController@do_filldata4');
 
 Route::group(['middleware' => ['grouphome']], function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index2')->name('home');
 
     Route::get('/profile', 'AuthController@show_myprofile')->name('profile');
     Route::get('/profile/{username}', 'AuthController@show_profile');
