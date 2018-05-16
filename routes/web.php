@@ -15,7 +15,8 @@
 //     return view('auth.cobaform');
 // });
 
-Route::get('/', 'HomeController@index')->name('external');
+Route::get('/', 'HomeController@index2')->name('external');
+Route::get('/a', 'HomeController@index2');
 
 Route::get('/about', 'AboutController@index')->name('about');
 

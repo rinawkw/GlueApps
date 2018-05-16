@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,6 +14,13 @@ class HomeController extends Controller
     public function index()
     {
         return view('home.index');
+    }
+
+    public function index2()
+    {
+        $value = DB::table('event')->where('event_internal', '0')->get();
+            // dd($news->count());
+        return view('home.index2', compact('value'));
     }
 
     /**
